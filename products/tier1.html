@@ -187,6 +187,15 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 
 /* Counter animation */
 .counter{display:inline-block}
+
+/* 3列产品网格 */
+.product-grid-3{display:grid;grid-template-columns:1fr;gap:1.25rem}
+@media(min-width:768px){.product-grid-3{grid-template-columns:repeat(3,1fr);gap:1.5rem}}
+.product-subname{font-size:.8rem;color:#5A6B7C;font-weight:500;margin-top:2px}
+.product-duration{font-size:.78rem;color:#00A3FF;font-weight:600;background:#EBF5FF;border-radius:9999px;padding:3px 12px;display:inline-block;margin-bottom:8px}
+.badge-trial{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#00A3FF,#66C7FF);color:#fff;font-size:.72rem;font-weight:700;padding:3px 16px;border-radius:9999px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,163,255,0.3)}
+.badge-best{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#FF8A65,#FFB088);color:#fff;font-size:.72rem;font-weight:700;padding:3px 16px;border-radius:9999px;white-space:nowrap;box-shadow:0 2px 8px rgba(255,138,101,0.3)}
+
 </style>
 </head>
 <body>
@@ -471,23 +480,29 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 <!-- ===== 产品卡片区 ===== -->
 <section class="product-section" id="products">
   <h2 class="section-title fade-up">选择适合你的体验方案</h2>
-  <p class="section-sub fade-up">低门槛体验，高价值收获</p>
-  <div class="product-grid">
-    <!-- 求职规划指导课 -->
+  <p class="section-sub fade-up">功能全开放，差别只在时长，越早越划算</p>
+  <div class="product-grid product-grid-3">
+    <!-- VIP卡（3天体验卡） -->
     <div class="product-card fade-up">
+      <div class="product-badge badge-trial">3天体验</div>
       <div class="product-header">
-        <div class="product-name">求职规划指导课</div>
-        <div class="product-tagline">求职第一步，了解央国企全貌</div>
+        <div class="product-name">VIP卡</div>
+        <div class="product-subname">求职3天体验卡</div>
+        <div class="product-tagline">一杯咖啡的钱，先试试看</div>
       </div>
       <div class="product-price">
         <span class="price-now"><span>¥</span>9.9</span>
         <span class="price-old">¥99</span>
       </div>
+      <div class="product-duration">⏱ 3天会员 · 功能全开放</div>
       <ul class="product-features">
-        <li>央国企行业全景解析</li>
-        <li>个人求职路径规划</li>
-        <li>岗位匹配方向建议</li>
-        <li>1v1规划师在线答疑</li>
+        <li>AI简历优化 50次</li>
+        <li>AI模拟面试 10次</li>
+        <li>AI智能职业规划 5次</li>
+        <li>智能选岗 不限次数</li>
+        <li>求职早报 不限次数</li>
+        <li>求职课程/真题/简历模板全开</li>
+        <li>会员推广分佣 可参加</li>
       </ul>
       <div class="product-footer">
         <div class="product-people">已有 4,225 人体验</div>
@@ -495,74 +510,64 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
       </div>
     </div>
 
-    <!-- 简历优化会员版 -->
+    <!-- 求职自助卡 -->
     <div class="product-card featured fade-up">
-      <div class="product-badge badge-hot">🔥 最受欢迎</div>
+      <div class="product-badge badge-hot"> 最受欢迎</div>
       <div class="product-header">
-        <div class="product-name">简历优化会员版</div>
-        <div class="product-tagline">AI+人工，央国企HR认可格式</div>
+        <div class="product-name">求职自助卡</div>
+        <div class="product-subname">全年自助上岸</div>
+        <div class="product-tagline">一次投入，全年求职无忧</div>
       </div>
       <div class="product-price">
-        <span class="price-now"><span>¥</span>19.9</span>
-        <span class="price-old">¥199</span>
+        <span class="price-now"><span>¥</span>199</span>
+        <span class="price-old">¥999</span>
       </div>
+      <div class="product-duration">⏱ 12个月会员 · 功能全开放</div>
       <ul class="product-features">
-        <li>AI智能简历优化</li>
-        <li>6套央国企专属模板</li>
-        <li>在线编辑实时预览</li>
-        <li>免费导出PDF</li>
-        <li>HR认可的排版格式</li>
+        <li>AI简历优化 50次</li>
+        <li>AI模拟面试 10次</li>
+        <li>AI智能职业规划 5次</li>
+        <li>智能选岗 不限次数</li>
+        <li>求职早报 不限次数</li>
+        <li>求职课程/真题/简历模板全开</li>
+        <li>会员推广分佣 可参加</li>
       </ul>
       <div class="product-footer">
-        <div class="product-people">已有 1,234 人体验</div>
-        <button class="product-btn btn-orange" onclick="alert('请打开微信搜索「求职优伴」小程序体验')">立即体验</button>
+        <div class="product-people">已有 1,234 人开通</div>
+        <button class="product-btn btn-orange" onclick="alert('请打开微信搜索「求职优伴」小程序体验')">立即开通</button>
       </div>
     </div>
 
-    <!-- 笔试真题题库 -->
+    <!-- 求职全程卡 -->
     <div class="product-card fade-up">
+      <div class="product-badge badge-best">超值推荐</div>
       <div class="product-header">
-        <div class="product-name">笔试真题题库</div>
-        <div class="product-tagline">30000+真题，刷题即提分</div>
+        <div class="product-name">求职全程卡</div>
+        <div class="product-subname">两年全程陪伴</div>
+        <div class="product-tagline">提前布局，锁定两年求职优势</div>
       </div>
       <div class="product-price">
-        <span class="price-now"><span>¥</span>29.9</span>
-        <span class="price-old">¥299</span>
+        <span class="price-now"><span>¥</span>299</span>
+        <span class="price-old">¥1,999</span>
       </div>
+      <div class="product-duration">⏱ 24个月会员 · 功能全开放</div>
       <ul class="product-features">
-        <li>行测/申论/公基全覆盖</li>
-        <li>国家电网/烟草/三桶油真题</li>
-        <li>行业专项题库</li>
-        <li>错题本+智能复盘</li>
+        <li>AI简历优化 50次</li>
+        <li>AI模拟面试 10次</li>
+        <li>AI智能职业规划 5次</li>
+        <li>智能选岗 不限次数</li>
+        <li>求职早报 不限次数</li>
+        <li>求职课程/真题/简历模板全开</li>
+        <li>会员推广分佣 可参加</li>
       </ul>
       <div class="product-footer">
-        <div class="product-people">已有 15,889 人学习</div>
-        <button class="product-btn btn-blue" onclick="alert('请打开微信搜索「求职优伴」小程序体验')">立即体验</button>
-      </div>
-    </div>
-
-    <!-- AI模拟面试 -->
-    <div class="product-card fade-up">
-      <div class="product-header">
-        <div class="product-name">AI模拟面试</div>
-        <div class="product-tagline">真实考场体验，面试不紧张</div>
-      </div>
-      <div class="product-price">
-        <span class="price-now"><span>¥</span>39.9</span>
-        <span class="price-old">¥399</span>
-      </div>
-      <ul class="product-features">
-        <li>AI面试官模拟实战</li>
-        <li>覆盖央国企行业真题</li>
-        <li>结构化/半结构化面试</li>
-        <li>智能评分与改进建议</li>
-      </ul>
-      <div class="product-footer">
-        <div class="product-people">已有 8,326 人体验</div>
-        <button class="product-btn btn-blue" onclick="alert('请打开微信搜索「求职优伴」小程序体验')">立即体验</button>
+        <div class="product-people">已有 4,225 人开通</div>
+        <button class="product-btn btn-blue" onclick="alert('请打开微信搜索「求职优伴」小程序体验')">立即开通</button>
       </div>
     </div>
   </div>
+</section>
+
 </section>
 
 <!-- ===== 数据信任区 ===== -->
