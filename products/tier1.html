@@ -154,6 +154,16 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 .hero-cta-alt:hover{color:#fff;border-bottom-color:#fff}
 @media(min-width:768px){.hero-cta-alt{font-size:.95rem}}
 
+/* Modal */
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:999;align-items:center;justify-content:center;padding:1.5rem}
+.modal-overlay.active{display:flex}
+.modal-box{background:#fff;border-radius:20px;padding:2.5rem 2rem 2rem;max-width:380px;width:100%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,0.2);animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+.modal-icon{font-size:3rem;margin-bottom:1rem;display:block}
+.modal-text{font-size:1.1rem;font-weight:700;color:#1A2B3C;line-height:1.6;margin-bottom:1.5rem}
+.modal-text em{color:#00A3FF;font-style:normal;font-weight:800}
+.modal-close{display:inline-block;padding:0.6rem 2rem;background:linear-gradient(135deg,#00A3FF,#FF8A65);color:#fff;font-weight:700;font-size:0.95rem;border:none;border-radius:9999px;cursor:pointer;transition:all .3s}
+.modal-close:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,163,255,0.3)}
 </style>
 </head>
 <body>
@@ -375,7 +385,7 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 <h2 class="cta-title fade-up">还在犹豫？先体验再说</h2>
 <p class="cta-sub fade-up">央国企上班，稳定、高薪、还有面儿<br>再也不用被说"啃老"啦</p>
   <p class="cta-detail fade-up">9.9元先体验，给自己一个了解央国企的机会</p>
-<a href="#" class="cta-btn fade-up">立即咨询专属顾问</a>
+<a href="javascript:void(0)" onclick="openModal()" class="cta-btn fade-up">立即咨询专属顾问</a>
 </section>
 
 <!-- Footer -->
@@ -393,6 +403,19 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 // 价值条动画
 const barObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){const fills=e.target.querySelectorAll('.value-fill');fills.forEach(f=>{const w=f.style.width;f.style.width='0';setTimeout(()=>{f.style.width=w},100)})}})},{threshold:0.3});
 document.querySelectorAll('.value-bar-section').forEach(el=>barObserver.observe(el));
+</script>
+<!-- 咨询弹窗 -->
+<div class="modal-overlay" id="consultModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <span class="modal-icon">💬</span>
+    <p class="modal-text">更多详情功能请到微信搜索<br><em>"求职优伴小程序"</em></p>
+    <button class="modal-close" onclick="closeModal()">我知道了</button>
+  </div>
+</div>
+
+<script>
+function openModal(){document.getElementById('consultModal').classList.add('active')}
+function closeModal(){document.getElementById('consultModal').classList.remove('active')}
 </script>
 </body>
 </html>
