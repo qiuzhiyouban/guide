@@ -77,10 +77,10 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 .feature-desc{font-size:0.85rem;color:#5A6B7C;line-height:1.5}
 
 /* ===== 手机 Mockup 展示区 ===== */
-.phone-showcase{padding:2.5rem 1rem;text-align:center;overflow:hidden}
+.phone-showcase{padding:2.5rem 1rem;text-align:center}
 .phone-showcase-title{font-size:1.3rem;font-weight:800;color:#1A2B3C;margin-bottom:0.5rem}
 .phone-showcase-sub{font-size:0.9rem;color:#5A6B7C;margin-bottom:1.5rem}
-.phone-scroll{display:flex;gap:0.6rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0.5rem calc((100vw - 3 * ((100vw - 2rem) / 3 - 0.4rem)) / 2) 1.5rem;scrollbar-width:none;scroll-padding-left:0}
+.phone-scroll{display:flex;gap:0.6rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0.5rem 0 1.5rem;scrollbar-width:none;max-width:calc(3 * ((100vw - 2rem) / 3 - 0.4rem) + 1.2rem);margin:0 auto}
 .phone-scroll::-webkit-scrollbar{display:none}
 .phone-card{flex:0 0 calc((100vw - 2rem) / 3 - 0.4rem);scroll-snap-align:start;text-align:center}
 .phone-frame{position:relative;width:100%;aspect-ratio:1/2;margin:0 auto 0.5rem;border:3px solid #1A2B3C;border-radius:24px;background:#111;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.15)}
@@ -91,7 +91,7 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 .phone-hint{font-size:0.85rem;color:#9CA3AF;margin-top:1rem;font-weight:500;text-align:center}
 @media(min-width:768px){
   .phone-showcase{padding:3rem 2rem}
-  .phone-scroll{padding:0.5rem 2rem 1.5rem;gap:1rem}
+  .phone-scroll{max-width:calc(3 * 200px + 2rem);padding:0.5rem 0 1.5rem;gap:1rem}
   .phone-card{flex:0 0 200px}
   .phone-frame{border-radius:32px;border-width:4px;aspect-ratio:1/2}
   .phone-label{font-size:0.9rem}
