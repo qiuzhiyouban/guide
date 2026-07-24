@@ -222,6 +222,12 @@ body{background:#F7F9FC;color:#1A2B3C;line-height:1.6}
 .cta-btn-g:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,138,101,0.4)}
 @media(min-width:768px){.cta-title{font-size:1.9rem}}
 
+/* CTA QR Code Area */
+.cta-qr-wrap{display:flex;justify-content:center;margin-bottom:2rem;position:relative}
+.cta-qr-card{background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-radius:20px;padding:1.5rem 2rem 1.25rem;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.15)}
+.cta-qr-img{width:160px;height:160px;object-fit:contain;border-radius:12px}
+.cta-qr-tip{font-size:0.88rem;color:#1A2B3C;font-weight:700;margin-top:0.75rem;margin-bottom:0}
+
 /* === Footer === */
 .footer{padding:2.5rem 1rem;text-align:center;background:#0A1628;color:rgba(255,255,255,0.5);border-top:1px solid rgba(255,255,255,0.05)}
 .footer-logo{height:44px;width:auto;display:block;margin:0 auto 0.75rem;opacity:0.7}
@@ -236,7 +242,8 @@ body{background:#F7F9FC;color:#1A2B3C;line-height:1.6}
 .modal-text{font-size:1.1rem;font-weight:700;color:#1A2B3C;line-height:1.6;margin-bottom:0.75rem}
 .modal-text em{color:#00A3FF;font-style:normal;font-weight:800}
 .modal-sub{font-size:0.85rem;color:#8C99A8;margin-bottom:1.5rem}
-.modal-qr{width:160px;height:160px;margin:0 auto 1rem;background:linear-gradient(135deg,#EBF5FF,#F0F8FF);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:#00A3FF;font-weight:600;border:2px dashed #CCE8FF}
+.modal-qr{width:180px;height:180px;margin:0 auto 1rem;background:#fff;border-radius:16px;display:flex;align-items:center;justify-content:center;border:2px solid #E8EFF5;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.modal-qr-img{width:100%;height:100%;object-fit:contain;border-radius:14px}
 .modal-close{display:inline-block;padding:0.65rem 2rem;background:linear-gradient(135deg,#00A3FF,#0088D4);color:#fff;font-weight:700;font-size:0.95rem;border:none;border-radius:9999px;cursor:pointer;transition:all 0.3s}
 .modal-close:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,163,255,0.3)}
 .modal-wechat{display:flex;align-items:center;justify-content:center;gap:0.5rem;margin:1rem 0;padding:0.75rem 1rem;background:#E6FFF5;border-radius:12px;font-size:0.88rem;color:#10B981;font-weight:700}
@@ -839,6 +846,12 @@ body{background:#F7F9FC;color:#1A2B3C;line-height:1.6}
 <section class="cta-section">
 <h2 class="cta-title fade-up">还在犹豫？<span class="highlight">先聊聊你的情况</span></h2>
 <p class="cta-sub fade-up">专属顾问免费帮你分析求职方向，推荐最适合你的方案</p>
+<div class="cta-qr-wrap fade-up">
+<div class="cta-qr-card">
+<img src="kefu-qrcode.png" alt="客服二维码" class="cta-qr-img">
+<p class="cta-qr-tip">微信扫码添加专属顾问</p>
+</div>
+</div>
 <div class="cta-btn-group fade-up">
 <a href="javascript:void(0)" onclick="openModal()" class="cta-btn cta-btn-g">🚀 免费咨询专属方案</a>
 <a href="javascript:void(0)" onclick="openModal()" class="cta-btn cta-btn-w">📋 了解更多详情</a>
@@ -861,7 +874,7 @@ body{background:#F7F9FC;color:#1A2B3C;line-height:1.6}
 <span>📱</span>微信搜索"求职优伴"添加专属顾问
 </div>
 <div class="modal-qr">
-扫码添加<br>专属顾问
+<img src="kefu-qrcode.png" alt="客服二维码" class="modal-qr-img">
 </div>
 <button class="modal-close" onclick="closeModal()">我知道了</button>
 </div>
