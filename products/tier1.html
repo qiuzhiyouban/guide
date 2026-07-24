@@ -113,33 +113,89 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 }
 
 
-/* Product Cards */
+/* ===== Product Cards V2 (与 products-detail 统一风格) ===== */
 .product-section{padding:2rem 1rem;max-width:72rem;margin:0 auto}
 @media(min-width:768px){.product-section{padding:3rem 2rem}}
-.product-card{background:#fff;border-radius:20px;overflow:hidden;margin-bottom:1.5rem;border:2px solid #CCE8FF;transition:all 0.3s;position:relative}
-.product-card:hover{border-color:#00A3FF;box-shadow:0 16px 48px rgba(0,163,255,0.12)}
-.product-card.featured{border-color:#FF8A65;background:linear-gradient(180deg,#FFF8F4 0%,#fff 100%)}
-.product-card.featured:hover{border-color:#E57350;box-shadow:0 16px 48px rgba(255,138,101,0.15)}
-.product-badge{display:inline-block;padding:.2rem .7rem;border-radius:9999px;font-size:.7rem;font-weight:700;color:#fff;margin-bottom:.5rem}
-.badge-hot{background:linear-gradient(135deg,#FF8A65,#E57350)}
+.product-card{background:#fff;border-radius:20px;overflow:hidden;margin-bottom:2rem;border:1px solid #E8EFF5;transition:all 0.4s cubic-bezier(0.25,0.8,0.25,1);position:relative;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+.product-card:hover{transform:translateY(-8px);box-shadow:0 20px 48px rgba(0,163,255,0.12);border-color:#00A3FF}
+.product-card.featured{border:2px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#FF8A65,#FF6B3D) border-box;box-shadow:0 4px 20px rgba(255,138,101,0.1)}
+.product-card.featured:hover{box-shadow:0 20px 48px rgba(255,138,101,0.2)}
+
+/* Card Top Accent */
+.card-accent{height:4px;width:100%}
+.accent-blue{background:linear-gradient(90deg,#00A3FF,#0088D4)}
+.accent-orange{background:linear-gradient(90deg,#FF8A65,#E57350)}
+.accent-gold{background:linear-gradient(90deg,#F59E0B,#EF4444)}
+
+/* Badge */
+.p-badge{display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.75rem;border-radius:9999px;font-size:0.72rem;font-weight:700;color:#fff;margin-bottom:0.6rem}
 .badge-value{background:linear-gradient(135deg,#00A3FF,#0088D4)}
+.badge-hot{background:linear-gradient(135deg,#FF8A65,#E57350)}
 .badge-star{background:linear-gradient(135deg,#FFB800,#FF8A00)}
-.product-header{padding:1.5rem 1.5rem 1rem;position:relative}
-.product-name{font-size:1.3rem;font-weight:800;color:#1A2B3C;margin:0 0 0.25rem}
-.product-tagline{font-size:0.95rem;color:#5A6B7C;margin:0}
-.product-price{padding:0 1.5rem 1rem;display:flex;align-items:baseline;gap:0.75rem;flex-wrap:wrap}
-.price-now{font-size:2.2rem;font-weight:900;color:#00A3FF}
-.product-card.featured .price-now{color:#FF8A65}
-.price-original{font-size:1rem;color:#9CA3AF;text-decoration:line-through}
-.price-save{display:inline-block;padding:0.2rem 0.6rem;background:#E6FFF5;color:#10B981;font-size:0.8rem;font-weight:700;border-radius:6px}
-.product-body{padding:0 1.5rem 1.5rem}
-.product-features{list-style:none;padding:0;margin:0 0 1rem}
-.product-features li{display:flex;align-items:flex-start;gap:0.5rem;padding:0.4rem 0;font-size:0.9rem;color:#1A2B3C;border-bottom:1px dashed #EBF5FF}
-.product-features li:last-child{border-bottom:none}
-.product-features .check{color:#00A3FF;font-weight:700;flex-shrink:0}
-.product-card.featured .product-features .check{color:#FF8A65}
+
+/* Card Header */
+.p-header{padding:1.5rem 1.5rem 0.5rem;position:relative}
+.p-icon-wrap{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:0.8rem;font-size:1.4rem;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+.icon-blue{background:linear-gradient(135deg,#EBF5FF,#CCE8FF)}
+.icon-orange{background:linear-gradient(135deg,#FFF0E8,#FFDCC8)}
+.icon-gold{background:linear-gradient(135deg,#FFF8E0,#FFECB0)}
+.p-name{font-size:1.25rem;font-weight:800;color:#1A2B3C;margin-bottom:0.3rem}
+.p-tagline{font-size:0.88rem;color:#5A6B7C;line-height:1.5}
+
+/* Price Area */
+.p-price-area{padding:0.5rem 1.5rem 0.75rem;display:flex;align-items:baseline;gap:0.4rem;flex-wrap:wrap}
+.p-price{font-size:2rem;font-weight:900;color:#00A3FF}
+.product-card.featured .p-price{color:#FF8A65}
+.p-price-unit{font-size:0.82rem;color:#8C99A8;font-weight:500}
+.p-price-original{font-size:0.9rem;color:#9CA3AF;text-decoration:line-through}
+.p-price-note{display:inline-block;padding:0.15rem 0.6rem;border-radius:6px;font-size:0.72rem;font-weight:700}
+.note-green{background:#E6FFF5;color:#10B981}
+.note-orange{background:#FFF0E8;color:#FF8A65}
+
+/* Target Info */
+.p-target{display:flex;flex-wrap:wrap;gap:0.4rem;padding:0 1.5rem 0.75rem}
+.p-target-tag{display:inline-flex;align-items:center;gap:0.25rem;padding:0.2rem 0.55rem;background:#EBF5FF;border-radius:6px;font-size:0.75rem;color:#0088D4;font-weight:600}
+.product-card.featured .p-target-tag{background:#FFF0E8;color:#E57350}
+
+/* Features List */
+.p-features{list-style:none;padding:0 1.5rem 0.75rem;margin:0}
+.p-features li{display:flex;align-items:flex-start;gap:0.5rem;padding:0.35rem 0;font-size:0.88rem;color:#1A2B3C;border-bottom:1px solid #F0F4F8;line-height:1.5}
+.p-features li:last-child{border-bottom:none}
+.p-features .chk{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;flex-shrink:0;margin-top:2px;color:#fff;font-weight:800}
+.chk-blue{background:linear-gradient(135deg,#00A3FF,#0088D4)}
+.chk-orange{background:linear-gradient(135deg,#FF8A65,#E57350)}
+.chk-gold{background:linear-gradient(135deg,#F59E0B,#EF4444)}
+.p-features .sub{font-size:0.76rem;color:#9CA3AF;display:block;margin-top:0.1rem}
+
+/* Detail Block */
+.p-detail{margin:0.5rem 1.5rem 0.75rem;padding:0.85rem;background:#F7F9FC;border-radius:12px;border:1px solid #E8EFF5}
+.p-detail-title{font-size:0.85rem;font-weight:700;color:#1A2B3C;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.4rem}
+.p-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.3rem}
+@media(max-width:480px){.p-detail-grid{grid-template-columns:1fr}}
+.p-detail-item{font-size:0.78rem;color:#5A6B7C;display:flex;align-items:center;gap:0.35rem}
+.p-detail-item .dot{width:5px;height:5px;border-radius:50%;background:#00A3FF;flex-shrink:0}
+.product-card.featured .p-detail-item .dot{background:#FF8A65}
+
+/* Marketing Blurb */
+.p-blurb{margin:0.5rem 1.5rem 1rem;padding:1rem;border-radius:14px;font-size:0.86rem;line-height:1.7;position:relative}
+.blurb-blue{background:linear-gradient(135deg,#EBF5FF,#F0F8FF);color:#0066AA;border:1px solid #CCE8FF}
+.blurb-orange{background:linear-gradient(135deg,#FFF5EE,#FFF0E8);color:#C44B20;border:1px solid #FFDCC8}
+.blurb-gold{background:linear-gradient(135deg,#FFF8E8,#FFF5E0);color:#92700A;border:1px solid #FFECB0}
+.p-blurb::before{content:'💡';position:absolute;top:-10px;left:14px;font-size:1.1rem}
+
+/* CTA */
+.p-cta{padding:0 1.5rem 1.5rem;text-align:center}
+.p-cta-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.7rem 2rem;border-radius:9999px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;width:100%;max-width:340px;justify-content:center}
+.p-cta-blue{background:linear-gradient(135deg,#00A3FF,#0088D4);color:#fff;box-shadow:0 4px 16px rgba(0,163,255,0.3)}
+.p-cta-blue:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,163,255,0.4)}
+.p-cta-orange{background:linear-gradient(135deg,#FF8A65,#E57350);color:#fff;box-shadow:0 4px 16px rgba(255,138,101,0.3)}
+.p-cta-orange:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,138,101,0.4)}
+.p-cta-gold{background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;box-shadow:0 4px 16px rgba(245,158,11,0.3)}
+.p-cta-gold:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,158,11,0.4)}
+
+/* 旧 class 兼容（value bar / compare 等不受影响） */
+.product-features{list-style:none;padding:0;margin:0}
 .product-proof{display:flex;align-items:center;gap:0.5rem;padding:0.75rem;background:#EBF5FF;border-radius:12px;font-size:0.85rem;color:#0088D4}
-.product-card.featured .product-proof{background:#FFE0D0;color:#E57350}
 .product-proof-icon{font-size:1.2rem}
 
 /* Value Bar */
@@ -404,85 +460,100 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 
 <!-- VIP卡 9.9元 -->
 <div class="product-card fade-up">
-<div class="product-badge badge-value">💎 超值入门</div>
-<div class="product-header">
-<h3 class="product-name">VIP体验卡</h3>
-<p class="product-tagline">先体验，再决定 — 零风险打开央国企求职大门</p>
+<div class="card-accent accent-blue"></div>
+<div class="p-header">
+<span class="p-badge badge-value">💎 超值入门</span>
+<div class="p-icon-wrap icon-blue"></div>
+<h3 class="p-name">VIP体验卡</h3>
+<p class="p-tagline">先体验，再决定 — 零风险打开央国企求职大门</p>
 </div>
-<div class="product-price">
-<span class="price-now">¥9.9</span>
-<span class="price-original">¥49</span>
-<span class="price-save">省 ¥39.1</span>
+<div class="p-price-area">
+<span class="p-price">¥9.9</span>
+<span class="p-price-original">¥49</span>
+<span class="p-price-note note-green">省 ¥39.1</span>
 </div>
-<div class="product-body">
-      <ul class="product-features">
-        <li>智能选岗系统 2次</li>
-        <li>职业测评</li>
-        <li>简历模版</li>
-        <li>笔试真题</li>
-      </ul>
-<div class="product-proof">
-<span class="product-proof-icon">🔥</span>
-<span>已有 <strong>5,200+</strong> 位同学通过VIP卡开启央国企之旅</span>
+<div class="p-target">
+<span class="p-target-tag">👤 所有同学</span>
+<span class="p-target-tag">⏱ 永久有效</span>
+<span class="p-target-tag"> 零门槛入门</span>
 </div>
+<ul class="p-features">
+<li><span class="chk chk-blue">✓</span>智能选岗系统<span class="sub">AI精准匹配央国企岗位，2次免费使用</span></li>
+<li><span class="chk chk-blue">✓</span>职业测评</li>
+<li><span class="chk chk-blue">✓</span>简历模版</li>
+<li><span class="chk chk-blue">✓</span>笔试真题</li>
+</ul>
+<div class="p-blurb blurb-blue">9.9元 = 央国企求职工具包。一杯奶茶钱，解锁智能选岗、职业测评、简历模板、笔试题库——先体验再决定，零风险试水。</div>
+<div class="p-cta">
+<a href="#小程序://求职优伴/wOmtXsR3VtQvZSC" class="p-cta-btn p-cta-blue">立即体验 · 开通VIP卡 →</a>
 </div>
 </div>
 
 <!-- 3天体验卡 199元 -->
 <div class="product-card featured fade-up">
-<div class="product-badge badge-hot">🔥 最受欢迎</div>
-<div class="product-header">
-<h3 class="product-name">3天沉浸式体验卡</h3>
-<p class="product-tagline">3天时间，让你看清央国企求职全貌</p>
+<div class="card-accent accent-orange"></div>
+<div class="p-header">
+<span class="p-badge badge-hot">🔥 最受欢迎</span>
+<div class="p-icon-wrap icon-orange"></div>
+<h3 class="p-name">3天沉浸式体验卡</h3>
+<p class="p-tagline">3天时间，让你看清央国企求职全貌</p>
 </div>
-<div class="product-price">
-<span class="price-now">¥199</span>
-<span class="price-original">¥399</span>
-<span class="price-save">省 ¥200</span>
+<div class="p-price-area">
+<span class="p-price">¥199</span>
+<span class="p-price-original">¥399</span>
+<span class="p-price-note note-orange">省 ¥200</span>
 </div>
-<div class="product-body">
-<ul class="product-features">
-<li><span class="check">✓</span>VIP卡全部功能 + 深度体验</li>
-<li><span class="check">✓</span>1v1职业规划咨询（30分钟，专属导师在线答疑）</li>
-<li><span class="check">✓</span>AI简历优化完整版（STAR法则重构+央国企定向优化）</li>
-<li><span class="check">✓</span>央国企岗位精准匹配3次（不限行业，精准推荐）</li>
-<li><span class="check">✓</span>AI模拟面试3次（含面试复盘报告+改进建议）</li>
-<li><span class="check">✓</span>专属服务群（3天答疑+求职干货分享）</li>
+<div class="p-target">
+<span class="p-target-tag">👤 大三/研二</span>
+<span class="p-target-tag">⏱ 3天深度体验</span>
+<span class="p-target-tag"> 冲刺秋招</span>
+</div>
+<ul class="p-features">
+<li><span class="chk chk-orange">✓</span>VIP卡全部功能 + 深度体验</li>
+<li><span class="chk chk-orange">✓</span>1v1职业规划咨询<span class="sub">30分钟，专属导师在线答疑</span></li>
+<li><span class="chk chk-orange">✓</span>AI简历优化完整版<span class="sub">STAR法则重构+央国企定向优化</span></li>
+<li><span class="chk chk-orange">✓</span>央国企岗位精准匹配3次<span class="sub">不限行业，精准推荐</span></li>
+<li><span class="chk chk-orange">✓</span>AI模拟面试3次<span class="sub">含面试复盘报告+改进建议</span></li>
+<li><span class="chk chk-orange">✓</span>专属服务群<span class="sub">3天答疑+求职干货分享</span></li>
 </ul>
-<div class="product-proof">
-<span class="product-proof-icon">⭐</span>
-<span><strong>92%</strong> 的体验学员表示"远超预期"，<strong>78%</strong> 选择升级后续服务</span>
-</div>
+<div class="p-blurb blurb-orange">199元/3天 = 1v1导师咨询+AI简历优化+3次岗位匹配+3次模拟面试。92%的体验学员表示"远超预期"，78%选择升级后续服务——先试3天，不合适随时停。</div>
+<div class="p-cta">
+<a href="#小程序://求职优伴/wOmtXsR3VtQvZSC" class="p-cta-btn p-cta-orange">立即体验 · 开通体验卡 →</a>
 </div>
 </div>
 
 <!-- 全程卡 299元 -->
 <div class="product-card fade-up">
-<div class="product-badge badge-star">⭐ 长线布局</div>
-<div class="product-header">
-<h3 class="product-name">求职全程卡</h3>
-<p class="product-tagline">从入学到入职，轻量陪伴长线布局</p>
+<div class="card-accent accent-gold"></div>
+<div class="p-header">
+<span class="p-badge badge-star">⭐ 长线布局</span>
+<div class="p-icon-wrap icon-gold"></div>
+<h3 class="p-name">求职全程卡</h3>
+<p class="p-tagline">从入学到入职，轻量陪伴长线布局</p>
 </div>
-<div class="product-price">
-<span class="price-now">¥299</span>
-<span class="price-original">¥599</span>
-<span class="price-save">省 ¥300</span>
+<div class="p-price-area">
+<span class="p-price">¥299</span>
+<span class="p-price-original">¥599</span>
+<span class="p-price-note note-green">省 ¥300</span>
 </div>
-<div class="product-body">
-<ul class="product-features">
-<li><span class="check">✓</span>3天体验卡全部功能 + 长期服务</li>
-<li><span class="check">✓</span>覆盖大二至毕业全阶段（不限时间，随时使用）</li>
-<li><span class="check">✓</span>1v1职业规划咨询2次（深度定位+方向调整）</li>
-<li><span class="check">✓</span>AI简历优化无限次（每次投递都能优化）</li>
-<li><span class="check">✓</span>智能岗位匹配无限次（实时跟踪最新岗位）</li>
-<li><span class="check">✓</span>AI模拟面试无限次（每次面试前都练一遍）</li>
-<li><span class="check">✓</span>专属督学老师（定期提醒+进度跟踪）</li>
-<li><span class="check">✓</span>笔试真题题库完整权限</li>
+<div class="p-target">
+<span class="p-target-tag">👤 大二、大三</span>
+<span class="p-target-tag">⏱ 覆盖至毕业</span>
+<span class="p-target-tag"> 长线规划</span>
+</div>
+<ul class="p-features">
+<li><span class="chk chk-gold">✓</span>3天体验卡全部功能 + 长期服务</li>
+<li><span class="chk chk-gold">✓</span>覆盖大二至毕业全阶段<span class="sub">不限时间，随时使用</span></li>
+<li><span class="chk chk-gold">✓</span>1v1职业规划咨询2次<span class="sub">深度定位+方向调整</span></li>
+<li><span class="chk chk-gold">✓</span>AI简历优化无限次<span class="sub">每次投递都能优化</span></li>
+<li><span class="chk chk-gold">✓</span>智能岗位匹配无限次<span class="sub">实时跟踪最新岗位</span></li>
+<li><span class="chk chk-gold">✓</span>AI模拟面试无限次<span class="sub">每次面试前都练一遍</span></li>
+<li><span class="chk chk-gold">✓</span>专属督学老师<span class="sub">定期提醒+进度跟踪</span></li>
+<li><span class="chk chk-gold">✓</span>笔试真题题库完整权限</li>
 </ul>
-<div class="product-proof">
-<span class="product-proof-icon">💡</span>
-<span>适合 <strong>大二/大三</strong> 提前布局的同学，平均比同龄人早 <strong>6个月</strong> 进入备战状态</span>
-</div>
+<div class="p-blurb blurb-gold">299元 = 从大二到毕业全程覆盖。2次1v1深度咨询+无限次AI简历/选岗/模拟面试+专属督学。平均比同龄人早6个月进入备战状态——早规划的人，永远多3倍机会。</div>
+<div class="p-cta">
+<a href="#小程序://求职优伴/wOmtXsR3VtQvZSC" class="p-cta-btn p-cta-gold">立即体验 · 开通全程卡 →</a>
 </div>
 </div>
 </section>
