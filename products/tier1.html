@@ -46,6 +46,20 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
   .hero-stat-num{font-size:2.2rem}
 }
 
+/* ===== 数据滚动展示区 ===== */
+.data-showcase{background:#1A2B3C;padding:2.5rem 1rem;text-align:center}
+.data-showcase-inner{max-width:48rem;margin:0 auto}
+.data-row{display:flex;align-items:center;justify-content:center;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.08)}
+.data-row:last-child{border-bottom:none}
+.data-label{color:rgba(255,255,255,0.7);font-size:0.9rem;font-weight:500;white-space:nowrap}
+.data-number{color:#fff;font-size:3rem;font-weight:900;font-variant-numeric:tabular-nums;letter-spacing:-1px}
+@media(min-width:768px){
+  .data-showcase{padding:3rem 2rem}
+  .data-label{font-size:1rem}
+  .data-number{font-size:3.5rem}
+  .data-row{gap:1.25rem;padding:0.75rem 0}
+}
+
 /* Section */
 .section{padding:3rem 1rem;max-width:72rem;margin:0 auto}
 @media(min-width:768px){.section{padding:4rem 2rem}}
@@ -61,6 +75,25 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 .feature-icon{font-size:2.5rem;margin-bottom:0.75rem;display:block}
 .feature-name{font-size:1.05rem;font-weight:700;color:#1A2B3C;margin-bottom:0.5rem}
 .feature-desc{font-size:0.85rem;color:#5A6B7C;line-height:1.5}
+
+/* ===== 手机 Mockup 展示区 ===== */
+.phone-showcase{padding:2.5rem 1rem;text-align:center;overflow:hidden}
+.phone-showcase-title{font-size:1.3rem;font-weight:800;color:#1A2B3C;margin-bottom:0.5rem}
+.phone-showcase-sub{font-size:0.9rem;color:#5A6B7C;margin-bottom:1.5rem}
+.phone-scroll{display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0.5rem 1rem 1.5rem;scrollbar-width:none}
+.phone-scroll::-webkit-scrollbar{display:none}
+.phone-card{flex:0 0 220px;scroll-snap-align:start;text-align:center}
+.phone-frame{position:relative;width:200px;height:400px;margin:0 auto 0.75rem;border:3px solid #1A2B3C;border-radius:32px;background:#111;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.15)}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:80px;height:22px;background:#1A2B3C;border-radius:0 0 14px 14px;z-index:2}
+.phone-screen{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#00A3FF 0%,#0088D4 40%,#FF8A65 100%);padding:2rem 1rem}
+.phone-screen-text{color:#fff;font-size:1rem;font-weight:700;line-height:1.5}
+.phone-label{font-size:0.85rem;font-weight:700;color:#1A2B3C}
+.phone-hint{font-size:0.8rem;color:#9CA3AF;margin-top:0.75rem}
+@media(min-width:768px){
+  .phone-showcase{padding:3rem 2rem}
+  .phone-card{flex:0 0 240px}
+  .phone-frame{width:220px;height:440px}
+}
 
 /* Product Cards */
 .product-section{padding:2rem 1rem;max-width:72rem;margin:0 auto}
@@ -97,7 +130,7 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 .value-item{margin-bottom:1.5rem}
 .value-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem}
 .value-name{font-weight:600;font-size:0.95rem;color:#1A2B3C}
-.value-num{font-weight:700;color:#00A3FF;font-size:0.9rem}
+.value-num{font-weight:700;color:#5A6B7C;font-size:0.85rem;line-height:1.5;max-width:65%;text-align:right}
 .value-track{height:8px;background:#E8EFF5;border-radius:4px;overflow:hidden}
 .value-fill{height:100%;border-radius:4px;transition:width 1.5s ease}
 .fill-blue{background:linear-gradient(90deg,#00A3FF,#66C7FF)}
@@ -113,12 +146,17 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 .compare-title{font-weight:700;color:#1A2B3C;margin-bottom:0.25rem}
 .compare-desc{font-size:0.85rem;color:#5A6B7C}
 
-/* CTA */
-.cta-section{padding:3rem 1rem;text-align:center;background:linear-gradient(135deg,#00A3FF,#FF8A65);margin:0}
-.cta-title{color:#fff;font-size:1.5rem;font-weight:800;margin:0 0 0.5rem}
-.cta-sub{color:rgba(255,255,255,0.9);font-size:0.95rem;margin:0 0 1.5rem}
-.cta-btn{display:inline-block;padding:0.75rem 2.5rem;background:#fff;color:#00A3FF;font-weight:700;font-size:1rem;border-radius:9999px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.15);transition:all 0.3s}
-.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+/* ===== CTA Section (Dark + Chat Bubble) ===== */
+.cta-section{padding:3rem 1rem;text-align:center;background:#1A2B3C;margin:0}
+.cta-title{color:#fff;font-size:1.5rem;font-weight:800;margin:0 0 1rem}
+.cta-bubble{position:relative;background:#fff;color:#1A2B3C;font-size:0.95rem;font-weight:600;padding:1rem 1.25rem;border-radius:16px;max-width:280px;margin:0 auto 1rem;box-shadow:0 4px 16px rgba(0,0,0,0.15);text-align:left;line-height:1.5}
+.cta-bubble::after{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #fff}
+.cta-detail{color:rgba(255,255,255,0.7);font-size:.85rem;margin:0 0 1.5rem}
+.cta-btn{display:inline-block;padding:0.75rem 2.5rem;background:linear-gradient(135deg,#00A3FF,#FF8A65);color:#fff;font-weight:700;font-size:1rem;border-radius:9999px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.25);transition:all 0.3s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+@media(min-width:768px){
+  .cta-bubble{max-width:340px;font-size:1rem}
+}
 
 /* Footer */
 .footer{padding:2rem 1rem;text-align:center;background:#1A2B3C;color:rgba(255,255,255,0.7)}
@@ -142,12 +180,10 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 .banner-inner{max-width:40rem;margin:0 auto}
 .banner-emoji{font-size:2.5rem;margin-bottom:.75rem}
 .banner-title{font-size:1.3rem;font-weight:800;color:#1A2B3C;margin:0 0 .5rem}
-.banner-desc{font-size:.95rem;color:#5A6B7C;margin:0 0 1rem;line-height:1.6}
+.banner-desc{font-size:1.15rem;font-weight:800;color:#1A2B3C;margin:0 0 1rem;line-height:1.6;background:linear-gradient(135deg,#00A3FF,#FF8A65);-webkit-background-clip:text;-webkit-text-fill-color:transparent;padding:0.5rem 0}
 .banner-cta{display:inline-block;padding:.5rem 1.5rem;background:linear-gradient(135deg,#00A3FF,#0088D4);color:#fff;font-weight:700;font-size:.9rem;border-radius:9999px;text-decoration:none;transition:all .3s;box-shadow:0 4px 12px rgba(0,163,255,0.25)}
 .banner-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,163,255,0.3)}
-@media(min-width:768px){.banner-title{font-size:1.6rem}.banner-desc{font-size:1.05rem}.banner-emoji{font-size:3rem}}
-
-.cta-detail{color:rgba(255,255,255,0.7);font-size:.85rem;margin-top:.5rem}
+@media(min-width:768px){.banner-title{font-size:1.6rem}.banner-desc{font-size:1.35rem}.banner-emoji{font-size:3rem}}
 
 .hero-cta-group{display:flex;flex-direction:column;align-items:center;gap:.75rem;position:relative;margin-top:1rem}
 .hero-cta-alt{color:rgba(255,255,255,0.9);font-size:.85rem;font-weight:500;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,0.5);padding-bottom:2px;transition:all .3s}
@@ -188,15 +224,41 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 <h1>早知道早上岸<br>稳稳上岸央国企</h1>
 <p class="hero-sub">AI智能选岗 · 精准匹配 · 真题题库 · 简历优化</p>
 <div class="hero-stats">
-<div class="hero-stat"><span class="hero-stat-num">10000+</span><span class="hero-stat-label">累计服务学员</span></div>
-<div class="hero-stat"><span class="hero-stat-num">99+</span><span class="hero-stat-label">覆盖央企</span></div>
-<div class="hero-stat"><span class="hero-stat-num">30000+</span><span class="hero-stat-label">真题题库</span></div>
+<div class="hero-stat"><span class="hero-stat-num" data-count="10000">0</span><span class="hero-stat-label">累计服务学员</span></div>
+<div class="hero-stat"><span class="hero-stat-num" data-count="1200000">0</span><span class="hero-stat-label">央国企热招岗位</span></div>
+<div class="hero-stat"><span class="hero-stat-num" data-count="30000">0</span><span class="hero-stat-label">真题题库</span></div>
 </div>
 <div class="hero-cta-group">
   <a href="#products" class="hero-cta">查看体验方案 ↓</a>
   <a href="https://qiuzhiyouban.github.io/guide/" class="hero-cta-alt">《央国企求职上岸·认知规划》快速拉通基础认知 →</a>
 </div>
 <div class="scroll-indicator"><span></span></div>
+</section>
+
+<!-- 数据滚动展示区 -->
+<section class="data-showcase" id="dataShowcase">
+<div class="data-showcase-inner">
+<div class="data-row">
+<span class="data-label">24h新增岗位</span>
+<span class="data-number" data-target="2660">0</span>
+</div>
+<div class="data-row">
+<span class="data-label">7天新增岗位</span>
+<span class="data-number" data-target="15129">0</span>
+</div>
+<div class="data-row">
+<span class="data-label">央国企热招岗位</span>
+<span class="data-number" data-target="1217143">0</span>
+</div>
+<div class="data-row">
+<span class="data-label">民企热招岗位</span>
+<span class="data-number" data-target="469062">0</span>
+</div>
+<div class="data-row">
+<span class="data-label">累计校招岗位信息</span>
+<span class="data-number" data-target="1686205">0</span>
+</div>
+</div>
 </section>
 
 <!-- 小程序核心功能 -->
@@ -222,7 +284,7 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 <div class="feature-card fade-up">
 <span class="feature-icon">📚</span>
 <div class="feature-name">笔试真题题库</div>
-<div class="feature-desc">30000+道央国企真题，覆盖行测、申论、公基、行业专项</div>
+<div class="feature-desc">国家电网、南方电网、三桶油等行业真题全覆盖，30000+道让你练到考前</div>
 </div>
 <div class="feature-card fade-up">
 <span class="feature-icon">🧠</span>
@@ -242,23 +304,61 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 <div class="feature-card fade-up">
 <span class="feature-icon">🎓</span>
 <div class="feature-name">课程学习中心</div>
-<div class="feature-desc">笔试课、面试课、行业专项课全覆盖，碎片时间也能系统提升</div>
-</div>
-<div class="feature-card fade-up">
-<span class="feature-icon">💸</span>
-<div class="feature-name">推广分佣</div>
-<div class="feature-desc">邀请好友加入即享佣金，边求职边赚钱，好产品值得分享</div>
+<div class="feature-desc">4,225人已报名，笔试课、面试课、行业专项课全覆盖</div>
 </div>
 </div>
 </section>
 
+<!-- 手机样式页面展示区 -->
+<section class="phone-showcase">
+<h2 class="phone-showcase-title fade-up">小程序页面一览</h2>
+<p class="phone-showcase-sub fade-up">五大核心功能，滑动查看</p>
+<div class="phone-scroll">
+  <div class="phone-card">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen"><div class="phone-screen-text">🎯<br>智能选岗<br>精准匹配你的<br>央国企方向</div></div>
+    </div>
+    <div class="phone-label">智能选岗</div>
+  </div>
+  <div class="phone-card">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen"><div class="phone-screen-text">📝<br>简历优化<br>AI驱动<br>央国企专属简历</div></div>
+    </div>
+    <div class="phone-label">简历优化</div>
+  </div>
+  <div class="phone-card">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen"><div class="phone-screen-text">🤖<br>AI面试<br>行业真题模拟<br>复盘改进</div></div>
+    </div>
+    <div class="phone-label">AI面试</div>
+  </div>
+  <div class="phone-card">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen"><div class="phone-screen-text">🧭<br>职业规划<br>1v1深度定位<br>方向调整</div></div>
+    </div>
+    <div class="phone-label">职业规划</div>
+  </div>
+  <div class="phone-card">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen"><div class="phone-screen-text">🎓<br>求职课堂<br>笔试面试课程<br>行业专项课</div></div>
+    </div>
+    <div class="phone-label">求职课堂</div>
+  </div>
+</div>
+<div class="phone-hint">← 左右滑动查看更多 →</div>
+</section>
 
 <!-- 宝藏小程序横幅 -->
 <section class="banner-section">
   <div class="banner-inner fade-up">
     <div class="banner-emoji">📱</div>
     <h3 class="banner-title">宝藏小程序 · 高效助你上岸</h3>
-    <p class="banner-desc">求职程序随身学 · 躺着也把简历、选岗、学习、网申统统搞定</p>
+    <p class="banner-desc">简历、选岗、刷题、面试——躺着也能搞定的央国企上岸神器</p>
     <a href="#products" class="banner-cta">查看方案 ↓</a>
   </div>
 </section>
@@ -356,26 +456,26 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 <!-- 价值对比 -->
 <section class="value-bar-section">
 <div class="value-bar-inner">
-<h2 class="section-title fade-up">你花的每一分钱，都物超所值</h2>
-<p class="section-sub fade-up">服务总价值 vs 实际价格，一目了然</p>
+<h2 class="section-title fade-up">打开小程序，上岸流程全搞定</h2>
+<p class="section-sub fade-up">选岗、简历、面试、刷题，一个工具从头到尾陪着你</p>
 <div class="value-item fade-up">
 <div class="value-label">
 <span class="value-name">💎 VIP体验卡</span>
-<span class="value-num">服务价值 ¥149 → 仅 ¥9.9</span>
+<span class="value-num">智能选岗2次+职业测评+简历模版+笔试真题，一杯咖啡的钱全解锁</span>
 </div>
 <div class="value-track"><div class="value-fill fill-blue" style="width:6%"></div></div>
 </div>
 <div class="value-item fade-up">
 <div class="value-label">
 <span class="value-name">🔥 3天体验卡</span>
-<span class="value-num">服务价值 ¥580 → 仅 ¥199</span>
+<span class="value-num">1v1规划+AI简历完整版+岗位精准匹配+AI模拟面试+专属群，3天沉浸式体验</span>
 </div>
 <div class="value-track"><div class="value-fill fill-orange" style="width:34%"></div></div>
 </div>
 <div class="value-item fade-up">
 <div class="value-label">
 <span class="value-name">⭐ 求职全程卡</span>
-<span class="value-num">服务价值 ¥1,280 → 仅 ¥299</span>
+<span class="value-num">2年不限次使用+无限AI简历+无限岗位匹配+专属督学，长线陪伴到入职</span>
 </div>
 <div class="value-track"><div class="value-fill fill-blue" style="width:23%"></div></div>
 </div>
@@ -398,9 +498,9 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 <div class="compare-desc">智能选岗+AI面试+AI简历，用科技提升求职效率</div>
 </div>
 <div class="compare-item fade-up">
-<span class="compare-icon">💰</span>
-<div class="compare-title">先试后买</div>
-<div class="compare-desc">9.9元先体验，满意再升级，不花一分冤枉钱</div>
+<span class="compare-icon">📱</span>
+<div class="compare-title">随身学习</div>
+<div class="compare-desc">央国企上岸全流程覆盖，碎片时间也能系统提升，随时随地都能用</div>
 </div>
 </div>
 </section>
@@ -408,8 +508,8 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 <!-- 咨询引导 -->
 <section class="cta-section">
 <h2 class="cta-title fade-up">还在犹豫？先体验再说</h2>
-<p class="cta-sub fade-up">央国企上班，稳定、高薪、还有面儿<br>再也不用被说"啃老"啦</p>
-  <p class="cta-detail fade-up">9.9元先体验，给自己一个了解央国企的机会</p>
+<div class="cta-bubble fade-up">央国企上班，稳定、高薪、还有面儿<br>再也不用被说"啃老"啦</div>
+<p class="cta-detail fade-up">选岗·简历·面试·刷题·课程，央国企上岸全流程，随身小程序一站搞定</p>
 <a href="javascript:void(0)" onclick="openModal()" class="cta-btn fade-up">立即咨询专属顾问</a>
 </section>
 
@@ -427,6 +527,53 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 // 价值条动画
 const barObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){const fills=e.target.querySelectorAll('.value-fill');fills.forEach(f=>{const w=f.style.width;f.style.width='0';setTimeout(()=>{f.style.width=w},100)})}})},{threshold:0.3});
 document.querySelectorAll('.value-bar-section').forEach(el=>barObserver.observe(el));
+
+// 数字格式化（千位分隔符）
+function formatNumber(n){
+  return n.toLocaleString('en-US');
+}
+
+// 滚动计数动画（通用，支持ease-out）
+function animateCount(el, target, duration){
+  const start = performance.now();
+  function update(now){
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // ease-out: 1 - (1-t)^3
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(eased * target);
+    el.textContent = formatNumber(current);
+    if(progress < 1){
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = formatNumber(target);
+    }
+  }
+  requestAnimationFrame(update);
+}
+
+// Hero区数字滚动
+document.querySelectorAll('.hero-stat-num[data-count]').forEach(el=>{
+  const target = parseInt(el.getAttribute('data-count'), 10);
+  // Hero visible on load, start animation after short delay
+  setTimeout(()=>{ animateCount(el, target, 1500); }, 500);
+});
+
+// 数据展示区滚动计数
+let dataAnimated = false;
+const dataObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && !dataAnimated){
+      dataAnimated = true;
+      document.querySelectorAll('.data-number[data-target]').forEach(el=>{
+        const target = parseInt(el.getAttribute('data-target'), 10);
+        animateCount(el, target, 1500);
+      });
+    }
+  });
+},{threshold:0.2});
+const dataShowcase = document.getElementById('dataShowcase');
+if(dataShowcase) dataObserver.observe(dataShowcase);
 </script>
 <!-- 咨询弹窗 -->
 <div class="modal-overlay" id="consultModal" onclick="if(event.target===this)closeModal()">
