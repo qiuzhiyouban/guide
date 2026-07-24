@@ -3,132 +3,188 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>求职优伴·产品详情 — 选对你的求职武器</title>
+<title>求职优伴·产品与服务 — 助力央国企上岸</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
 *{font-family:'Noto Sans SC',sans-serif;box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
+body{background:#F7F9FC;color:#1A2B3C;line-height:1.6}
 
 /* === Nav === */
-.nav-bar{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(16px);background:rgba(250,251,252,0.92);border-bottom:1px solid #CCE8FF}
-.nav-inner{max-width:72rem;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-bar{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(20px);background:rgba(255,255,255,0.92);border-bottom:1px solid rgba(0,163,255,0.08);box-shadow:0 1px 12px rgba(0,0,0,0.04)}
+.nav-inner{max-width:76rem;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px}
 .nav-brand{display:flex;align-items:center;gap:10px}
 .nav-logo{height:40px;width:auto}
-.nav-brand-text{font-size:1.1rem;font-weight:700;background:linear-gradient(135deg,#00A3FF,#FF8A65);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-cta{background:linear-gradient(135deg,#FF8A65,#E57350);color:#fff;padding:0.5rem 1.2rem;border-radius:25px;font-size:1rem;font-weight:800;text-decoration:none;white-space:nowrap;box-shadow:0 4px 12px rgba(255,138,101,0.35);display:inline-block;cursor:pointer;border:none;transition:all 0.3s}
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,138,101,0.45)}
+.nav-brand-text{font-size:1.15rem;font-weight:800;background:linear-gradient(135deg,#00A3FF,#0077CC);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:none;gap:1.5rem;align-items:center}
+.nav-links a{color:#5A6B7C;font-size:0.9rem;font-weight:600;text-decoration:none;transition:color 0.3s}
+.nav-links a:hover{color:#00A3FF}
+.nav-cta{background:linear-gradient(135deg,#FF8A65,#E57350);color:#fff;padding:0.55rem 1.4rem;border-radius:25px;font-size:0.95rem;font-weight:700;text-decoration:none;white-space:nowrap;box-shadow:0 4px 14px rgba(255,138,101,0.35);display:inline-block;cursor:pointer;border:none;transition:all 0.3s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,138,101,0.5)}
+@media(min-width:768px){.nav-links{display:flex}}
 
 /* === Hero === */
-.hero{background:linear-gradient(160deg,#00A3FF 0%,#0088D4 40%,#FF8A65 100%);padding:6rem 1.5rem 3.5rem;text-align:center;margin-top:56px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 70%);animation:heroPulse 8s infinite}
-@keyframes heroPulse{0%,100%{transform:scale(1);opacity:0.5}50%{transform:scale(1.1);opacity:0.8}}
-.hero h1{color:#fff;font-size:2rem;font-weight:900;margin:0 0 0.75rem;text-shadow:0 2px 8px rgba(0,0,0,0.15);position:relative}
-.hero-sub{color:rgba(255,255,255,0.92);font-size:1.05rem;margin:0 0 1.5rem;position:relative;max-width:600px;margin-left:auto;margin-right:auto}
+.hero{background:linear-gradient(160deg,#0A1628 0%,#0D2847 30%,#004080 60%,#00A3FF 100%);padding:7rem 1.5rem 4rem;text-align:center;margin-top:60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:80px;background:linear-gradient(to top,#F7F9FC,transparent);pointer-events:none}
+.hero-pain{display:inline-block;background:rgba(255,138,101,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,138,101,0.3);border-radius:9999px;padding:0.4rem 1.3rem;color:#FFB59A;font-size:0.88rem;font-weight:600;margin-bottom:1.2rem;position:relative;animation:painPulse 3s infinite}
+@keyframes painPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,138,101,0.3)}50%{box-shadow:0 0 0 8px rgba(255,138,101,0)}}
+.hero h1{color:#fff;font-size:2.2rem;font-weight:900;margin:0 0 1rem;text-shadow:0 2px 8px rgba(0,0,0,0.2);position:relative;line-height:1.3}
+.hero h1 .highlight{background:linear-gradient(135deg,#FF8A65,#FFB59A);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{color:rgba(255,255,255,0.85);font-size:1.05rem;margin:0 0 2rem;position:relative;max-width:620px;margin-left:auto;margin-right:auto;line-height:1.7}
 .hero-cta-group{display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;position:relative}
-.hero-btn{display:inline-block;padding:0.75rem 2rem;border-radius:9999px;font-weight:700;font-size:1rem;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none}
-.hero-btn-primary{background:#fff;color:#00A3FF;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
-.hero-btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
-.hero-btn-secondary{background:rgba(255,255,255,0.15);color:#fff;border:2px solid rgba(255,255,255,0.5);backdrop-filter:blur(4px)}
-.hero-btn-secondary:hover{background:rgba(255,255,255,0.25);transform:translateY(-2px)}
-.hero-products-badge{display:inline-block;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);border-radius:9999px;padding:0.4rem 1.2rem;color:#fff;font-size:0.85rem;font-weight:600;margin-bottom:1rem;position:relative}
-
+.hero-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 2.2rem;border-radius:9999px;font-weight:700;font-size:1rem;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none}
+.hero-btn-primary{background:linear-gradient(135deg,#FF8A65,#E57350);color:#fff;box-shadow:0 4px 20px rgba(255,138,101,0.4)}
+.hero-btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,138,101,0.5)}
+.hero-btn-secondary{background:rgba(255,255,255,0.1);color:#fff;border:2px solid rgba(255,255,255,0.4);backdrop-filter:blur(4px)}
+.hero-btn-secondary:hover{background:rgba(255,255,255,0.2);transform:translateY(-3px)}
+.hero-stats{display:flex;justify-content:center;gap:2rem;margin-top:2.5rem;position:relative;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-num{font-size:1.8rem;font-weight:900;color:#fff;display:block}
+.hero-stat-label{font-size:0.78rem;color:rgba(255,255,255,0.6);font-weight:500}
 @media(min-width:768px){
-  .hero{padding:7rem 2rem 4.5rem}
-  .hero h1{font-size:3rem}
-  .hero-sub{font-size:1.2rem}
+  .hero{padding:8rem 2rem 5rem}
+  .hero h1{font-size:2.8rem}
+  .hero-sub{font-size:1.15rem}
+  .hero-stat-num{font-size:2.2rem}
 }
+
+/* === Trust Bar (Enterprise Logos) === */
+.trust-bar{padding:3rem 1rem 2rem;max-width:76rem;margin:0 auto;text-align:center}
+.trust-title{font-size:0.85rem;color:#8C99A8;font-weight:600;margin-bottom:1.2rem;letter-spacing:0.05em}
+.logo-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.7rem;align-items:center;opacity:0.6;transition:opacity 0.3s;max-width:72rem;margin:0 auto;padding:0 1rem}
+.logo-wall:hover{opacity:0.85}
+.logo-item{display:flex;align-items:center;justify-content:center;gap:0.35rem;padding:0.55rem 0.6rem;background:#fff;border-radius:10px;border:1px solid #E8EFF5;font-size:0.8rem;font-weight:700;color:#3A4A5C;white-space:nowrap;transition:all 0.3s;text-align:center}
+.logo-item:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.06);border-color:#CCE8FF}
+.logo-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-red{background:#E53935}
+.dot-green{background:#43A047}
+.dot-blue{background:#1E88E5}
+.dot-orange{background:#FB8C00}
+.dot-purple{background:#8E24AA}
+.dot-teal{background:#00897B}
+@media(min-width:768px){.logo-item{padding:0.6rem 1.2rem;font-size:0.88rem}}
 
 /* === Section Commons === */
-.section{padding:3rem 1rem;max-width:72rem;margin:0 auto}
+.section{padding:3rem 1rem;max-width:76rem;margin:0 auto}
 @media(min-width:768px){.section{padding:4rem 2rem}}
-.section-title{font-size:1.5rem;font-weight:800;color:#1A2B3C;text-align:center;margin-bottom:0.5rem}
-.section-sub{text-align:center;color:#5A6B7C;font-size:0.95rem;margin-bottom:2rem}
+.section-title{font-size:1.6rem;font-weight:900;color:#1A2B3C;text-align:center;margin-bottom:0.5rem;position:relative}
+.section-sub{text-align:center;color:#5A6B7C;font-size:0.95rem;margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto}
 
 /* === Group Header === */
-.group-header{text-align:center;padding:2.5rem 1rem 1rem;position:relative}
-.group-emoji{font-size:2.5rem;display:block;margin-bottom:0.5rem}
-.group-title{font-size:1.4rem;font-weight:800;color:#1A2B3C;margin-bottom:0.25rem}
-.group-desc{font-size:0.9rem;color:#5A6B7C}
-.group-divider{width:60px;height:4px;border-radius:2px;margin:1rem auto 0;background:linear-gradient(90deg,#00A3FF,#FF8A65)}
+.group-header{text-align:center;padding:3rem 1rem 1rem;position:relative}
+.group-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 0.8rem;font-size:1.6rem;box-shadow:0 4px 16px rgba(0,0,0,0.08)}
+.group-title{font-size:1.5rem;font-weight:900;color:#1A2B3C;margin-bottom:0.3rem}
+.group-desc{font-size:0.92rem;color:#5A6B7C}
+.group-divider{width:50px;height:4px;border-radius:2px;margin:0.8rem auto 0;background:linear-gradient(90deg,#00A3FF,#FF8A65)}
 @media(min-width:768px){
-  .group-title{font-size:1.6rem}
-  .group-emoji{font-size:3rem}
+  .group-title{font-size:1.7rem}
+  .group-icon{width:64px;height:64px;font-size:1.8rem}
 }
 
-/* === Product Card === */
-.product-card{background:#fff;border-radius:20px;overflow:hidden;margin:0 auto 2rem;max-width:680px;border:2px solid #E8EFF5;transition:all 0.3s;position:relative}
-.product-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,163,255,0.12);border-color:#00A3FF}
-.product-card.featured{border-color:#FF8A65;background:linear-gradient(180deg,#FFF8F4 0%,#fff 30%)}
-.product-card.featured:hover{border-color:#E57350;box-shadow:0 20px 48px rgba(255,138,101,0.15)}
-.product-card.top-tier{border-color:#00A3FF;background:linear-gradient(180deg,#EBF5FF 0%,#fff 30%)}
+/* === Product Card V2 === */
+.product-grid{display:grid;grid-template-columns:1fr;gap:2rem;max-width:72rem;margin:0 auto}
+@media(min-width:640px){.product-grid{grid-template-columns:1fr}}
+@media(min-width:960px){.product-grid.two-col{grid-template-columns:1fr 1fr}}
+
+.product-card{background:#fff;border-radius:20px;overflow:hidden;border:1px solid #E8EFF5;transition:all 0.4s cubic-bezier(0.25,0.8,0.25,1);position:relative;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+.product-card:hover{transform:translateY(-8px);box-shadow:0 20px 48px rgba(0,163,255,0.12);border-color:#00A3FF}
+.product-card.featured{border:2px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#FF8A65,#FF6B3D) border-box;box-shadow:0 4px 20px rgba(255,138,101,0.1)}
+.product-card.featured:hover{box-shadow:0 20px 48px rgba(255,138,101,0.2)}
+.product-card.flagship{border:2px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#00A3FF,#6C5CE7) border-box;box-shadow:0 4px 20px rgba(0,163,255,0.1)}
+.product-card.flagship:hover{box-shadow:0 20px 48px rgba(0,163,255,0.2)}
+
+/* Card Top Accent */
+.card-accent{height:4px;width:100%}
+.accent-blue{background:linear-gradient(90deg,#00A3FF,#0088D4)}
+.accent-orange{background:linear-gradient(90deg,#FF8A65,#E57350)}
+.accent-purple{background:linear-gradient(90deg,#6C5CE7,#A855F7)}
+.accent-green{background:linear-gradient(90deg,#10B981,#059669)}
+.accent-gold{background:linear-gradient(90deg,#F59E0B,#EF4444)}
 
 /* Badge */
-.p-badge{display:inline-block;padding:0.25rem 0.8rem;border-radius:9999px;font-size:0.72rem;font-weight:700;color:#fff;margin-bottom:0.5rem}
-.badge-trial{background:linear-gradient(135deg,#10B981,#059669)}
+.p-badge{display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.75rem;border-radius:9999px;font-size:0.72rem;font-weight:700;color:#fff}
 .badge-self{background:linear-gradient(135deg,#00A3FF,#0088D4)}
-.badge-long{background:linear-gradient(135deg,#6366F1,#4F46E5)}
+.badge-long{background:linear-gradient(135deg,#6C5CE7,#5B4BC7)}
 .badge-exam{background:linear-gradient(135deg,#F59E0B,#D97706)}
+.badge-flagship{background:linear-gradient(135deg,#EF4444,#DC2626)}
 .badge-interview{background:linear-gradient(135deg,#EC4899,#DB2777)}
 .badge-service{background:linear-gradient(135deg,#FF8A65,#E57350)}
-.badge-flagship{background:linear-gradient(135deg,#EF4444,#DC2626)}
+.badge-vip{background:linear-gradient(135deg,#8B5CF6,#6D28D9)}
 
 /* Card Header */
-.p-header{padding:1.5rem 1.5rem 0.75rem;position:relative}
-.p-icon{font-size:2rem;margin-bottom:0.5rem;display:block}
-.p-name{font-size:1.3rem;font-weight:800;color:#1A2B3C;margin-bottom:0.25rem}
-.p-tagline{font-size:0.9rem;color:#5A6B7C;line-height:1.5}
+.p-header{padding:1.5rem 1.5rem 0.5rem;position:relative}
+.p-icon-wrap{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:0.8rem;font-size:1.4rem;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+.icon-blue{background:linear-gradient(135deg,#EBF5FF,#CCE8FF)}
+.icon-orange{background:linear-gradient(135deg,#FFF0E8,#FFDCC8)}
+.icon-purple{background:linear-gradient(135deg,#F0EBFF,#E0D4FF)}
+.icon-green{background:linear-gradient(135deg,#E6FFF5,#C8F5E0)}
+.icon-pink{background:linear-gradient(135deg,#FFE8F0,#FFD0E0)}
+.icon-gold{background:linear-gradient(135deg,#FFF8E0,#FFECB0)}
+.p-name{font-size:1.25rem;font-weight:800;color:#1A2B3C;margin-bottom:0.3rem}
+.p-tagline{font-size:0.88rem;color:#5A6B7C;line-height:1.5}
 
 /* Price Area */
-.p-price-area{padding:0.5rem 1.5rem 1rem;display:flex;align-items:baseline;gap:0.5rem;flex-wrap:wrap}
-.p-price{font-size:2.2rem;font-weight:900;color:#00A3FF}
+.p-price-area{padding:0.5rem 1.5rem 0.75rem;display:flex;align-items:baseline;gap:0.4rem;flex-wrap:wrap}
+.p-price{font-size:2rem;font-weight:900;color:#00A3FF}
 .product-card.featured .p-price{color:#FF8A65}
-.p-price-unit{font-size:0.85rem;color:#5A6B7C;font-weight:500}
-.p-price-note{display:inline-block;padding:0.15rem 0.5rem;background:#E6FFF5;color:#10B981;font-size:0.75rem;font-weight:700;border-radius:6px}
+.product-card.flagship .p-price{background:linear-gradient(135deg,#00A3FF,#6C5CE7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.p-price-unit{font-size:0.82rem;color:#8C99A8;font-weight:500}
+.p-price-note{display:inline-block;padding:0.15rem 0.6rem;border-radius:6px;font-size:0.72rem;font-weight:700}
+.note-green{background:#E6FFF5;color:#10B981}
+.note-orange{background:#FFF0E8;color:#FF8A65}
 
 /* Target Info */
-.p-target{display:flex;flex-wrap:wrap;gap:0.5rem;padding:0 1.5rem 0.75rem}
-.p-target-tag{display:inline-flex;align-items:center;gap:0.25rem;padding:0.2rem 0.6rem;background:#EBF5FF;border-radius:6px;font-size:0.78rem;color:#0088D4;font-weight:600}
-.product-card.featured .p-target-tag{background:#FFE0D0;color:#E57350}
+.p-target{display:flex;flex-wrap:wrap;gap:0.4rem;padding:0 1.5rem 0.75rem}
+.p-target-tag{display:inline-flex;align-items:center;gap:0.25rem;padding:0.2rem 0.55rem;background:#EBF5FF;border-radius:6px;font-size:0.75rem;color:#0088D4;font-weight:600}
+.product-card.featured .p-target-tag{background:#FFF0E8;color:#E57350}
+.product-card.flagship .p-target-tag{background:#F0EBFF;color:#6C5CE7}
 
 /* Features List */
-.p-features{list-style:none;padding:0 1.5rem 1rem;margin:0}
-.p-features li{display:flex;align-items:flex-start;gap:0.5rem;padding:0.4rem 0;font-size:0.88rem;color:#1A2B3C;border-bottom:1px dashed #EBF5FF;line-height:1.5}
+.p-features{list-style:none;padding:0 1.5rem 0.75rem;margin:0}
+.p-features li{display:flex;align-items:flex-start;gap:0.5rem;padding:0.35rem 0;font-size:0.85rem;color:#1A2B3C;border-bottom:1px solid #F0F4F8;line-height:1.5}
 .p-features li:last-child{border-bottom:none}
-.p-features .chk{color:#00A3FF;font-weight:700;flex-shrink:0;font-size:0.9rem}
-.product-card.featured .p-features .chk{color:#FF8A65}
-.p-features .sub{font-size:0.78rem;color:#9CA3AF;display:block;margin-top:0.15rem}
+.p-features .chk{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;flex-shrink:0;margin-top:2px;color:#fff;font-weight:800}
+.chk-blue{background:linear-gradient(135deg,#00A3FF,#0088D4)}
+.chk-orange{background:linear-gradient(135deg,#FF8A65,#E57350)}
+.chk-purple{background:linear-gradient(135deg,#6C5CE7,#5B4BC7)}
+.p-features .sub{font-size:0.76rem;color:#9CA3AF;display:block;margin-top:0.1rem}
+
+/* Detail Block */
+.p-detail{margin:0.5rem 1.5rem 0.75rem;padding:0.85rem;background:#F7F9FC;border-radius:12px;border:1px solid #E8EFF5}
+.p-detail-title{font-size:0.85rem;font-weight:700;color:#1A2B3C;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.4rem}
+.p-detail-grid{display:grid;grid-template-columns:1fr;gap:0.3rem}
+@media(min-width:480px){.p-detail-grid{grid-template-columns:1fr 1fr}}
+.p-detail-item{font-size:0.78rem;color:#5A6B7C;display:flex;align-items:center;gap:0.35rem}
+.p-detail-item .dot{width:5px;height:5px;border-radius:50%;background:#00A3FF;flex-shrink:0}
+.product-card.featured .p-detail-item .dot{background:#FF8A65}
+.product-card.flagship .p-detail-item .dot{background:#6C5CE7}
+
+/* Teacher tags */
+.p-teachers{display:flex;flex-wrap:wrap;gap:0.35rem;margin:0 1.5rem 0.75rem}
+.p-teacher-tag{padding:0.2rem 0.55rem;background:#EBF5FF;border-radius:6px;font-size:0.72rem;color:#0088D4;font-weight:600}
 
 /* Marketing Blurb */
-.p-blurb{margin:0 1.5rem 1rem;padding:1rem;background:linear-gradient(135deg,#EBF5FF,#F0F8FF);border-radius:12px;font-size:0.88rem;color:#0088D4;line-height:1.6;position:relative}
-.p-blurb::before{content:'💬';position:absolute;top:-10px;left:12px;font-size:1.2rem}
-.product-card.featured .p-blurb{background:linear-gradient(135deg,#FFF0E8,#FFF8F4);color:#E57350}
+.p-blurb{margin:0.5rem 1.5rem 1rem;padding:1rem;border-radius:14px;font-size:0.86rem;line-height:1.7;position:relative}
+.blurb-blue{background:linear-gradient(135deg,#EBF5FF,#F0F8FF);color:#0066AA;border:1px solid #CCE8FF}
+.blurb-orange{background:linear-gradient(135deg,#FFF5EE,#FFF0E8);color:#C44B20;border:1px solid #FFDCC8}
+.blurb-purple{background:linear-gradient(135deg,#F5F0FF,#F0EBFF);color:#5B4BC7;border:1px solid #E0D4FF}
+.p-blurb::before{content:'💡';position:absolute;top:-10px;left:14px;font-size:1.1rem}
 
 /* CTA */
 .p-cta{padding:0 1.5rem 1.5rem;text-align:center}
-.p-cta-btn{display:inline-block;padding:0.65rem 2rem;border-radius:9999px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;width:100%;max-width:320px}
-.p-cta-blue{background:linear-gradient(135deg,#00A3FF,#0088D4);color:#fff;box-shadow:0 4px 12px rgba(0,163,255,0.3)}
-.p-cta-blue:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,163,255,0.4)}
-.p-cta-orange{background:linear-gradient(135deg,#FF8A65,#E57350);color:#fff;box-shadow:0 4px 12px rgba(255,138,101,0.3)}
-.p-cta-orange:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,138,101,0.4)}
-
-/* Course detail block */
-.p-detail{margin:0 1.5rem 1rem;padding:1rem;background:#FAFBFC;border-radius:12px;border:1px solid #E8EFF5}
-.p-detail-title{font-size:0.9rem;font-weight:700;color:#1A2B3C;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.4rem}
-.p-detail-grid{display:grid;grid-template-columns:1fr;gap:0.35rem}
-@media(min-width:480px){.p-detail-grid{grid-template-columns:1fr 1fr}}
-.p-detail-item{font-size:0.82rem;color:#5A6B7C;display:flex;align-items:center;gap:0.3rem}
-.p-detail-item .dot{width:5px;height:5px;border-radius:50%;background:#00A3FF;flex-shrink:0}
-.product-card.featured .p-detail-item .dot{background:#FF8A65}
-
-/* Teacher tags */
-.p-teachers{display:flex;flex-wrap:wrap;gap:0.4rem;margin:0 1.5rem 1rem}
-.p-teacher-tag{padding:0.2rem 0.6rem;background:#EBF5FF;border-radius:6px;font-size:0.75rem;color:#0088D4;font-weight:600}
+.p-cta-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.7rem 2rem;border-radius:9999px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;width:100%;max-width:340px;justify-content:center}
+.p-cta-blue{background:linear-gradient(135deg,#00A3FF,#0088D4);color:#fff;box-shadow:0 4px 16px rgba(0,163,255,0.3)}
+.p-cta-blue:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,163,255,0.4)}
+.p-cta-orange{background:linear-gradient(135deg,#FF8A65,#E57350);color:#fff;box-shadow:0 4px 16px rgba(255,138,101,0.3)}
+.p-cta-orange:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,138,101,0.4)}
+.p-cta-purple{background:linear-gradient(135deg,#6C5CE7,#5B4BC7);color:#fff;box-shadow:0 4px 16px rgba(108,92,231,0.3)}
+.p-cta-purple:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(108,92,231,0.4)}
 
 /* === Comparison Table === */
-.compare-section{padding:3rem 1rem;max-width:72rem;margin:0 auto}
+.compare-section{padding:3rem 1rem;max-width:76rem;margin:0 auto}
 .compare-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
-.compare-table th{background:linear-gradient(135deg,#00A3FF,#0088D4);color:#fff;padding:0.85rem 1rem;font-size:0.88rem;font-weight:700;text-align:left}
+.compare-table th{background:linear-gradient(135deg,#0D2847,#004080);color:#fff;padding:0.85rem 1rem;font-size:0.88rem;font-weight:700;text-align:left}
 .compare-table td{padding:0.75rem 1rem;font-size:0.85rem;border-bottom:1px solid #EBF5FF;background:#fff;vertical-align:top}
 .compare-table tr:last-child td{border-bottom:none}
 .compare-table tr:hover td{background:#EBF5FF}
@@ -140,71 +196,70 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 }
 
 /* === FAQ === */
-.faq-section{padding:3rem 1rem;max-width:72rem;margin:0 auto}
-.faq-item{background:#fff;border-radius:12px;margin-bottom:0.75rem;border:1px solid #E8EFF5;overflow:hidden;transition:all 0.3s}
-.faq-item:hover{border-color:#CCE8FF}
-.faq-item.active{border-color:#00A3FF;box-shadow:0 4px 16px rgba(0,163,255,0.08)}
+.faq-section{padding:3rem 1rem;max-width:76rem;margin:0 auto}
+.faq-item{background:#fff;border-radius:14px;margin-bottom:0.6rem;border:1px solid #E8EFF5;overflow:hidden;transition:all 0.3s;box-shadow:0 1px 4px rgba(0,0,0,0.02)}
+.faq-item:hover{border-color:#CCE8FF;box-shadow:0 4px 12px rgba(0,163,255,0.06)}
+.faq-item.active{border-color:#00A3FF;box-shadow:0 4px 20px rgba(0,163,255,0.1)}
 .faq-q{padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:0.75rem;font-size:0.92rem;font-weight:600;color:#1A2B3C;transition:all 0.2s;user-select:none;-webkit-user-select:none}
 .faq-q:hover{color:#00A3FF}
 .faq-q .q-icon{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#EBF5FF;color:#00A3FF;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800;transition:all 0.3s}
 .faq-item.active .q-icon{background:#00A3FF;color:#fff;transform:rotate(180deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease;padding:0 1.25rem}
-.faq-item.active .faq-a{max-height:300px;padding:0 1.25rem 1rem}
-.faq-a-inner{font-size:0.88rem;color:#5A6B7C;line-height:1.7;padding-top:0.25rem;border-top:1px dashed #EBF5FF}
+.faq-item.active .faq-a{max-height:400px;padding:0 1.25rem 1rem}
+.faq-a-inner{font-size:0.88rem;color:#5A6B7C;line-height:1.7;padding-top:0.5rem;border-top:1px dashed #E8EFF5}
 
 /* === CTA Section === */
-.cta-section{padding:3.5rem 1rem;text-align:center;background:#1A2B3C;position:relative;overflow:hidden}
-.cta-section::before{content:'';position:absolute;top:-50%;right:-30%;width:80%;height:200%;background:radial-gradient(circle,rgba(0,163,255,0.08) 0%,transparent 60%)}
-.cta-title{color:#fff;font-size:1.5rem;font-weight:800;margin:0 0 0.5rem;position:relative}
-.cta-sub{color:rgba(255,255,255,0.7);font-size:0.95rem;margin-bottom:1.5rem;position:relative}
-.cta-bubble{position:relative;background:#fff;color:#1A2B3C;font-size:0.95rem;font-weight:600;padding:1rem 1.25rem;border-radius:16px;max-width:320px;margin:0 auto 1.5rem;box-shadow:0 4px 16px rgba(0,0,0,0.15);text-align:center;line-height:1.6}
-.cta-bubble::after{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #fff}
+.cta-section{padding:4rem 1.5rem;text-align:center;background:linear-gradient(160deg,#0A1628 0%,#0D2847 40%,#004080 100%);position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:-50%;right:-30%;width:80%;height:200%;background:radial-gradient(circle,rgba(0,163,255,0.1) 0%,transparent 60%)}
+.cta-title{color:#fff;font-size:1.6rem;font-weight:900;margin:0 0 0.75rem;position:relative;line-height:1.4}
+.cta-title .highlight{background:linear-gradient(135deg,#FF8A65,#FFB59A);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta-sub{color:rgba(255,255,255,0.65);font-size:0.95rem;margin-bottom:2rem;position:relative;max-width:500px;margin-left:auto;margin-right:auto}
 .cta-btn-group{display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;position:relative}
-.cta-btn{display:inline-block;padding:0.75rem 2rem;font-weight:700;font-size:1rem;border-radius:9999px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.25);transition:all 0.3s;cursor:pointer;border:none}
+.cta-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 2.2rem;font-weight:700;font-size:1rem;border-radius:9999px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.25);transition:all 0.3s;cursor:pointer;border:none}
 .cta-btn-w{background:#fff;color:#00A3FF}
-.cta-btn-w:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+.cta-btn-w:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,0.35)}
 .cta-btn-g{background:linear-gradient(135deg,#FF8A65,#E57350);color:#fff}
-.cta-btn-g:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,138,101,0.4)}
-@media(min-width:768px){
-  .cta-title{font-size:1.8rem}
-}
+.cta-btn-g:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,138,101,0.4)}
+@media(min-width:768px){.cta-title{font-size:1.9rem}}
 
 /* === Footer === */
-.footer{padding:2rem 1rem;text-align:center;background:#1A2B3C;color:rgba(255,255,255,0.7);border-top:1px solid rgba(255,255,255,0.05)}
-.footer-logo{height:48px;width:auto;display:block;margin:0 auto 0.75rem;opacity:0.85}
-.footer-copy{font-size:0.75rem;opacity:0.6}
+.footer{padding:2.5rem 1rem;text-align:center;background:#0A1628;color:rgba(255,255,255,0.5);border-top:1px solid rgba(255,255,255,0.05)}
+.footer-logo{height:44px;width:auto;display:block;margin:0 auto 0.75rem;opacity:0.7}
+.footer-copy{font-size:0.75rem;opacity:0.5}
 
 /* === Modal === */
-.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:999;align-items:center;justify-content:center;padding:1.5rem}
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:999;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(4px)}
 .modal-overlay.active{display:flex}
-.modal-box{background:#fff;border-radius:20px;padding:2.5rem 2rem 2rem;max-width:380px;width:100%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,0.2);animation:modalIn 0.3s ease}
-@keyframes modalIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
-.modal-icon{font-size:3rem;margin-bottom:1rem;display:block}
-.modal-text{font-size:1.1rem;font-weight:700;color:#1A2B3C;line-height:1.6;margin-bottom:1.5rem}
+.modal-box{background:#fff;border-radius:24px;padding:2.5rem 2rem 2rem;max-width:400px;width:100%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,0.25);animation:modalIn 0.3s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(0.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-icon{font-size:3.5rem;margin-bottom:1rem;display:block}
+.modal-text{font-size:1.1rem;font-weight:700;color:#1A2B3C;line-height:1.6;margin-bottom:0.75rem}
 .modal-text em{color:#00A3FF;font-style:normal;font-weight:800}
-.modal-close{display:inline-block;padding:0.6rem 2rem;background:linear-gradient(135deg,#00A3FF,#FF8A65);color:#fff;font-weight:700;font-size:0.95rem;border:none;border-radius:9999px;cursor:pointer;transition:all 0.3s}
+.modal-sub{font-size:0.85rem;color:#8C99A8;margin-bottom:1.5rem}
+.modal-qr{width:160px;height:160px;margin:0 auto 1rem;background:linear-gradient(135deg,#EBF5FF,#F0F8FF);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:#00A3FF;font-weight:600;border:2px dashed #CCE8FF}
+.modal-close{display:inline-block;padding:0.65rem 2rem;background:linear-gradient(135deg,#00A3FF,#0088D4);color:#fff;font-weight:700;font-size:0.95rem;border:none;border-radius:9999px;cursor:pointer;transition:all 0.3s}
 .modal-close:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,163,255,0.3)}
-.modal-copy{margin:0.75rem 0;padding:0.75rem;background:#f0f8ff;border-radius:12px;word-break:break-all;font-size:0.8rem;color:#00A3FF;font-weight:600;cursor:pointer;text-align:center}
+.modal-wechat{display:flex;align-items:center;justify-content:center;gap:0.5rem;margin:1rem 0;padding:0.75rem 1rem;background:#E6FFF5;border-radius:12px;font-size:0.88rem;color:#10B981;font-weight:700}
 
 /* === Animations === */
-.fade-up{opacity:0;transform:translateY(30px);transition:all 0.6s ease}
+.fade-up{opacity:0;transform:translateY(30px);transition:all 0.6s cubic-bezier(0.25,0.8,0.25,1)}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
 /* === Responsive === */
 @media(max-width:375px){
-  .hero h1{font-size:1.6rem}
+  .hero h1{font-size:1.7rem}
   .hero-sub{font-size:0.9rem}
-  .hero-btn{padding:0.6rem 1.4rem;font-size:0.88rem}
-  .p-name{font-size:1.15rem}
-  .p-price{font-size:1.8rem}
+  .hero-btn{padding:0.7rem 1.5rem;font-size:0.9rem}
+  .p-name{font-size:1.1rem}
+  .p-price{font-size:1.7rem}
   .section-title{font-size:1.3rem}
 }
 @media(min-width:414px) and (max-width:767px){
-  .hero h1{font-size:1.8rem}
+  .hero h1{font-size:2rem}
 }
 @media(min-width:1024px){
-  .hero h1{font-size:3.2rem}
-  .product-card{max-width:720px}
+  .hero h1{font-size:3rem}
+  .product-grid{max-width:72rem}
   .section-title{font-size:1.8rem}
 }
 </style>
@@ -218,88 +273,86 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <img src="logo.png" alt="求职优伴" class="nav-logo">
 <span class="nav-brand-text">求职优伴</span>
 </div>
-<a href="javascript:void(0)" onclick="openModal()" class="nav-cta">入门体验</a>
+<div class="nav-links">
+<a href="#products">产品服务</a>
+<a href="#compare">如何选择</a>
+<a href="#faq">常见问题</a>
+</div>
+<a href="javascript:void(0)" onclick="openModal()" class="nav-cta">💬 免费咨询</a>
 </div>
 </nav>
 
 <!-- ========== Hero ========== -->
 <section class="hero">
-<div class="hero-products-badge">💡 5大产品线 · 9款方案 · 丰俭由人</div>
-<h1>选对你的求职武器</h1>
-<p class="hero-sub">从9.9元体验到4980元全程护航，总有一款适合正在求职的你</p>
+<div class="hero-pain">🔥 2027届秋招已启动，你准备好了吗？</div>
+<h1>普通本科，<span class="highlight">真的进不了央国企吗？</span></h1>
+<p class="hero-sub">选对方案，普通本科也能上岸。从199元自助学习到4980元全程护航，8款方案覆盖你求职路上每一个关键节点</p>
 <div class="hero-cta-group">
-<a href="javascript:void(0)" onclick="openModal()" class="hero-btn hero-btn-primary">立即咨询专属顾问</a>
-<a href="javascript:void(0)" onclick="openModal()" class="hero-btn hero-btn-secondary">领取试用名额</a>
+<a href="javascript:void(0)" onclick="openModal()" class="hero-btn hero-btn-primary">🚀 免费咨询专属方案</a>
+<a href="#products" class="hero-btn hero-btn-secondary">📋 查看全部方案</a>
+</div>
+<div class="hero-stats">
+<div class="hero-stat"><span class="hero-stat-num" data-count="120">0</span><span class="hero-stat-label">万+央国企岗位覆盖</span></div>
+<div class="hero-stat"><span class="hero-stat-num" data-count="8600">0</span><span class="hero-stat-label">位同学正在学习</span></div>
+<div class="hero-stat"><span class="hero-stat-num" data-count="11">0</span><span class="hero-stat-label">大行业定向备考</span></div>
 </div>
 </section>
 
-<!-- ========== 第1组：体验入门 ========== -->
-<div class="group-header fade-up">
-<span class="group-emoji">💡</span>
-<h2 class="group-title">体验入门</h2>
-<p class="group-desc">不确定适不适合央国企？先花一杯奶茶钱试试</p>
-<div class="group-divider"></div>
+<!-- ========== 信任背书 - 企业LOGO墙 ========== -->
+<section class="trust-bar fade-up">
+<p class="trust-title">— 覆盖央国企核心行业，定向备考精准上岸 —</p>
+<div class="logo-wall">
+<div class="logo-item"><span class="logo-dot dot-green"></span>国家电网</div>
+<div class="logo-item"><span class="logo-dot dot-orange"></span>中国石油</div>
+<div class="logo-item"><span class="logo-dot dot-orange"></span>中国石化</div>
+<div class="logo-item"><span class="logo-dot dot-green"></span>中国烟草</div>
+<div class="logo-item"><span class="logo-dot dot-blue"></span>中国移动</div>
+<div class="logo-item"><span class="logo-dot dot-red"></span>工商银行</div>
+<div class="logo-item"><span class="logo-dot dot-blue"></span>建设银行</div>
+<div class="logo-item"><span class="logo-dot dot-purple"></span>航天科技</div>
+<div class="logo-item"><span class="logo-dot dot-teal"></span>中国邮政</div>
+<div class="logo-item"><span class="logo-dot dot-red"></span>中国铁路</div>
+<div class="logo-item"><span class="logo-dot dot-blue"></span>中国电信</div>
+<div class="logo-item"><span class="logo-dot dot-orange"></span>中国建筑</div>
+<div class="logo-item"><span class="logo-dot dot-orange"></span>中海油</div>
+<div class="logo-item"><span class="logo-dot dot-blue"></span>中国联通</div>
+<div class="logo-item"><span class="logo-dot dot-red"></span>农业银行</div>
+<div class="logo-item"><span class="logo-dot dot-blue"></span>中国银行</div>
+<div class="logo-item"><span class="logo-dot dot-green"></span>中国中车</div>
+<div class="logo-item"><span class="logo-dot dot-purple"></span>中船重工</div>
+<div class="logo-item"><span class="logo-dot dot-red"></span>中国兵器</div>
+<div class="logo-item"><span class="logo-dot dot-orange"></span>中粮集团</div>
+<div class="logo-item"><span class="logo-dot dot-teal"></span>中国中化</div>
+<div class="logo-item"><span class="logo-dot dot-blue"></span>中国电子</div>
+<div class="logo-item"><span class="logo-dot dot-green"></span>国家能源</div>
+<div class="logo-item"><span class="logo-dot dot-red"></span>三峡集团</div>
 </div>
+</section>
 
-<!-- 产品① VIP卡 9.9元 -->
-<div class="section" style="padding-top:0">
-<div class="product-card fade-up">
-<span class="p-badge badge-trial">🎁 超值体验</span>
-<div class="p-header">
-<span class="p-icon">🎫</span>
-<h3 class="p-name">VIP体验卡</h3>
-<p class="p-tagline">超低门槛试用，全年级通吃——一杯奶茶钱解锁央国企求职全流程</p>
-</div>
-<div class="p-price-area">
-<span class="p-price">¥9.9</span>
-<span class="p-price-unit">/ 3天</span>
-<span class="p-price-note">☕ 约等于一杯奶茶</span>
-</div>
-<div class="p-target">
-<span class="p-target-tag">👤 大一至大四</span>
-<span class="p-target-tag">⏱ 有效期3天</span>
-<span class="p-target-tag">🎯 全年级适用</span>
-</div>
-<ul class="p-features">
-<li><span class="chk">✅</span>智能选岗系统<span class="sub">基于专业/技能/兴趣的个性化央国企岗位推荐</span></li>
-<li><span class="chk">✅</span>央国企全攻略求职课<span class="sub">系统了解央国企求职全流程</span></li>
-<li><span class="chk">✅</span>AI模拟面试<span class="sub">支持多行业真题模拟</span></li>
-<li><span class="chk">✅</span>AI职业规划<span class="sub">智能分析你的求职方向</span></li>
-<li><span class="chk">✅</span>AI简历优化<span class="sub">STAR法则+央国企定向优化</span></li>
-<li><span class="chk">✅</span>专属就业辅导老师</li>
-<li><span class="chk">✅</span>职业测评</li>
-<li><span class="chk">✅</span>简历模板库</li>
-<li><span class="chk">✅</span>笔试真题题库</li>
-<li><span class="chk">✅</span>求职课堂</li>
-</ul>
-<div class="p-blurb">9.9元，3天体验央国企求职全流程。不确定自己适不适合进央国企？花一杯奶茶钱，3天亲身体验——智能选岗、AI简历、真题题库、求职课堂全开放。觉得值再升级，觉得不值就当交个朋友。</div>
-<div class="p-cta">
-<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-blue">立即咨询 · 领取9.9体验</a>
-</div>
-</div>
-</div>
-
-<!-- ========== 第2组：自助学习 ========== -->
-<div class="group-header fade-up">
-<span class="group-emoji">📚</span>
+<!-- ========== 第1组：自助学习 ========== -->
+<div class="group-header fade-up" id="products">
+<div class="group-icon" style="background:linear-gradient(135deg,#EBF5FF,#CCE8FF)">📚</div>
 <h2 class="group-title">自助学习</h2>
 <p class="group-desc">自学能力强？资料+AI工具全包，性价比之王</p>
 <div class="group-divider"></div>
 </div>
 
-<!-- 产品② 求职自助卡 199元 -->
 <div class="section" style="padding-top:0">
+<div class="product-grid two-col">
+
+<!-- 产品① 求职自助卡 199元 -->
 <div class="product-card fade-up">
-<span class="p-badge badge-self">📖 知识付费</span>
+<div class="card-accent accent-blue"></div>
 <div class="p-header">
-<span class="p-icon">📦</span>
+<span class="p-badge badge-self">📖 知识付费</span>
+<div class="p-icon-wrap icon-blue">📦</div>
 <h3 class="p-name">求职自助卡</h3>
-<p class="p-tagline">入门级知识付费产品——资料全包+AI工具全家桶，自学党的性价比之选</p>
+<p class="p-tagline">资料全包+AI工具全家桶，自学党的性价比之选</p>
 </div>
 <div class="p-price-area">
 <span class="p-price">¥199</span>
 <span class="p-price-unit">/ 1年</span>
-<span class="p-price-note">🔥 日均不到6毛钱</span>
+<span class="p-price-note note-green">🔥 日均不到6毛钱</span>
 </div>
 <div class="p-target">
 <span class="p-target-tag">👤 大一至大四</span>
@@ -307,12 +360,12 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <span class="p-target-tag">📚 自学能力强者</span>
 </div>
 <ul class="p-features">
-<li><span class="chk">✅</span>央国企求职全流程信息资料包<span class="sub">笔试题库 + 面试经验 + 企业背景 + 简历模板</span></li>
-<li><span class="chk">✅</span>AI工具全家桶<span class="sub">智能选岗 · AI推荐岗位 · AI问答 · AI简历优化 · AI面试 · AI职业规划</span></li>
-<li><span class="chk">✅</span>求职课堂</li>
-<li><span class="chk">✅</span>职业测评</li>
-<li><span class="chk">✅</span>简历模板库</li>
-<li><span class="chk">✅</span>笔试真题题库</li>
+<li><span class="chk chk-blue">✓</span>央国企求职全流程信息资料包<span class="sub">笔试题库+面试经验+企业背景+简历模板</span></li>
+<li><span class="chk chk-blue">✓</span>AI工具全家桶<span class="sub">智能选岗·AI推荐岗位·AI问答·AI简历·AI面试·AI职业规划</span></li>
+<li><span class="chk chk-blue">✓</span>求职课堂</li>
+<li><span class="chk chk-blue">✓</span>职业测评</li>
+<li><span class="chk chk-blue">✓</span>简历模板库</li>
+<li><span class="chk chk-blue">✓</span>笔试真题题库</li>
 </ul>
 <div class="p-detail">
 <div class="p-detail-title">📊 资料包涵盖</div>
@@ -325,26 +378,25 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <div class="p-detail-item"><span class="dot"></span>百套简历模板</div>
 </div>
 </div>
-<div class="p-blurb">199元/年 = 央国企求职资料全包 + AI工具全家桶。别人花几千块报班学的东西，你199就能拿到——120万+央国企岗位信息、各行业笔试题库、AI智能选岗、AI简历优化、AI模拟面试……自学能力强的人，这才是性价比之王。</div>
+<div class="p-blurb blurb-blue">199元/年 = 央国企求职资料全包+AI工具全家桶。别人花几千块报班学的东西，你199就能拿到——120万+央国企岗位信息、各行业笔试题库、AI智能选岗、AI简历优化、AI模拟面试……自学能力强的人，这才是性价比之王。</div>
 <div class="p-cta">
-<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-blue">立即咨询 · 开通自助卡</a>
-</div>
+<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-blue">立即咨询 · 开通自助卡 →</a>
 </div>
 </div>
 
-<!-- 产品③ 求职全程卡 299元 -->
-<div class="section" style="padding-top:0">
+<!-- 产品② 求职全程卡 299元 -->
 <div class="product-card fade-up">
-<span class="p-badge badge-long">🌱 长线陪伴</span>
+<div class="card-accent accent-blue"></div>
 <div class="p-header">
-<span class="p-icon">📅</span>
+<span class="p-badge badge-long">🌱 长线陪伴</span>
+<div class="p-icon-wrap icon-purple">📅</div>
 <h3 class="p-name">求职全程卡</h3>
-<p class="p-tagline">轻量长线陪伴——从大二陪到你上岸，早规划多3倍机会</p>
+<p class="p-tagline">从大二陪到你上岸，早规划多3倍机会</p>
 </div>
 <div class="p-price-area">
 <span class="p-price">¥299</span>
 <span class="p-price-unit">/ 2年</span>
-<span class="p-price-note">💰 比自助卡多100，多2年</span>
+<span class="p-price-note note-green">💰 比自助卡多100，多2年</span>
 </div>
 <div class="p-target">
 <span class="p-target-tag">👤 大二、大三</span>
@@ -352,39 +404,44 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <span class="p-target-tag">🌟 提前介入</span>
 </div>
 <ul class="p-features">
-<li><span class="chk">✅</span>自助卡全部权益</li>
-<li><span class="chk">✅</span>定期更新行业动态<span class="sub">每年跟进央国企招聘政策变化</span></li>
-<li><span class="chk">✅</span>招聘资讯推送<span class="sub">第一时间获取网申/笔试/面试通知</span></li>
-<li><span class="chk">✅</span>进阶备考资料<span class="sub">从基础到强化，分阶段学习资料</span></li>
+<li><span class="chk chk-purple">✓</span>自助卡全部权益</li>
+<li><span class="chk chk-purple">✓</span>定期更新行业动态<span class="sub">每年跟进央国企招聘政策变化</span></li>
+<li><span class="chk chk-purple">✓</span>招聘资讯推送<span class="sub">第一时间获取网申/笔试/面试通知</span></li>
+<li><span class="chk chk-purple">✓</span>进阶备考资料<span class="sub">从基础到强化，分阶段学习资料</span></li>
 </ul>
-<div class="p-blurb">299元/2年，从大二陪到你上岸。比自助卡多100块，直接续命2年——每年更新的央国企招聘信息、行业动态推送、进阶备考资料，大二开始规划，大四精准出击。早规划的人，永远比临时抱佛脚的人多3倍机会。</div>
+<div class="p-blurb blurb-purple">299元/2年，从大二陪到你上岸。比自助卡多100块，直接续命2年——每年更新的央国企招聘信息、行业动态推送、进阶备考资料，大二开始规划，大四精准出击。早规划的人，永远比临时抱佛脚的人多3倍机会。</div>
 <div class="p-cta">
-<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-blue">立即咨询 · 开通全程卡</a>
-</div>
+<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-purple">立即咨询 · 开通全程卡 →</a>
 </div>
 </div>
 
-<!-- ========== 第3组：笔试突击 ========== -->
+</div>
+</div>
+
+<!-- ========== 第2组：笔试突击 ========== -->
 <div class="group-header fade-up">
-<span class="group-emoji">⚡</span>
+<div class="group-icon" style="background:linear-gradient(135deg,#FFF8E0,#FFECB0)">⚡</div>
 <h2 class="group-title">笔试突击</h2>
 <p class="group-desc">网申过了？笔试冲刺，临门一脚最关键</p>
 <div class="group-divider"></div>
 </div>
 
-<!-- 产品④ 网申通过后笔试课 980元 -->
 <div class="section" style="padding-top:0">
+<div class="product-grid two-col">
+
+<!-- 产品③ 网申后笔试课 980元 -->
 <div class="product-card featured fade-up">
-<span class="p-badge badge-exam">⚡ 定向突击</span>
+<div class="card-accent accent-orange"></div>
 <div class="p-header">
-<span class="p-icon">🎯</span>
-<h3 class="p-name">央国企网申通过后笔试课</h3>
+<span class="p-badge badge-exam">⚡ 定向突击</span>
+<div class="p-icon-wrap icon-orange">🎯</div>
+<h3 class="p-name">央国企网申后笔试课</h3>
 <p class="p-tagline">进面后的定向突击备考——时间紧？这才是你需要的</p>
 </div>
 <div class="p-price-area">
 <span class="p-price">¥980</span>
 <span class="p-price-unit">/ 人</span>
-<span class="p-price-note">📝 122H公共课 + 行业专项</span>
+<span class="p-price-note note-orange">📝 122H公共课+行业专项</span>
 </div>
 <div class="p-target">
 <span class="p-target-tag">👤 已确认进入笔试环节</span>
@@ -392,8 +449,8 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <span class="p-target-tag">🎯 定向突破</span>
 </div>
 <ul class="p-features">
-<li><span class="chk">✅</span>公共科目（122H）<span class="sub">规划指导课 · 网申简历 · 行测 · 申论 · 公共基础</span></li>
-<li><span class="chk">✅</span>行业专项课（10选1）</li>
+<li><span class="chk chk-orange">✓</span>公共科目（122H）<span class="sub">规划指导课·网申简历·行测·申论·公共基础</span></li>
+<li><span class="chk chk-orange">✓</span>行业专项课（10选1）</li>
 </ul>
 <div class="p-detail">
 <div class="p-detail-title">🏭 10大行业专项（选1）</div>
@@ -417,26 +474,25 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <span class="p-teacher-tag">👨‍🏫 桑尼</span>
 <span class="p-teacher-tag">👨‍🏫 邵春宝</span>
 </div>
-<div class="p-blurb">980元，网申过了别慌——笔试突击班帮你临门一脚。122小时公共课+行业专项突击，行测申论公基全覆盖，针对你要考的行业定向突破。时间紧？这才是你需要的。</div>
+<div class="p-blurb blurb-orange">980元，网申过了别慌——笔试突击班帮你临门一脚。122小时公共课+行业专项突击，行测申论公基全覆盖，针对你要考的行业定向突破。时间紧？这才是你需要的。</div>
 <div class="p-cta">
-<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-orange">立即咨询 · 笔试突击</a>
-</div>
+<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-orange">立即咨询 · 笔试突击 →</a>
 </div>
 </div>
 
-<!-- 产品⑤ 网申前笔试课 1980元 -->
-<div class="section" style="padding-top:0">
-<div class="product-card top-tier fade-up">
-<span class="p-badge badge-flagship">👑 课程旗舰</span>
+<!-- 产品④ 网申前笔试课 1980元 -->
+<div class="product-card flagship fade-up">
+<div class="card-accent accent-gold"></div>
 <div class="p-header">
-<span class="p-icon">📖</span>
+<span class="p-badge badge-flagship">👑 课程旗舰</span>
+<div class="p-icon-wrap icon-gold">📖</div>
 <h3 class="p-name">央国企网申前笔试课</h3>
 <p class="p-tagline">系统性笔试备考，课程类旗舰——从网申到上岸全覆盖</p>
 </div>
 <div class="p-price-area">
 <span class="p-price">¥1,980</span>
 <span class="p-price-unit">/ 人</span>
-<span class="p-price-note">🏆 公共课+专业课+行业课</span>
+<span class="p-price-note note-orange">🏆 公共课+专业课+行业课</span>
 </div>
 <div class="p-target">
 <span class="p-target-tag">👤 已确定方向</span>
@@ -444,13 +500,13 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <span class="p-target-tag">📚 系统备考</span>
 </div>
 <ul class="p-features">
-<li><span class="chk">✅</span>公共科目（122H）<span class="sub">规划指导课 · 网申简历 · 行测 · 申论 · 公共基础</span></li>
-<li><span class="chk">✅</span>专业科目（8选1）</li>
-<li><span class="chk">✅</span>行业专项课（71.9H）<span class="sub">烟草 · 银行 · 电网 · 三桶油 · 航天军工等11个行业</span></li>
-<li><span class="chk">✅</span>公共科目真题题库</li>
-<li><span class="chk">✅</span>专业科目题库</li>
-<li><span class="chk">✅</span>行业头部央国企真题题库</li>
-<li><span class="chk">✅</span>3v1专属群服务</li>
+<li><span class="chk chk-blue">✓</span>公共科目（122H）<span class="sub">规划指导课·网申简历·行测·申论·公共基础</span></li>
+<li><span class="chk chk-blue">✓</span>专业科目（8选1）</li>
+<li><span class="chk chk-blue">✓</span>行业专项课（71.9H）<span class="sub">烟草·银行·电网·三桶油·航天军工等11个行业</span></li>
+<li><span class="chk chk-blue">✓</span>公共科目真题题库</li>
+<li><span class="chk chk-blue">✓</span>专业科目题库</li>
+<li><span class="chk chk-blue">✓</span>行业头部央国企真题题库</li>
+<li><span class="chk chk-blue">✓</span>3v1专属群服务</li>
 </ul>
 <div class="p-detail">
 <div class="p-detail-title">📐 8大专业科目（选1）</div>
@@ -474,44 +530,49 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <span class="p-teacher-tag">👨‍🏫 曹海峰</span>
 <span class="p-teacher-tag">👨‍🏫 冯婧</span>
 </div>
-<div class="p-blurb">1,980元，系统备战央国企笔试——从网申到上岸全覆盖。122小时公共课+你的专业方向精讲+行业专项突破，三位名师团队带你从网申准备到笔试通关。别人还在海投简历，你已经开始系统备考了。</div>
+<div class="p-blurb blurb-orange">1,980元，系统备战央国企笔试——从网申到上岸全覆盖。122小时公共课+你的专业方向精讲+行业专项突破，三位名师团队带你从网申准备到笔试通关。别人还在海投简历，你已经开始系统备考了。</div>
 <div class="p-cta">
-<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-blue">立即咨询 · 系统备考</a>
-</div>
+<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-blue">立即咨询 · 系统备考 →</a>
 </div>
 </div>
 
-<!-- ========== 第4组：面试突破 ========== -->
+</div>
+</div>
+
+<!-- ========== 第3组：面试突破 ========== -->
 <div class="group-header fade-up">
-<span class="group-emoji">🎯</span>
+<div class="group-icon" style="background:linear-gradient(135deg,#FFE8F0,#FFD0E0)">🎤</div>
 <h2 class="group-title">面试突破</h2>
 <p class="group-desc">笔试过了，别倒在面试——行业定向+1v1辅导</p>
 <div class="group-divider"></div>
 </div>
 
-<!-- 产品⑥ 线上面试课 1980元 -->
 <div class="section" style="padding-top:0">
+<div class="product-grid two-col">
+
+<!-- 产品⑤ 线上面试课 1980元 -->
 <div class="product-card featured fade-up">
-<span class="p-badge badge-interview">🎤 面试特训</span>
+<div class="card-accent accent-orange"></div>
 <div class="p-header">
-<span class="p-icon">💼</span>
+<span class="p-badge badge-interview">🎤 面试特训</span>
+<div class="p-icon-wrap icon-pink">💼</div>
 <h3 class="p-name">央国企线上面试课</h3>
 <p class="p-tagline">行业针对性面试培训——结构化/无领导/半结构化全覆盖</p>
 </div>
 <div class="p-price-area">
 <span class="p-price">¥1,980</span>
 <span class="p-price-unit">/ 人</span>
-<span class="p-price-note">🎁 含1v1辅导（价值1500元）</span>
+<span class="p-price-note note-orange">🎁 含1v1辅导（价值1500元）</span>
 </div>
 <div class="p-target">
 <span class="p-target-tag">👤 通过笔试进入面试</span>
 <span class="p-target-tag">🎯 行业定向</span>
 </div>
 <ul class="p-features">
-<li><span class="chk">✅</span>录播课（17.5H）<span class="sub">结构化面试 · 无领导小组 · 半结构化 · 性格测试</span></li>
-<li><span class="chk">✅</span>直播课（12H）<span class="sub">结构化面试 · 无领导小组 · 半结构化</span></li>
-<li><span class="chk">✅</span>行业专项面试课（20个方向）<span class="sub">针对你目标行业的面试真题精讲</span></li>
-<li><span class="chk">✅</span>1v1线上3小时真人面试辅导<span class="sub">价值1500元，专职老师带你练到开口不慌</span></li>
+<li><span class="chk chk-orange">✓</span>录播课（17.5H）<span class="sub">结构化面试·无领导小组·半结构化·性格测试</span></li>
+<li><span class="chk chk-orange">✓</span>直播课（12H）<span class="sub">结构化面试·无领导小组·半结构化</span></li>
+<li><span class="chk chk-orange">✓</span>行业专项面试课（20个方向）<span class="sub">针对你目标行业的面试真题精讲</span></li>
+<li><span class="chk chk-orange">✓</span>1v1线上3小时真人面试辅导<span class="sub">价值1500元，专职老师带你练到开口不慌</span></li>
 </ul>
 <div class="p-detail">
 <div class="p-detail-title">🎭 面试形式全覆盖</div>
@@ -524,19 +585,18 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <div class="p-detail-item"><span class="dot"></span>20个行业方向</div>
 </div>
 </div>
-<div class="p-blurb">1,980元，笔试过了别倒在面试——行业定向面试特训。结构化、无领导、半结构化全覆盖，还有你目标行业的专项面试真题精讲。更送3小时1v1真人辅导，老师带你练到开口不慌。</div>
+<div class="p-blurb blurb-orange">1,980元，笔试过了别倒在面试——行业定向面试特训。结构化、无领导、半结构化全覆盖，还有你目标行业的专项面试真题精讲。更送3小时1v1真人辅导，老师带你练到开口不慌。</div>
 <div class="p-cta">
-<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-orange">立即咨询 · 面试特训</a>
-</div>
+<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-orange">立即咨询 · 面试特训 →</a>
 </div>
 </div>
 
-<!-- 产品⑦ 面试1v1线上课 500元/小时 -->
-<div class="section" style="padding-top:0">
+<!-- 产品⑥ 面试1v1线上课 500元/小时 -->
 <div class="product-card fade-up">
-<span class="p-badge badge-interview">👨‍🏫 1v1私教</span>
+<div class="card-accent accent-blue"></div>
 <div class="p-header">
-<span class="p-icon">🎙️</span>
+<span class="p-badge badge-vip">👨‍🏫 1v1私教</span>
+<div class="p-icon-wrap icon-pink">🎙️</div>
 <h3 class="p-name">面试1v1线上课</h3>
 <p class="p-tagline">灵活加购，专项突破——专治面试紧张症</p>
 </div>
@@ -549,39 +609,44 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <span class="p-target-tag">⏱ 灵活预约</span>
 </div>
 <ul class="p-features">
-<li><span class="chk">✅</span>个性化面试题本<span class="sub">针对你的专业和岗位定制</span></li>
-<li><span class="chk">✅</span>专职老师授课<span class="sub">不背模板、不套话术</span></li>
-<li><span class="chk">✅</span>带熟悉题本<span class="sub">提前拿到面试材料</span></li>
-<li><span class="chk">✅</span>带背带练带过开口关<span class="sub">练到自然开口，上考场不慌</span></li>
+<li><span class="chk chk-purple">✓</span>个性化面试题本<span class="sub">针对你的专业和岗位定制</span></li>
+<li><span class="chk chk-purple">✓</span>专职老师授课<span class="sub">不背模板、不套话术</span></li>
+<li><span class="chk chk-purple">✓</span>带熟悉题本<span class="sub">提前拿到面试材料</span></li>
+<li><span class="chk chk-purple">✓</span>带背带练带过开口关<span class="sub">练到自然开口，上考场不慌</span></li>
 </ul>
-<div class="p-blurb">500元/小时，1v1面试私教——专治面试紧张症。不背模板、不套话术，老师针对你的专业和岗位定制面试题本，带你练到自然开口。3小时起报，练完直接上战场。</div>
+<div class="p-blurb blurb-purple">500元/小时，1v1面试私教——专治面试紧张症。不背模板、不套话术，老师针对你的专业和岗位定制面试题本，带你练到自然开口。3小时起报，练完直接上战场。</div>
 <div class="p-cta">
-<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-blue">立即咨询 · 预约1v1</a>
-</div>
+<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-purple">立即咨询 · 预约1v1 →</a>
 </div>
 </div>
 
-<!-- ========== 第5组：陪跑服务 ========== -->
+</div>
+</div>
+
+<!-- ========== 第4组：陪跑服务 ========== -->
 <div class="group-header fade-up">
-<span class="group-emoji">🤝</span>
+<div class="group-icon" style="background:linear-gradient(135deg,#FFF0E8,#FFDCC8)">🤝</div>
 <h2 class="group-title">陪跑服务</h2>
 <p class="group-desc">不是卖课，是帮你上岸——真人老师全程陪你走</p>
 <div class="group-divider"></div>
 </div>
 
-<!-- 产品⑧ 职规网申宝 1280元 -->
 <div class="section" style="padding-top:0">
-<div class="product-card fade-up">
-<span class="p-badge badge-service">🛡️ 轻服务</span>
+<div class="product-grid">
+
+<!-- 产品⑦ 职规网申宝 1280元 -->
+<div class="product-card fade-up" style="max-width:680px;margin:0 auto">
+<div class="card-accent accent-orange"></div>
 <div class="p-header">
-<span class="p-icon">📋</span>
+<span class="p-badge badge-service">🛡️ 轻服务</span>
+<div class="p-icon-wrap icon-orange">📋</div>
 <h3 class="p-name">职规网申宝</h3>
 <p class="p-tagline">轻服务、重感知——帮你规划、改简历、推岗位</p>
 </div>
 <div class="p-price-area">
 <span class="p-price">¥1,280</span>
 <span class="p-price-unit">/ 半年</span>
-<span class="p-price-note">🔥 秋招应急首选</span>
+<span class="p-price-note note-orange">🔥 秋招应急首选</span>
 </div>
 <div class="p-target">
 <span class="p-target-tag">👤 大四/专科大三</span>
@@ -589,30 +654,29 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <span class="p-target-tag">🆘 秋招应急</span>
 </div>
 <ul class="p-features">
-<li><span class="chk">✅</span>轻陪跑3v1服务<span class="sub">3位老师围着你转</span></li>
-<li><span class="chk">✅</span>每周1次推岗<span class="sub">精准匹配央国企岗位</span></li>
-<li><span class="chk">✅</span>1v1职业规划（2小时）<span class="sub">深度定位你的求职方向</span></li>
-<li><span class="chk">✅</span>简历优化（2次）<span class="sub">专业老师逐字打磨</span></li>
+<li><span class="chk chk-orange">✓</span>轻陪跑3v1服务<span class="sub">3位老师围着你转</span></li>
+<li><span class="chk chk-orange">✓</span>每周1次推岗<span class="sub">精准匹配央国企岗位</span></li>
+<li><span class="chk chk-orange">✓</span>1v1职业规划（2小时）<span class="sub">深度定位你的求职方向</span></li>
+<li><span class="chk chk-orange">✓</span>简历优化（2次）<span class="sub">专业老师逐字打磨</span></li>
 </ul>
-<div class="p-blurb">1,280元，有人帮你规划、改简历、推岗位。大四了还一头雾水？3位老师围着你转——帮你做职业规划、改简历、每周推岗。不用报几万块的班，1280先解决眼前最急的问题。</div>
+<div class="p-blurb blurb-orange">1,280元，有人帮你规划、改简历、推岗位。大四了还一头雾水？3位老师围着你转——帮你做职业规划、改简历、每周推岗。不用报几万块的班，1280先解决眼前最急的问题。</div>
 <div class="p-cta">
-<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-blue">立即咨询 · 开通网申宝</a>
-</div>
+<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-orange">立即咨询 · 开通网申宝 →</a>
 </div>
 </div>
 
-<!-- 产品⑨ 求职护航团 4980元 -->
-<div class="section" style="padding-top:0">
-<div class="product-card top-tier fade-up" style="border-width:3px">
-<span class="p-badge badge-flagship">👑 核心旗舰</span>
+<!-- 产品⑧ 求职护航团 4980元 -->
+<div class="product-card flagship fade-up" style="max-width:680px;margin:0 auto">
+<div class="card-accent accent-gold"></div>
 <div class="p-header">
-<span class="p-icon">🚀</span>
+<span class="p-badge badge-flagship">👑 核心旗舰</span>
+<div class="p-icon-wrap icon-gold">🚀</div>
 <h3 class="p-name">求职护航团</h3>
-<p class="p-tagline">核心标准产品——6位老师陪你从简历到入职，线上全流程陪跑</p>
+<p class="p-tagline">6位老师陪你从简历到入职，线上全流程陪跑</p>
 </div>
 <div class="p-price-area">
-<span class="p-price" style="font-size:2.5rem">¥4,980</span>
-<span class="p-price-note">🏆 6v1全程陪跑</span>
+<span class="p-price" style="font-size:2.4rem">¥4,980</span>
+<span class="p-price-note note-orange">🏆 6v1全程陪跑</span>
 </div>
 <div class="p-target">
 <span class="p-target-tag">👤 大四（尤其临毕业）</span>
@@ -620,12 +684,12 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <span class="p-target-tag">♾️ 群服务终身</span>
 </div>
 <ul class="p-features">
-<li><span class="chk">✅</span>6v1标准群服务<span class="sub">班主任 + 答疑老师 + 督学老师 + 选岗老师 + 规划老师 + 就业老师</span></li>
-<li><span class="chk">✅</span>学习系统（含网课）<span class="sub">笔试课+面试课+行业专项</span></li>
-<li><span class="chk">✅</span>AI工具全家桶<span class="sub">智能选岗+AI简历+AI面试+AI职业规划</span></li>
-<li><span class="chk">✅</span>岗位匹配工具<span class="sub">120万+岗位精准推荐</span></li>
-<li><span class="chk">✅</span>内部资料<span class="sub">独家题库+面试真题+行业报告</span></li>
-<li><span class="chk">✅</span>陪跑服务<span class="sub">从简历到入职全流程跟进</span></li>
+<li><span class="chk chk-blue">✓</span>6v1标准群服务<span class="sub">班主任+答疑老师+督学老师+选岗老师+规划老师+就业老师</span></li>
+<li><span class="chk chk-blue">✓</span>学习系统（含网课）<span class="sub">笔试课+面试课+行业专项</span></li>
+<li><span class="chk chk-blue">✓</span>AI工具全家桶<span class="sub">智能选岗+AI简历+AI面试+AI职业规划</span></li>
+<li><span class="chk chk-blue">✓</span>岗位匹配工具<span class="sub">120万+岗位精准推荐</span></li>
+<li><span class="chk chk-blue">✓</span>内部资料<span class="sub">独家题库+面试真题+行业报告</span></li>
+<li><span class="chk chk-blue">✓</span>陪跑服务<span class="sub">从简历到入职全流程跟进</span></li>
 </ul>
 <div class="p-detail">
 <div class="p-detail-title">⏱ 服务周期</div>
@@ -636,26 +700,28 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <div class="p-detail-item"><span class="dot"></span>陪跑服务：至入职</div>
 </div>
 </div>
-<div class="p-detail" style="background:linear-gradient(135deg,#EBF5FF,#F0F8FF)">
+<div class="p-detail" style="background:linear-gradient(135deg,#F0EBFF,#F5F0FF);border-color:#E0D4FF">
 <div class="p-detail-title">👥 6v1服务团队</div>
 <div class="p-detail-grid">
-<div class="p-detail-item"><span class="dot"></span>📋 班主任 — 统筹协调</div>
-<div class="p-detail-item"><span class="dot"></span>💬 答疑老师 — 随问随答</div>
-<div class="p-detail-item"><span class="dot"></span>⏰ 督学老师 — 进度跟踪</div>
-<div class="p-detail-item"><span class="dot"></span>🎯 选岗老师 — 精准匹配</div>
-<div class="p-detail-item"><span class="dot"></span>🧭 规划老师 — 职业规划</div>
-<div class="p-detail-item"><span class="dot"></span>💼 就业老师 — 入职指导</div>
+<div class="p-detail-item"><span class="dot" style="background:#6C5CE7"></span>📋 班主任 — 统筹协调</div>
+<div class="p-detail-item"><span class="dot" style="background:#6C5CE7"></span>💬 答疑老师 — 随问随答</div>
+<div class="p-detail-item"><span class="dot" style="background:#6C5CE7"></span>⏰ 督学老师 — 进度跟踪</div>
+<div class="p-detail-item"><span class="dot" style="background:#6C5CE7"></span>🎯 选岗老师 — 精准匹配</div>
+<div class="p-detail-item"><span class="dot" style="background:#6C5CE7"></span>🧭 规划老师 — 职业规划</div>
+<div class="p-detail-item"><span class="dot" style="background:#6C5CE7"></span>💼 就业老师 — 入职指导</div>
 </div>
 </div>
-<div class="p-blurb">4,980元，6位老师陪你从简历到入职——央国企全程护航。班主任+答疑老师+督学老师+选岗老师+规划老师+就业老师，6对1全程陪跑。网课+题库+岗位匹配+内部资料全包，不是卖课，是帮你上岸。认真想进央国企的家庭，这是最对的选择。</div>
+<div class="p-blurb blurb-purple">4,980元，6位老师陪你从简历到入职——央国企全程护航。班主任+答疑+督学+选岗+规划+就业，6对1全程陪跑。网课+题库+岗位匹配+内部资料全包，不是卖课，是帮你上岸。认真想进央国企的同学，这是最对的选择。</div>
 <div class="p-cta">
-<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-orange" style="font-size:1.05rem;padding:0.8rem 2.5rem">立即咨询 · 加入护航团</a>
+<a href="javascript:void(0)" onclick="openModal()" class="p-cta-btn p-cta-purple" style="font-size:1.05rem;padding:0.8rem 2.5rem">立即咨询 · 加入护航团 →</a>
 </div>
+</div>
+
 </div>
 </div>
 
 <!-- ========== 产品对比图（场景/痛点维度） ========== -->
-<section class="compare-section">
+<section class="compare-section" id="compare">
 <h2 class="section-title fade-up">🧭 不知道选哪个？对号入座</h2>
 <p class="section-sub fade-up">根据你的场景和痛点，找到最适合的方案</p>
 <div class="fade-up" style="overflow-x:auto">
@@ -668,11 +734,6 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 </tr>
 </thead>
 <tbody>
-<tr>
-<td class="compare-scene">"我不知道自己适不适合进央国企"</td>
-<td class="compare-arrow">→</td>
-<td class="compare-solution">VIP卡 <strong>9.9元</strong>，3天体验先试试</td>
-</tr>
 <tr>
 <td class="compare-scene">"我想系统了解央国企求职全流程"</td>
 <td class="compare-arrow">→</td>
@@ -709,18 +770,18 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 </section>
 
 <!-- ========== FAQ ========== -->
-<section class="faq-section">
+<section class="faq-section" id="faq">
 <h2 class="section-title fade-up">❓ 常见问题</h2>
 <p class="section-sub fade-up">下单前看看，帮你快速决策</p>
 
 <div class="faq-item fade-up">
 <div class="faq-q" onclick="toggleFaq(this)"><span>Q: 买了可以退吗？</span><span class="q-icon">▼</span></div>
-<div class="faq-a"><div class="faq-a-inner">虚拟产品一经开通不退不换。建议先用9.9元VIP体验卡感受3天，觉得好再升级——这是最稳妥的方式。</div></div>
+<div class="faq-a"><div class="faq-a-inner">虚拟产品一经开通不退不换。建议先咨询专属顾问，了解清楚产品内容后再下单，确保选到最适合自己的方案。</div></div>
 </div>
 
 <div class="faq-item fade-up">
 <div class="faq-q" onclick="toggleFaq(this)"><span>Q: 有效期从什么时候开始算？</span><span class="q-icon">▼</span></div>
-<div class="faq-a"><div class="faq-a-inner">从开通之日起计算。例如自助卡199元，开通后365天内均可使用全部权益。</div></div>
+<div class="faq-a"><div class="faq-a-inner">从开通之日起计算。例如自助卡199元，开通后365天内均可使用全部权益；全程卡299元，开通后730天内有效。</div></div>
 </div>
 
 <div class="faq-item fade-up">
@@ -759,11 +820,6 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 </div>
 
 <div class="faq-item fade-up">
-<div class="faq-q" onclick="toggleFaq(this)"><span>Q: 可以先体验再决定吗？</span><span class="q-icon">▼</span></div>
-<div class="faq-a"><div class="faq-a-inner">当然可以！9.9元VIP体验卡就是为你准备的——3天时间，全功能开放，觉得值再升级，觉得不值就当交个朋友。超过5200位同学已经体验过了。</div></div>
-</div>
-
-<div class="faq-item fade-up">
 <div class="faq-q" onclick="toggleFaq(this)"><span>Q: 笔试课的行业专项课怎么选？</span><span class="q-icon">▼</span></div>
 <div class="faq-a"><div class="faq-a-inner">根据你的目标行业选择。如果还没确定方向，建议先选一个最感兴趣的行业试听。购买后专属老师会帮你分析，也可以随时切换行业专项课。</div></div>
 </div>
@@ -772,16 +828,20 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <div class="faq-q" onclick="toggleFaq(this)"><span>Q: 护航团和网申宝有什么区别？</span><span class="q-icon">▼</span></div>
 <div class="faq-a"><div class="faq-a-inner">网申宝（1280元）是轻服务，包含3v1群+职业规划+简历优化+推岗，适合秋招应急。护航团（4980元）是全流程陪跑，6v1群+网课+AI+题库+内部资料+选岗，适合想系统备考、全程有人带的同学。</div></div>
 </div>
+
+<div class="faq-item fade-up">
+<div class="faq-q" onclick="toggleFaq(this)"><span>Q: 面试课和1v1面试怎么搭配？</span><span class="q-icon">▼</span></div>
+<div class="faq-a"><div class="faq-a-inner">线上面试课（1980元）已经包含3小时1v1辅导，适合需要系统学面试的同学。如果你只需要针对性练习某个环节，可以单独购买1v1私教（500元/小时），3小时起约。两者也可以叠加使用。</div></div>
+</div>
 </section>
 
 <!-- ========== 底部CTA ========== -->
 <section class="cta-section">
-<h2 class="cta-title fade-up">还在犹豫？先领9.9体验卡感受一下</h2>
-<div class="cta-bubble fade-up">一杯奶茶的钱，打开央国企求职大门<br>觉得值再升级，觉得不值交个朋友 ✌️</div>
-<p class="cta-sub fade-up">已有5200+位同学通过VIP卡开启央国企之旅</p>
+<h2 class="cta-title fade-up">还在犹豫？<span class="highlight">先聊聊你的情况</span></h2>
+<p class="cta-sub fade-up">专属顾问免费帮你分析求职方向，推荐最适合你的方案</p>
 <div class="cta-btn-group fade-up">
-<a href="javascript:void(0)" onclick="openModal()" class="cta-btn cta-btn-w">立即咨询专属顾问</a>
-<a href="javascript:void(0)" onclick="openModal()" class="cta-btn cta-btn-g">领取试用名额</a>
+<a href="javascript:void(0)" onclick="openModal()" class="cta-btn cta-btn-g">🚀 免费咨询专属方案</a>
+<a href="javascript:void(0)" onclick="openModal()" class="cta-btn cta-btn-w">📋 了解更多详情</a>
 </div>
 </section>
 
@@ -794,22 +854,16 @@ body{background:#FAFBFC;color:#1A2B3C;line-height:1.6}
 <!-- ========== Modal ========== -->
 <div class="modal-overlay" id="consultModal" onclick="if(event.target===this)closeModal()">
 <div class="modal-box">
-<div id="modalWechat" style="display:none">
-<span class="modal-icon">🚀</span>
-<p class="modal-text">正在跳转小程序...</p>
-<a href="#小程序://求职优伴/wOmtXsR3VtQvZSC" style="display:inline-block;margin:1rem 0;padding:0.8rem 1.5rem;background:linear-gradient(135deg,#00A3FF,#0088D4);color:#fff;border-radius:25px;font-size:1rem;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(0,163,255,0.35)">点击打开求职优伴小程序</a>
-<p class="modal-text" style="font-size:0.8rem;color:#9CA3AF;margin-top:0.5rem">如未自动跳转，可长按上方按钮</p>
-<div class="modal-copy" onclick="copyLink()">#小程序://求职优伴/wOmtXsR3VtQvZSC<br><span style="font-size:0.7rem;color:#9CA3AF">点击复制</span></div>
-<button class="modal-close" onclick="closeModal()">我知道了</button>
-</div>
-<div id="modalBrowser">
 <span class="modal-icon">💬</span>
-<p class="modal-text">更多详情功能请到微信搜索<br><em>"求职优伴"小程序</em></p>
-<p class="modal-text" style="font-size:0.85rem;color:#5A6B7C;margin-top:0.5rem">点击下方按钮复制小程序链接：</p>
-<div class="modal-copy" onclick="copyLink()">#小程序://求职优伴/wOmtXsR3VtQvZSC<br><span style="font-size:0.75rem;color:#9CA3AF">点击复制</span></div>
-<p class="modal-text" style="font-size:0.75rem;color:#9CA3AF">复制后打开微信→粘贴到对话框→点击链接即可打开</p>
-<button class="modal-close" onclick="closeModal()">我知道了</button>
+<p class="modal-text">添加专属顾问<br><em>免费获取求职方案</em></p>
+<p class="modal-sub">顾问将根据你的专业、年级、目标，推荐最适合的方案</p>
+<div class="modal-wechat">
+<span>📱</span>微信搜索"求职优伴"添加专属顾问
 </div>
+<div class="modal-qr">
+扫码添加<br>专属顾问
+</div>
+<button class="modal-close" onclick="closeModal()">我知道了</button>
 </div>
 </div>
 
@@ -823,32 +877,30 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 function toggleFaq(el){
   var item=el.parentElement;
   var wasActive=item.classList.contains('active');
-  // 关闭其他
-  document.querySelectorAll('.faq-item.active').forEach(i=>{if(i!==item)i.classList.remove('active')});
-  // 切换当前
+  document.querySelectorAll('.faq-item.active').forEach(function(i){if(i!==item)i.classList.remove('active')});
   if(wasActive){item.classList.remove('active')}else{item.classList.add('active')}
 }
 
 // Modal
-function openModal(){
-  var modal=document.getElementById('consultModal');
-  modal.classList.add('active');
-  var ua=navigator.userAgent.toLowerCase();
-  if(ua.indexOf('micromessenger')!==-1){
-    document.getElementById('modalWechat').style.display='block';
-    document.getElementById('modalBrowser').style.display='none';
-    setTimeout(function(){window.location.href='#小程序://求职优伴/wOmtXsR3VtQvZSC'},800);
-  }else{
-    document.getElementById('modalWechat').style.display='none';
-    document.getElementById('modalBrowser').style.display='block';
-  }
-}
-function copyLink(){
-  var text='#小程序://求职优伴/wOmtXsR3VtQvZSC';
-  if(navigator.clipboard){navigator.clipboard.writeText(text).then(function(){alert('已复制，请到微信粘贴打开')})}
-  else{var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);alert('已复制，请到微信粘贴打开')}
-}
+function openModal(){document.getElementById('consultModal').classList.add('active')}
 function closeModal(){document.getElementById('consultModal').classList.remove('active')}
+
+// 数字滚动动画
+function animateCounters(){
+  document.querySelectorAll('.hero-stat-num').forEach(function(el){
+    var target=parseInt(el.getAttribute('data-count'));
+    var current=0;
+    var duration=2000;
+    var step=Math.ceil(target/60);
+    var timer=setInterval(function(){
+      current+=step;
+      if(current>=target){current=target;clearInterval(timer)}
+      el.textContent=current.toLocaleString();
+    },30);
+  });
+}
+// 页面加载后启动计数
+window.addEventListener('load',function(){setTimeout(animateCounters,500)});
 </script>
 </body>
 </html>
