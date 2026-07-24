@@ -227,7 +227,6 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 <div class="nav-inner">
 <div class="nav-brand">
 <img src="logo.png" alt="求职优伴" class="nav-logo">
-<span class="nav-brand-text">求职优伴</span>
 </div>
 <div style="display:flex;align-items:center;gap:0.75rem">
 <a href="javascript:void(0)" onclick="openModal()" style="background:linear-gradient(135deg,#FF8A65,#E57350);color:#fff;padding:0.5rem 1.2rem;border-radius:25px;font-size:1rem;font-weight:800;text-decoration:none;white-space:nowrap;box-shadow:0 4px 12px rgba(255,138,101,0.35);display:inline-block;cursor:pointer">入门体验</a>
@@ -624,9 +623,9 @@ if(dataShowcase) dataObserver.observe(dataShowcase);
     <div id="modalBrowser">
       <span class="modal-icon">💬</span>
       <p class="modal-text">更多详情功能请到微信搜索<br><em>"求职优伴"小程序</em></p>
-      <p class="modal-text" style="font-size:0.85rem;color:#5A6B7C;margin-top:0.5rem">或复制链接到微信中打开：</p>
+      <p class="modal-text" style="font-size:0.85rem;color:#5A6B7C;margin-top:0.5rem">点击下方按钮复制小程序链接：</p>
       <div onclick="copyLink()" style="margin:0.75rem 0;padding:0.75rem;background:#f0f8ff;border-radius:12px;word-break:break-all;font-size:0.85rem;color:#00A3FF;font-weight:600;cursor:pointer;text-align:center">#小程序://求职优伴/wOmtXsR3VtQvZSC<br><span style="font-size:0.75rem;color:#9CA3AF">点击复制</span></div>
-      <p class="modal-text" style="font-size:0.75rem;color:#9CA3AF">复制链接 → 打开微信 → 粘贴到任意对话框 → 点击即可打开</p>
+      <p class="modal-text" style="font-size:0.75rem;color:#9CA3AF">复制后打开微信→粘贴到对话框→点击链接即可打开</p>
       <button class="modal-close" onclick="closeModal()">我知道了</button>
     </div>
   </div>
@@ -640,7 +639,8 @@ function openModal(){
   if(ua.indexOf('micromessenger')!==-1){
     document.getElementById('modalWechat').style.display='block';
     document.getElementById('modalBrowser').style.display='none';
-    window.location.href='weixin://';
+    // 延迟尝试直接跳转小程序
+    setTimeout(function(){window.location.href='#小程序://求职优伴/wOmtXsR3VtQvZSC'},800);
   }else{
     document.getElementById('modalWechat').style.display='none';
     document.getElementById('modalBrowser').style.display='block';
