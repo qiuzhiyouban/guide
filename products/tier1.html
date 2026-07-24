@@ -80,19 +80,21 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 .phone-showcase{padding:2.5rem 1rem;text-align:center;overflow:hidden}
 .phone-showcase-title{font-size:1.3rem;font-weight:800;color:#1A2B3C;margin-bottom:0.5rem}
 .phone-showcase-sub{font-size:0.9rem;color:#5A6B7C;margin-bottom:1.5rem}
-.phone-scroll{display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0.5rem 1rem 1.5rem;scrollbar-width:none}
+.phone-scroll{display:flex;gap:0.6rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0.5rem calc((100vw - 3 * ((100vw - 2rem) / 3 - 0.4rem)) / 2) 1.5rem;scrollbar-width:none;scroll-padding-left:0}
 .phone-scroll::-webkit-scrollbar{display:none}
-.phone-card{flex:0 0 260px;scroll-snap-align:center;text-align:center}
-.phone-frame{position:relative;width:240px;height:480px;margin:0 auto 0.75rem;border:4px solid #1A2B3C;border-radius:36px;background:#111;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.15)}
-.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:100px;height:26px;background:#1A2B3C;border-radius:0 0 16px 16px;z-index:2}
+.phone-card{flex:0 0 calc((100vw - 2rem) / 3 - 0.4rem);scroll-snap-align:start;text-align:center}
+.phone-frame{position:relative;width:100%;aspect-ratio:1/2;margin:0 auto 0.5rem;border:3px solid #1A2B3C;border-radius:24px;background:#111;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.15)}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:16px;background:#1A2B3C;border-radius:0 0 10px 10px;z-index:2}
 .phone-screen{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden}
 .phone-screen img{width:100%;height:100%;object-fit:cover;object-position:top}
-.phone-label{font-size:0.9rem;font-weight:700;color:#1A2B3C}
-.phone-hint{font-size:0.85rem;color:#9CA3AF;margin-top:1rem;font-weight:500}
+.phone-label{font-size:0.75rem;font-weight:700;color:#1A2B3C}
+.phone-hint{font-size:0.85rem;color:#9CA3AF;margin-top:1rem;font-weight:500;text-align:center}
 @media(min-width:768px){
   .phone-showcase{padding:3rem 2rem}
-  .phone-card{flex:0 0 260px}
-  .phone-frame{width:240px;height:480px}
+  .phone-scroll{padding:0.5rem 2rem 1.5rem;gap:1rem}
+  .phone-card{flex:0 0 200px}
+  .phone-frame{border-radius:32px;border-width:4px;aspect-ratio:1/2}
+  .phone-label{font-size:0.9rem}
 }
 
 /* Product Cards */
@@ -312,7 +314,7 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 <!-- 手机样式页面展示区 -->
 <section class="phone-showcase">
 <h2 class="phone-showcase-title fade-up">小程序页面一览</h2>
-<p class="phone-showcase-sub fade-up">真实小程序界面，左右滑动查看</p>
+<p class="phone-showcase-sub fade-up">真实小程序界面，3张一组左右滑动</p>
 <div class="phone-scroll">
   <div class="phone-card">
     <div class="phone-frame">
@@ -350,7 +352,21 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
     <div class="phone-label">笔试真题</div>
   </div>
 </div>
-<div class="phone-hint">← 左右滑动查看更多 →</div>
+<div class="phone-hint">← 向右滑动查看更多 →</div>
+<script>
+(function(){
+  var scroll=document.querySelector('.phone-scroll');
+  if(scroll){
+    var cards=scroll.querySelectorAll('.phone-card');
+    if(cards.length>=3){
+      // 滚动到第3张卡片居中
+      var target=cards[2];
+      var scrollLeft=target.offsetLeft-(scroll.offsetWidth/2)+(target.offsetWidth/2);
+      scroll.scrollLeft=scrollLeft;
+    }
+  }
+})();
+</script>
 </section>
 
 <!-- 宝藏小程序横幅 -->
