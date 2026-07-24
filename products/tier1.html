@@ -80,15 +80,32 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 .phone-showcase{padding:2.5rem 1rem;text-align:center}
 .phone-showcase-title{font-size:1.3rem;font-weight:800;color:#1A2B3C;margin-bottom:0.5rem}
 .phone-showcase-sub{font-size:0.9rem;color:#5A6B7C;margin-bottom:1.5rem}
-.phone-scroll{display:flex;gap:0.5rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0.5rem 5vw 1.5rem;scrollbar-width:none;margin:0 auto}
+.phone-scroll-wrapper{position:relative;max-width:100%;margin:0 auto;padding:0 2rem}
+.phone-scroll{display:flex;gap:0.4rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0.5rem 0 1.5rem;scrollbar-width:none;scroll-behavior:smooth}
 .phone-scroll::-webkit-scrollbar{display:none}
-.phone-card{flex:0 0 calc(33.333vw - 0.35rem);scroll-snap-align:start;text-align:center}
-.phone-frame{position:relative;width:100%;aspect-ratio:1/2;margin:0 auto 0.5rem;border:3px solid #1A2B3C;border-radius:24px;background:#111;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.15)}
-.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:16px;background:#1A2B3C;border-radius:0 0 10px 10px;z-index:2}
+.phone-card{flex:0 0 32vw;scroll-snap-align:start;text-align:center}
+.phone-frame{position:relative;width:100%;aspect-ratio:9/19;margin:0 auto 0.5rem;border:3px solid #1A2B3C;border-radius:24px;background:#111;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.18)}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:14px;background:#1A2B3C;border-radius:0 0 10px 10px;z-index:2}
 .phone-screen{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden}
 .phone-screen img{width:100%;height:100%;object-fit:cover;object-position:top}
-.phone-label{font-size:0.75rem;font-weight:700;color:#1A2B3C}
+.phone-label{font-size:0.8rem;font-weight:700;color:#1A2B3C;margin-top:0.25rem}
 .phone-hint{font-size:0.85rem;color:#9CA3AF;margin-top:1rem;font-weight:500;text-align:center}
+.phone-arrow{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(0,163,255,0.9);color:#fff;font-size:1.2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,0.2);transition:all 0.2s;border:none;user-select:none;-webkit-user-select:none}
+.phone-arrow:hover{background:#00A3FF;transform:translateY(-50%) scale(1.1)}
+.phone-arrow-left{left:0}
+.phone-arrow-right{right:0}
+@media(max-width:480px){
+  .phone-arrow{width:30px;height:30px;font-size:1rem}
+  .phone-scroll-wrapper{padding:0 1rem}
+}
+@media(min-width:768px){
+  .phone-showcase{padding:3rem 2rem}
+  .phone-card{flex:0 0 220px}
+  .phone-frame{border-radius:32px;border-width:4px;aspect-ratio:9/19}
+  .phone-label{font-size:0.95rem}
+  .phone-arrow{width:40px;height:40px;font-size:1.4rem}
+  .phone-scroll-wrapper{padding:0 3rem}
+}
 @media(min-width:768px){
   .phone-showcase{padding:3rem 2rem}
   .phone-scroll{max-width:calc(3 * 200px + 2rem);padding:0.5rem 0 1.5rem;gap:1rem}
@@ -315,6 +332,9 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 <section class="phone-showcase">
 <h2 class="phone-showcase-title fade-up">小程序页面一览</h2>
 <p class="phone-showcase-sub fade-up">真实小程序界面，3张一组左右滑动</p>
+<div class="phone-scroll-wrapper">
+  <button class="phone-arrow phone-arrow-left" onclick="this.parentElement.querySelector('.phone-scroll').scrollBy({left:-this.parentElement.offsetWidth*0.9,behavior:'smooth'})">&#8249;</button>
+  <button class="phone-arrow phone-arrow-right" onclick="this.parentElement.querySelector('.phone-scroll').scrollBy({left:this.parentElement.offsetWidth*0.9,behavior:'smooth'})">&#8250;</button>
 <div class="phone-scroll">
   <div class="phone-card">
     <div class="phone-frame">
@@ -352,7 +372,7 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
     <div class="phone-label">笔试真题</div>
   </div>
 </div>
-<div class="phone-hint">← 向右滑动查看更多 →</div>
+<div class="phone-hint">← 向左滑动查看更多 →</div>
 <script>
 (function(){
   var scroll=document.querySelector('.phone-scroll');
