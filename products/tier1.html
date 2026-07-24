@@ -614,16 +614,43 @@ if(dataShowcase) dataObserver.observe(dataShowcase);
 <div class="modal-overlay" id="consultModal" onclick="if(event.target===this)closeModal()">
   <div class="modal-box">
     <span class="modal-icon">💬</span>
-    <p class="modal-text">更多详情功能请到微信搜索<br><em>"求职优伴"小程序</em></p>
-    <p class="modal-text" style="font-size:0.85rem;color:#5A6B7C;margin-top:0.5rem">或在微信中打开以下链接：</p>
-    <div style="margin:0.75rem 0;padding:0.75rem;background:#f0f8ff;border-radius:12px;word-break:break-all;font-size:0.85rem;color:#00A3FF;font-weight:600">#小程序://求职优伴/wOmtXsR3VtQvZSC</div>
-    <p class="modal-text" style="font-size:0.75rem;color:#9CA3AF">↑ 复制链接到微信对话框打开即可</p>
-    <button class="modal-close" onclick="closeModal()">我知道了</button>
+    <div id="modalWechat" style="display:none">
+      <span class="modal-icon">🚀</span>
+      <p class="modal-text">正在打开小程序...</p>
+      <p class="modal-text" style="font-size:0.8rem;color:#9CA3AF">如未自动跳转，请手动复制链接</p>
+      <div onclick="copyLink()" style="margin:0.75rem 0;padding:0.75rem;background:#f0f8ff;border-radius:12px;word-break:break-all;font-size:0.85rem;color:#00A3FF;font-weight:600;cursor:pointer;text-align:center">#小程序://求职优伴/wOmtXsR3VtQvZSC<br><span style="font-size:0.75rem;color:#9CA3AF">点击复制</span></div>
+      <button class="modal-close" onclick="closeModal()">我知道了</button>
+    </div>
+    <div id="modalBrowser">
+      <span class="modal-icon">💬</span>
+      <p class="modal-text">更多详情功能请到微信搜索<br><em>"求职优伴"小程序</em></p>
+      <p class="modal-text" style="font-size:0.85rem;color:#5A6B7C;margin-top:0.5rem">或复制链接到微信中打开：</p>
+      <div onclick="copyLink()" style="margin:0.75rem 0;padding:0.75rem;background:#f0f8ff;border-radius:12px;word-break:break-all;font-size:0.85rem;color:#00A3FF;font-weight:600;cursor:pointer;text-align:center">#小程序://求职优伴/wOmtXsR3VtQvZSC<br><span style="font-size:0.75rem;color:#9CA3AF">点击复制</span></div>
+      <p class="modal-text" style="font-size:0.75rem;color:#9CA3AF">复制链接 → 打开微信 → 粘贴到任意对话框 → 点击即可打开</p>
+      <button class="modal-close" onclick="closeModal()">我知道了</button>
+    </div>
   </div>
 </div>
 
 <script>
-function openModal(){document.getElementById('consultModal').classList.add('active')}
+function openModal(){
+  var modal=document.getElementById('consultModal');
+  modal.classList.add('active');
+  var ua=navigator.userAgent.toLowerCase();
+  if(ua.indexOf('micromessenger')!==-1){
+    document.getElementById('modalWechat').style.display='block';
+    document.getElementById('modalBrowser').style.display='none';
+    window.location.href='weixin://';
+  }else{
+    document.getElementById('modalWechat').style.display='none';
+    document.getElementById('modalBrowser').style.display='block';
+  }
+}
+function copyLink(){
+  var text='#小程序://求职优伴/wOmtXsR3VtQvZSC';
+  if(navigator.clipboard){navigator.clipboard.writeText(text).then(function(){alert('已复制，请到微信粘贴打开')})}
+  else{var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);alert('已复制，请到微信粘贴打开')}
+}
 function closeModal(){document.getElementById('consultModal').classList.remove('active')}
 </script>
 </body>
