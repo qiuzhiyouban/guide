@@ -612,12 +612,12 @@ if(dataShowcase) dataObserver.observe(dataShowcase);
 <!-- 咨询弹窗 -->
 <div class="modal-overlay" id="consultModal" onclick="if(event.target===this)closeModal()">
   <div class="modal-box">
-    <span class="modal-icon">💬</span>
     <div id="modalWechat" style="display:none">
       <span class="modal-icon">🚀</span>
-      <p class="modal-text">正在打开小程序...</p>
-      <p class="modal-text" style="font-size:0.8rem;color:#9CA3AF">如未自动跳转，请手动复制链接</p>
-      <div onclick="copyLink()" style="margin:0.75rem 0;padding:0.75rem;background:#f0f8ff;border-radius:12px;word-break:break-all;font-size:0.85rem;color:#00A3FF;font-weight:600;cursor:pointer;text-align:center">#小程序://求职优伴/wOmtXsR3VtQvZSC<br><span style="font-size:0.75rem;color:#9CA3AF">点击复制</span></div>
+      <p class="modal-text">正在跳转小程序...</p>
+      <a href="#小程序://求职优伴/wOmtXsR3VtQvZSC" style="display:inline-block;margin:1rem 0;padding:0.8rem 1.5rem;background:linear-gradient(135deg,#00A3FF,#0088D4);color:#fff;border-radius:25px;font-size:1rem;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(0,163,255,0.35)">点击打开求职优伴小程序</a>
+      <p class="modal-text" style="font-size:0.8rem;color:#9CA3AF;margin-top:0.5rem">如未自动跳转，可长按上方按钮</p>
+      <div onclick="copyLink()" style="margin:0.75rem 0;padding:0.75rem;background:#f0f8ff;border-radius:12px;word-break:break-all;font-size:0.8rem;color:#00A3FF;font-weight:600;cursor:pointer;text-align:center">#小程序://求职优伴/wOmtXsR3VtQvZSC<br><span style="font-size:0.7rem;color:#9CA3AF">点击复制</span></div>
       <button class="modal-close" onclick="closeModal()">我知道了</button>
     </div>
     <div id="modalBrowser">
