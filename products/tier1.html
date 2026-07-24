@@ -230,7 +230,7 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 <span class="nav-brand-text">求职优伴</span>
 </div>
 <div style="display:flex;align-items:center;gap:0.75rem">
-<span style="font-size:0.8rem;color:#5A6B7C">入门体验</span>
+<a href="javascript:void(0)" onclick="openModal()" style="background:linear-gradient(135deg,#FF8A65,#E57350);color:#fff;padding:0.5rem 1.2rem;border-radius:25px;font-size:1rem;font-weight:800;text-decoration:none;white-space:nowrap;box-shadow:0 4px 12px rgba(255,138,101,0.35);display:inline-block;cursor:pointer">入门体验</a>
 </div>
 </div>
 </nav>
@@ -545,7 +545,7 @@ body{background:#FAFBFC;color:#1A2B3C;margin:0;padding:0}
 <h2 class="cta-title fade-up">还在犹豫？先体验再说</h2>
 <div class="cta-bubble fade-up">央国企上班，稳定、高薪、还有面儿<br>再也不用被说"啃老"啦</div>
 <p class="cta-detail fade-up">选岗·简历·面试·刷题·课程，央国企上岸全流程，随身小程序一站搞定</p>
-<a href="javascript:void(0)" onclick="openModal()" class="cta-btn fade-up">立即咨询专属顾问</a>
+<a href="javascript:void(0)" onclick="openModal()" class="cta-btn fade-up">立即咨询专属顾问<br>领取试用名额</a>
 </section>
 
 <!-- Footer -->
@@ -614,7 +614,10 @@ if(dataShowcase) dataObserver.observe(dataShowcase);
 <div class="modal-overlay" id="consultModal" onclick="if(event.target===this)closeModal()">
   <div class="modal-box">
     <span class="modal-icon">💬</span>
-    <p class="modal-text">更多详情功能请到微信搜索<br><em>"求职优伴小程序"</em></p>
+    <p class="modal-text">更多详情功能请到微信搜索<br><em>"求职优伴"小程序</em></p>
+    <p class="modal-text" style="font-size:0.85rem;color:#5A6B7C;margin-top:0.5rem">或在微信中打开以下链接：</p>
+    <div style="margin:0.75rem 0;padding:0.75rem;background:#f0f8ff;border-radius:12px;word-break:break-all;font-size:0.85rem;color:#00A3FF;font-weight:600">#小程序://求职优伴/wOmtXsR3VtQvZSC</div>
+    <p class="modal-text" style="font-size:0.75rem;color:#9CA3AF">↑ 复制链接到微信对话框打开即可</p>
     <button class="modal-close" onclick="closeModal()">我知道了</button>
   </div>
 </div>
