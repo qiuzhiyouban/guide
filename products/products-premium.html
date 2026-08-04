@@ -156,7 +156,12 @@
             border-color: var(--blue); background: rgba(0,163,255,0.05); color: #66ccff;
             transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,163,255,0.1);
         }
-        .logo-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+        .logo-dot {
+            width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 700; color: #fff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
         .dot-red { background: #E53935; }
         .dot-green { background: #43A047; }
         .dot-blue { background: #1E88E5; }
@@ -476,54 +481,54 @@
     <h2>覆盖央国企核心行业</h2>
     <p class="section-desc">— 定向备考精准上岸，你的目标企业我们都有 —</p>
     <div class="logo-grid">
-        <div class="logo-item"><span class="logo-dot dot-green"></span>国家电网</div>
-        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国石油</div>
-        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国石化</div>
-        <div class="logo-item"><span class="logo-dot dot-green"></span>中国烟草</div>
-        <div class="logo-item"><span class="logo-dot dot-blue"></span>中国移动</div>
-        <div class="logo-item"><span class="logo-dot dot-red"></span>工商银行</div>
-        <div class="logo-item"><span class="logo-dot dot-blue"></span>建设银行</div>
-        <div class="logo-item"><span class="logo-dot dot-purple"></span>航天科技</div>
-        <div class="logo-item"><span class="logo-dot dot-teal"></span>中国邮政</div>
-        <div class="logo-item"><span class="logo-dot dot-red"></span>中国铁路</div>
-        <div class="logo-item"><span class="logo-dot dot-blue"></span>中国电信</div>
-        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国建筑</div>
-        <div class="logo-item"><span class="logo-dot dot-orange"></span>中海油</div>
-        <div class="logo-item"><span class="logo-dot dot-blue"></span>中国联通</div>
-        <div class="logo-item"><span class="logo-dot dot-red"></span>农业银行</div>
-        <div class="logo-item"><span class="logo-dot dot-blue"></span>中国银行</div>
-        <div class="logo-item"><span class="logo-dot dot-green"></span>中国中车</div>
-        <div class="logo-item"><span class="logo-dot dot-purple"></span>中船重工</div>
-        <div class="logo-item"><span class="logo-dot dot-red"></span>中国兵器</div>
-        <div class="logo-item"><span class="logo-dot dot-orange"></span>中粮集团</div>
-        <div class="logo-item"><span class="logo-dot dot-teal"></span>中国中化</div>
-        <div class="logo-item"><span class="logo-dot dot-blue"></span>中国电子</div>
-        <div class="logo-item"><span class="logo-dot dot-green"></span>国家能源</div>
-        <div class="logo-item"><span class="logo-dot dot-red"></span>三峡集团</div>
-        <div class="logo-item"><span class="logo-dot dot-blue"></span>国家开发银行</div>
-        <div class="logo-item"><span class="logo-dot dot-green"></span>南方电网</div>
-        <div class="logo-item"><span class="logo-dot dot-purple"></span>中国诚通</div>
-        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国国新</div>
-        <div class="logo-item"><span class="logo-dot dot-teal"></span>中国保利</div>
-        <div class="logo-item"><span class="logo-dot dot-red"></span>中国华润</div>
-        <div class="logo-item"><span class="logo-dot dot-blue"></span>招商局集团</div>
-        <div class="logo-item"><span class="logo-dot dot-green"></span>中国中信</div>
-        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国五矿</div>
-        <div class="logo-item"><span class="logo-dot dot-purple"></span>中国铝业</div>
-        <div class="logo-item"><span class="logo-dot dot-teal"></span>中国黄金</div>
-        <div class="logo-item"><span class="logo-dot dot-red"></span>中国建材</div>
-        <div class="logo-item"><span class="logo-dot dot-blue"></span>中国有色</div>
-        <div class="logo-item"><span class="logo-dot dot-green"></span>中国机械工业</div>
-        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国东方电气</div>
-        <div class="logo-item"><span class="logo-dot dot-purple"></span>中国华能</div>
-        <div class="logo-item"><span class="logo-dot dot-teal"></span>中国大唐</div>
-        <div class="logo-item"><span class="logo-dot dot-red"></span>中国华电</div>
-        <div class="logo-item"><span class="logo-dot dot-blue"></span>国家电投</div>
-        <div class="logo-item"><span class="logo-dot dot-green"></span>中国南水北调</div>
-        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国华侨城</div>
-        <div class="logo-item"><span class="logo-dot dot-purple"></span>中国光大</div>
-        <div class="logo-item"><span class="logo-dot dot-teal"></span>进出口银行</div>
-        <div class="logo-item"><span class="logo-dot dot-red"></span>中国农发行</div>
+        <div class="logo-item"><span class="logo-dot dot-green">国</span>国家电网</div>
+        <div class="logo-item"><span class="logo-dot dot-orange">中</span>中国石油</div>
+        <div class="logo-item"><span class="logo-dot dot-orange">中</span>中国石化</div>
+        <div class="logo-item"><span class="logo-dot dot-green">中</span>中国烟草</div>
+        <div class="logo-item"><span class="logo-dot dot-blue">中</span>中国移动</div>
+        <div class="logo-item"><span class="logo-dot dot-red">工</span>工商银行</div>
+        <div class="logo-item"><span class="logo-dot dot-blue">建</span>建设银行</div>
+        <div class="logo-item"><span class="logo-dot dot-purple">航</span>航天科技</div>
+        <div class="logo-item"><span class="logo-dot dot-teal">中</span>中国邮政</div>
+        <div class="logo-item"><span class="logo-dot dot-red">中</span>中国铁路</div>
+        <div class="logo-item"><span class="logo-dot dot-blue">中</span>中国电信</div>
+        <div class="logo-item"><span class="logo-dot dot-orange">中</span>中国建筑</div>
+        <div class="logo-item"><span class="logo-dot dot-orange">中</span>中海油</div>
+        <div class="logo-item"><span class="logo-dot dot-blue">中</span>中国联通</div>
+        <div class="logo-item"><span class="logo-dot dot-red">农</span>农业银行</div>
+        <div class="logo-item"><span class="logo-dot dot-blue">中</span>中国银行</div>
+        <div class="logo-item"><span class="logo-dot dot-green">中</span>中国中车</div>
+        <div class="logo-item"><span class="logo-dot dot-purple">中</span>中船重工</div>
+        <div class="logo-item"><span class="logo-dot dot-red">中</span>中国兵器</div>
+        <div class="logo-item"><span class="logo-dot dot-orange">中</span>中粮集团</div>
+        <div class="logo-item"><span class="logo-dot dot-teal">中</span>中国中化</div>
+        <div class="logo-item"><span class="logo-dot dot-blue">中</span>中国电子</div>
+        <div class="logo-item"><span class="logo-dot dot-green">国</span>国家能源</div>
+        <div class="logo-item"><span class="logo-dot dot-red">三</span>三峡集团</div>
+        <div class="logo-item"><span class="logo-dot dot-blue">国</span>国家开发银行</div>
+        <div class="logo-item"><span class="logo-dot dot-green">南</span>南方电网</div>
+        <div class="logo-item"><span class="logo-dot dot-purple">中</span>中国诚通</div>
+        <div class="logo-item"><span class="logo-dot dot-orange">中</span>中国国新</div>
+        <div class="logo-item"><span class="logo-dot dot-teal">中</span>中国保利</div>
+        <div class="logo-item"><span class="logo-dot dot-red">中</span>中国华润</div>
+        <div class="logo-item"><span class="logo-dot dot-blue">招</span>招商局集团</div>
+        <div class="logo-item"><span class="logo-dot dot-green">中</span>中国中信</div>
+        <div class="logo-item"><span class="logo-dot dot-orange">中</span>中国五矿</div>
+        <div class="logo-item"><span class="logo-dot dot-purple">中</span>中国铝业</div>
+        <div class="logo-item"><span class="logo-dot dot-teal">中</span>中国黄金</div>
+        <div class="logo-item"><span class="logo-dot dot-red">中</span>中国建材</div>
+        <div class="logo-item"><span class="logo-dot dot-blue">中</span>中国有色</div>
+        <div class="logo-item"><span class="logo-dot dot-green">中</span>中国机械工业</div>
+        <div class="logo-item"><span class="logo-dot dot-orange">中</span>中国东方电气</div>
+        <div class="logo-item"><span class="logo-dot dot-purple">中</span>中国华能</div>
+        <div class="logo-item"><span class="logo-dot dot-teal">中</span>中国大唐</div>
+        <div class="logo-item"><span class="logo-dot dot-red">中</span>中国华电</div>
+        <div class="logo-item"><span class="logo-dot dot-blue">国</span>国家电投</div>
+        <div class="logo-item"><span class="logo-dot dot-green">中</span>中国南水北调</div>
+        <div class="logo-item"><span class="logo-dot dot-orange">中</span>中国华侨城</div>
+        <div class="logo-item"><span class="logo-dot dot-purple">中</span>中国光大</div>
+        <div class="logo-item"><span class="logo-dot dot-teal">进</span>进出口银行</div>
+        <div class="logo-item"><span class="logo-dot dot-red">中</span>中国农发行</div>
     </div>
 </section>
 
@@ -1118,12 +1123,7 @@
 </div>
 
 <script>
-    // FAQ 折叠
-    document.querySelectorAll('.faq-item').forEach(function(item) {
-        item.addEventListener('click', function() {
-            this.classList.toggle('open');
-        });
-    });
+    // FAQ 折叠 - 使用内联 onclick，无需额外绑定
 
     // 滚动动画
     var observer = new IntersectionObserver(function(entries) {
