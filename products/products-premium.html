@@ -17,40 +17,61 @@
         /* ===== 变量 ===== */
         :root {
             --blue: #00A3FF;
+            --blue-dark: #0088D4;
             --coral: #FF8A65;
+            --coral-dark: #E57350;
             --gold: #C9A96E;
             --gold-light: #E8D5A3;
             --dark-bg: #0a0e1a;
             --card-bg: #111827;
-            --card-border: rgba(201,169,110,0.15);
+            --card-border: rgba(0,163,255,0.15);
             --text-primary: #f0f0f0;
             --text-secondary: #9ca3af;
             --gradient-blue: linear-gradient(135deg, #00A3FF 0%, #0066CC 100%);
             --gradient-gold: linear-gradient(135deg, #C9A96E 0%, #E8D5A3 50%, #C9A96E 100%);
+            --gradient-coral: linear-gradient(135deg, #FF8A65, #E57350);
             --gradient-premium: linear-gradient(135deg, #0a0e1a 0%, #1a1a2e 50%, #0f1729 100%);
         }
 
+        /* ===== 导航栏 ===== */
+        .nav-bar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+            backdrop-filter: blur(20px); background: rgba(10,14,26,0.92);
+            border-bottom: 1px solid rgba(0,163,255,0.1);
+            box-shadow: 0 1px 12px rgba(0,0,0,0.3);
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between; height: 60px;
+        }
+        .nav-brand { display: flex; align-items: center; gap: 10px; }
+        .nav-logo { height: 36px; width: auto; }
+        .nav-brand-text {
+            font-size: 1.1rem; font-weight: 800;
+            background: linear-gradient(135deg, #00A3FF, #C9A96E);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .nav-links { display: none; gap: 24px; align-items: center; }
+        .nav-links a { color: #9ca3af; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: #00A3FF; }
+        .nav-cta {
+            background: var(--gradient-coral); color: #fff; padding: 8px 20px;
+            border-radius: 100px; font-size: 0.9rem; font-weight: 700;
+            text-decoration: none; cursor: pointer; border: none; transition: all 0.3s;
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(255,138,101,0.4); }
+        @media(min-width:768px) { .nav-links { display: flex; } }
+
         /* ===== Hero ===== */
         .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 60px 20px;
-            background: var(--gradient-premium);
-            overflow: hidden;
+            position: relative; min-height: 100vh; display: flex; align-items: center;
+            justify-content: center; text-align: center; padding: 100px 20px 60px;
+            background: var(--gradient-premium); overflow: hidden; margin-top: 60px;
         }
         .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at 30% 50%, rgba(0,163,255,0.06) 0%, transparent 60%),
-                        radial-gradient(ellipse at 70% 50%, rgba(201,169,110,0.05) 0%, transparent 60%);
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(0,163,255,0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 50%, rgba(201,169,110,0.06) 0%, transparent 60%);
             animation: heroGlow 8s ease-in-out infinite alternate;
         }
         @keyframes heroGlow {
@@ -59,496 +80,324 @@
         }
         .hero-content { position: relative; z-index: 1; max-width: 800px; }
         .hero-badge {
-            display: inline-block;
-            padding: 8px 24px;
-            border: 1px solid var(--gold);
-            border-radius: 100px;
-            font-size: 14px;
-            color: var(--gold);
-            letter-spacing: 3px;
-            margin-bottom: 32px;
-            text-transform: uppercase;
+            display: inline-block; padding: 8px 24px;
+            border: 1px solid var(--gold); border-radius: 100px;
+            font-size: 13px; color: var(--gold); letter-spacing: 3px;
+            margin-bottom: 32px; text-transform: uppercase;
         }
         .hero h1 {
-            font-size: clamp(28px, 5vw, 52px);
-            font-weight: 700;
-            line-height: 1.3;
+            font-size: clamp(28px, 5vw, 52px); font-weight: 700; line-height: 1.3;
             margin-bottom: 20px;
             background: linear-gradient(135deg, #ffffff 0%, var(--gold-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .hero h1 em {
             font-style: normal;
             background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .hero p {
-            font-size: clamp(15px, 2.5vw, 18px);
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px;
+            font-size: clamp(15px, 2.5vw, 18px); color: var(--text-secondary);
+            max-width: 600px; margin: 0 auto 16px; line-height: 1.7;
+        }
+        .hero-sub {
+            font-size: clamp(14px, 2vw, 16px); color: var(--coral);
+            font-weight: 600; max-width: 600px; margin: 0 auto 40px;
         }
         .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 40px;
-            background: var(--gradient-gold);
-            color: #0a0e1a;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 100px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 40px; background: var(--gradient-gold); color: #0a0e1a;
+            font-size: 16px; font-weight: 600; border-radius: 100px;
+            text-decoration: none; border: none; cursor: pointer; transition: all 0.3s;
         }
         .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,169,110,0.3); }
+        .hero-cta-outline {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 40px; background: transparent; color: var(--gold);
+            font-size: 16px; font-weight: 600; border-radius: 100px;
+            text-decoration: none; border: 2px solid var(--gold); cursor: pointer;
+            transition: all 0.3s; margin-left: 16px;
+        }
+        .hero-cta-outline:hover { background: rgba(201,169,110,0.1); transform: translateY(-2px); }
 
         /* ===== 数据栏 ===== */
         .data-bar {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            padding: 50px 20px;
-            background: #0d1117;
-            border-top: 1px solid rgba(201,169,110,0.1);
-            border-bottom: 1px solid rgba(201,169,110,0.1);
+            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+            padding: 50px 20px; background: #0d1117;
+            border-top: 1px solid rgba(0,163,255,0.1); border-bottom: 1px solid rgba(0,163,255,0.1);
         }
         .data-item { text-align: center; }
         .data-num {
-            font-size: 36px;
-            font-weight: 700;
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 36px; font-weight: 700;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .data-num span { font-size: 20px; }
         .data-label { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
 
         /* ===== LOGO墙 ===== */
-        .logo-section {
-            padding: 60px 20px;
-            text-align: center;
-            background: var(--dark-bg);
-        }
+        .logo-section { padding: 60px 20px; text-align: center; background: var(--dark-bg); }
         .logo-section .section-label {
-            font-size: 13px;
-            color: var(--gold);
-            letter-spacing: 3px;
-            margin-bottom: 12px;
+            font-size: 13px; color: var(--blue); letter-spacing: 3px; margin-bottom: 12px;
         }
-        .logo-section h2 {
-            font-size: 24px;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-        .logo-section .section-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-        }
+        .logo-section h2 { font-size: 24px; color: var(--text-primary); margin-bottom: 8px; }
+        .logo-section .section-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 32px; }
         .logo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 16px;
-            max-width: 900px;
-            margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px; max-width: 900px; margin: 0 auto;
         }
         .logo-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 12px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 10px;
-            font-size: 13px;
-            color: #b0b0b0;
-            transition: all 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 14px 12px; background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06); border-radius: 10px;
+            font-size: 13px; color: #b0b0b0; transition: all 0.3s;
         }
         .logo-item:hover {
-            border-color: var(--gold);
-            background: rgba(201,169,110,0.05);
-            color: var(--gold-light);
+            border-color: var(--blue); background: rgba(0,163,255,0.05); color: #66ccff;
+            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,163,255,0.1);
         }
+        .logo-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+        .dot-red { background: #E53935; }
+        .dot-green { background: #43A047; }
+        .dot-blue { background: #1E88E5; }
+        .dot-orange { background: #FB8C00; }
+        .dot-purple { background: #8E24AA; }
+        .dot-teal { background: #00897B; }
 
         /* ===== 通用section ===== */
-        .section {
-            padding: 80px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+        .section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 50px; }
         .section-header .label {
-            font-size: 13px;
-            color: var(--gold);
-            letter-spacing: 3px;
-            margin-bottom: 10px;
+            font-size: 13px; color: var(--blue); letter-spacing: 3px; margin-bottom: 10px;
         }
         .section-header h2 {
-            font-size: clamp(22px, 3.5vw, 32px);
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 12px;
+            font-size: clamp(22px, 3.5vw, 32px); font-weight: 700; color: var(--text-primary); margin-bottom: 12px;
         }
-        .section-header p {
-            font-size: 15px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        .section-header p { font-size: 15px; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
 
         /* ===== 产品卡片 ===== */
         .product-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 40px 32px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 20px; padding: 40px 32px; margin-bottom: 40px;
+            position: relative; overflow: hidden; transition: all 0.3s;
         }
         .product-card:hover {
-            border-color: rgba(201,169,110,0.3);
+            border-color: rgba(0,163,255,0.3);
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
         }
         .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: var(--gradient-gold);
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: var(--gradient-blue);
         }
-        .product-card.featured::before {
-            background: var(--gradient-gold);
-            height: 4px;
-        }
-        .product-card.featured {
-            border-color: rgba(201,169,110,0.25);
-        }
+        .product-card.featured::before { background: var(--gradient-coral); height: 4px; }
+        .product-card.featured { border-color: rgba(255,138,101,0.25); }
+        .product-card.gold-border::before { background: var(--gradient-gold); }
+        .product-card.gold-border { border-color: rgba(201,169,110,0.2); }
 
         .product-top {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 20px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
+            display: flex; align-items: flex-start; justify-content: space-between;
+            gap: 20px; margin-bottom: 24px; flex-wrap: wrap;
         }
         .product-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; margin-bottom: 12px;
         }
         .tag-gold { background: rgba(201,169,110,0.15); color: var(--gold-light); }
         .tag-blue { background: rgba(0,163,255,0.15); color: #66ccff; }
         .tag-coral { background: rgba(255,138,101,0.15); color: #ffb09a; }
+        .tag-green { background: rgba(16,185,129,0.15); color: #6ee7b7; }
 
         .product-name {
-            font-size: clamp(20px, 3vw, 28px);
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 8px;
+            font-size: clamp(20px, 3vw, 28px); font-weight: 700; color: var(--text-primary); margin-bottom: 8px;
         }
-        .product-desc {
-            font-size: 15px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-        .product-price-box {
-            text-align: right;
-            flex-shrink: 0;
-        }
-        .product-price {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--gold);
-        }
+        .product-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+        .product-price-box { text-align: right; flex-shrink: 0; }
+        .product-price { font-size: 36px; font-weight: 700; color: var(--blue); }
         .product-price .currency { font-size: 20px; }
         .product-price .unit { font-size: 14px; color: var(--text-secondary); font-weight: 400; }
-        .product-price-note {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
+        .product-price-note { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+        .featured .product-price { color: var(--coral); }
 
         /* 服务模块网格 */
         .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 16px;
-            margin-top: 24px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px; margin-top: 24px;
         }
         .module-item {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px;
-            padding: 20px;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px; padding: 20px;
         }
-        .module-item .module-icon {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .module-item h4 {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-        .module-item .module-sub {
-            font-size: 12px;
-            color: var(--gold);
-            margin-bottom: 8px;
-        }
-        .module-item ul {
-            list-style: none;
-            padding: 0;
-        }
+        .module-item .module-icon { font-size: 24px; margin-bottom: 10px; }
+        .module-item h4 { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+        .module-item .module-sub { font-size: 12px; color: var(--blue); margin-bottom: 8px; }
+        .module-item ul { list-style: none; padding: 0; }
         .module-item ul li {
-            font-size: 13px;
-            color: var(--text-secondary);
-            padding: 3px 0;
-            padding-left: 16px;
-            position: relative;
+            font-size: 13px; color: var(--text-secondary); padding: 3px 0;
+            padding-left: 16px; position: relative;
         }
         .module-item ul li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-            font-size: 12px;
+            content: '✓'; position: absolute; left: 0; color: var(--blue); font-size: 12px;
         }
+        .featured .module-item .module-sub { color: var(--coral); }
+        .featured .module-item ul li::before { color: var(--coral); }
 
         /* 亮点标签 */
-        .highlights {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
+        .highlights { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
         .highlight-tag {
-            padding: 8px 16px;
-            background: rgba(201,169,110,0.08);
-            border: 1px solid rgba(201,169,110,0.15);
-            border-radius: 100px;
-            font-size: 13px;
-            color: var(--gold-light);
+            padding: 8px 16px; background: rgba(0,163,255,0.08);
+            border: 1px solid rgba(0,163,255,0.15); border-radius: 100px;
+            font-size: 13px; color: #66ccff;
         }
+        .featured .highlight-tag { background: rgba(255,138,101,0.08); border-color: rgba(255,138,101,0.15); color: #ffb09a; }
+
+        /* 家长证言 */
+        .parent-quote {
+            margin-top: 20px; padding: 16px 20px;
+            background: rgba(0,163,255,0.06); border-radius: 12px;
+            font-size: 14px; color: var(--text-secondary);
+        }
+        .featured .parent-quote { background: rgba(255,138,101,0.06); }
 
         /* CTA按钮 */
         .card-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 24px;
-            padding: 14px 32px;
-            background: var(--gradient-gold);
-            color: #0a0e1a;
-            font-size: 15px;
-            font-weight: 600;
-            border-radius: 100px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 8px; margin-top: 24px;
+            padding: 14px 32px; background: var(--gradient-blue); color: #fff;
+            font-size: 15px; font-weight: 600; border-radius: 100px;
+            text-decoration: none; border: none; cursor: pointer; transition: all 0.3s;
         }
-        .card-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,169,110,0.25); }
+        .card-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,163,255,0.25); }
+        .featured .card-cta { background: var(--gradient-coral); }
+        .featured .card-cta:hover { box-shadow: 0 6px 20px rgba(255,138,101,0.25); }
 
         /* ===== 对比表 ===== */
-        .compare-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 24px;
-            font-size: 14px;
-        }
+        .compare-table { width: 100%; border-collapse: collapse; margin-top: 24px; font-size: 14px; }
         .compare-table th, .compare-table td {
-            padding: 14px 16px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            text-align: left;
+            padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); text-align: left;
         }
         .compare-table th {
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 13px;
-            background: rgba(201,169,110,0.05);
+            color: var(--blue); font-weight: 600; font-size: 13px;
+            background: rgba(0,163,255,0.05);
         }
         .compare-table td { color: var(--text-secondary); }
-        .compare-table .check { color: var(--gold); }
+        .compare-table .check { color: var(--blue); }
         .compare-table .cross { color: #555; }
 
         /* ===== 场景匹配 ===== */
         .scene-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
-            margin-top: 24px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 24px;
         }
         .scene-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 14px;
-            padding: 24px;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px; padding: 24px;
         }
         .scene-card .scene-icon { font-size: 28px; margin-bottom: 12px; }
         .scene-card h4 { font-size: 15px; color: var(--text-primary); margin-bottom: 6px; }
         .scene-card p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; }
         .scene-card .scene-product {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(201,169,110,0.1);
-            border-radius: 100px;
-            font-size: 12px;
-            color: var(--gold);
+            display: inline-block; padding: 4px 12px;
+            background: rgba(0,163,255,0.1); border-radius: 100px; font-size: 12px; color: var(--blue);
         }
 
         /* ===== FAQ ===== */
         .faq-item {
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06); cursor: pointer;
+            transition: all 0.3s;
         }
+        .faq-item:hover { background: rgba(0,163,255,0.03); }
         .faq-q {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-primary);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
+            font-size: 15px; font-weight: 600; color: var(--text-primary);
+            display: flex; justify-content: space-between; align-items: center;
+            user-select: none; padding: 20px 0;
         }
-        .faq-q::after {
-            content: '+';
-            font-size: 20px;
-            color: var(--gold);
-            transition: transform 0.3s;
+        .faq-q .faq-toggle {
+            width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+            background: rgba(0,163,255,0.1); color: var(--blue);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; font-weight: 700; transition: all 0.3s;
         }
-        .faq-item.open .faq-q::after { content: '−'; }
+        .faq-item.open .faq-toggle { background: var(--blue); color: #fff; transform: rotate(45deg); }
         .faq-a {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.8;
+            max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
+            font-size: 14px; color: var(--text-secondary); line-height: 1.8;
         }
-        .faq-item.open .faq-a { max-height: 500px; padding-top: 12px; }
+        .faq-a-inner { padding-bottom: 20px; border-top: 1px dashed rgba(255,255,255,0.06); padding-top: 12px; }
+        .faq-item.open .faq-a { max-height: 500px; }
 
         /* ===== 最终CTA ===== */
         .final-cta {
-            text-align: center;
-            padding: 80px 20px;
+            text-align: center; padding: 80px 20px;
             background: linear-gradient(180deg, var(--dark-bg) 0%, #0d1117 100%);
-            border-top: 1px solid rgba(201,169,110,0.1);
+            border-top: 1px solid rgba(0,163,255,0.1); position: relative;
         }
         .final-cta h2 {
-            font-size: clamp(22px, 3.5vw, 32px);
-            color: var(--text-primary);
-            margin-bottom: 16px;
+            font-size: clamp(22px, 3.5vw, 32px); color: var(--text-primary); margin-bottom: 16px;
         }
-        .final-cta p {
-            font-size: 15px;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
+        .final-cta p { font-size: 15px; color: var(--text-secondary); margin-bottom: 32px; }
+
+        /* CTA 二维码区 */
+        .cta-qr-wrap { display: flex; justify-content: center; margin-bottom: 24px; }
+        .cta-qr-card {
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
+            border-radius: 20px; padding: 24px 32px 20px; text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
+        .cta-qr-img { width: 160px; height: 160px; object-fit: contain; border-radius: 12px; }
+        .cta-qr-tip { font-size: 14px; color: #1A2B3C; font-weight: 700; margin-top: 12px; }
 
         /* ===== Footer ===== */
         footer {
-            text-align: center;
-            padding: 32px 20px;
-            background: #060a12;
+            text-align: center; padding: 32px 20px; background: #060a12;
             border-top: 1px solid rgba(255,255,255,0.04);
         }
         footer .footer-logo {
-            font-size: 18px;
-            font-weight: 700;
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 18px; font-weight: 700;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
             margin-bottom: 8px;
         }
         footer p { font-size: 12px; color: #555; }
 
         /* ===== 弹窗 ===== */
         .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6); z-index: 1000;
+            align-items: center; justify-content: center; padding: 20px;
+            backdrop-filter: blur(4px);
         }
         .modal-overlay.active { display: flex; }
         .modal-box {
-            background: #1a1f2e;
-            border: 1px solid rgba(201,169,110,0.2);
-            border-radius: 20px;
-            padding: 36px 28px;
-            max-width: 420px;
-            width: 100%;
-            text-align: center;
-            position: relative;
+            background: #1a1f2e; border: 1px solid rgba(0,163,255,0.2);
+            border-radius: 20px; padding: 36px 28px; max-width: 400px; width: 100%;
+            text-align: center; position: relative;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.4);
         }
-        .modal-box h3 {
-            font-size: 18px;
-            color: var(--text-primary);
-            margin-bottom: 12px;
+        .modal-box h3 { font-size: 18px; color: var(--text-primary); margin-bottom: 8px; }
+        .modal-box .modal-sub { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; }
+        .modal-qr {
+            width: 180px; height: 180px; margin: 0 auto 16px;
+            background: #fff; border-radius: 16px; padding: 8px;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid rgba(0,163,255,0.1); box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        .modal-box p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-        .modal-link {
-            display: block;
-            padding: 14px 20px;
-            background: rgba(0,163,255,0.12);
-            border: 1px solid rgba(0,163,255,0.3);
-            border-radius: 12px;
-            color: var(--blue);
-            font-size: 14px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .modal-link:hover { background: rgba(0,163,255,0.2); }
-        .modal-copy-btn {
-            padding: 10px 24px;
-            background: var(--gradient-gold);
-            color: #0a0e1a;
-            border: none;
-            border-radius: 100px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
+        .modal-qr-img { width: 100%; height: 100%; object-fit: contain; border-radius: 12px; }
+        .modal-wechat {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            margin: 16px 0; padding: 12px 16px;
+            background: rgba(16,185,129,0.1); border-radius: 12px;
+            font-size: 14px; color: #6ee7b7; font-weight: 700;
         }
         .modal-close {
-            position: absolute;
-            top: 16px;
-            right: 20px;
-            font-size: 24px;
-            color: #666;
-            cursor: pointer;
-            background: none;
-            border: none;
+            position: absolute; top: 16px; right: 20px;
+            font-size: 24px; color: #666; cursor: pointer;
+            background: none; border: none; width: 32px; height: 32px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .modal-close:hover { color: #fff; }
+
+        /* ===== 装饰分隔 ===== */
+        .section-divider {
+            height: 1px; max-width: 200px; margin: 0 auto;
+            background: linear-gradient(90deg, transparent, var(--blue), transparent);
         }
 
         /* ===== 响应式 ===== */
@@ -560,36 +409,51 @@
             .modules-grid { grid-template-columns: 1fr; }
             .compare-table { font-size: 12px; }
             .compare-table th, .compare-table td { padding: 10px 8px; }
+            .hero-cta-outline { margin-left: 0; margin-top: 12px; }
+            .offline-grid { grid-template-columns: 1fr !important; }
         }
 
         /* ===== 动画 ===== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
+
+<!-- ===== 导航栏 ===== -->
+<nav class="nav-bar">
+    <div class="nav-inner">
+        <div class="nav-brand">
+            <img src="logo.png" alt="求职优伴" class="nav-logo">
+            <span class="nav-brand-text">求职优伴</span>
+        </div>
+        <div class="nav-links">
+            <a href="#products">高端方案</a>
+            <a href="#compare">方案对比</a>
+            <a href="#faq">常见问题</a>
+        </div>
+        <button class="nav-cta" onclick="openModal()">💬 免费咨询</button>
+    </div>
+</nav>
 
 <!-- ===== Hero ===== -->
 <section class="hero">
     <div class="hero-content">
         <div class="hero-badge">Premium Career Service</div>
         <h1>普通本科，也能进<em>央国企</em></h1>
-        <p>15,800元起 · 7v1专属服务团队 · 从选岗到入职全程陪跑<br>不是买课，是帮你拿到Offer</p>
-        <a href="#products" class="hero-cta">查看全部高端方案 ↓</a>
+        <p>15,800元起 · 7v1专属服务团队 · 从选岗到入职全程陪跑</p>
+        <p class="hero-sub">求职优伴·央国企上岸陪跑，不止是课程和服务，是帮你拿到Offer</p>
+        <div>
+            <button class="hero-cta" onclick="openModal()">免费咨询专属方案 →</button>
+            <a href="#products" class="hero-cta-outline">查看全部高端方案 ↓</a>
+        </div>
     </div>
 </section>
 
 <!-- ===== 数据栏 ===== -->
 <div class="data-bar">
     <div class="data-item">
-        <div class="data-num">99<span>家</span></div>
+        <div class="data-num">103<span>家</span></div>
         <div class="data-label">覆盖央国企数量</div>
     </div>
     <div class="data-item">
@@ -597,7 +461,7 @@
         <div class="data-label">专属服务团队</div>
     </div>
     <div class="data-item">
-        <div class="data-num">120<span>万+</span></div>
+        <div class="data-num">200<span>万+</span></div>
         <div class="data-label">央国企岗位库</div>
     </div>
     <div class="data-item">
@@ -612,54 +476,54 @@
     <h2>覆盖央国企核心行业</h2>
     <p class="section-desc">— 定向备考精准上岸，你的目标企业我们都有 —</p>
     <div class="logo-grid">
-        <div class="logo-item">国家电网</div>
-        <div class="logo-item">中国石油</div>
-        <div class="logo-item">中国石化</div>
-        <div class="logo-item">中国烟草</div>
-        <div class="logo-item">中国移动</div>
-        <div class="logo-item">工商银行</div>
-        <div class="logo-item">建设银行</div>
-        <div class="logo-item">航天科技</div>
-        <div class="logo-item">中国邮政</div>
-        <div class="logo-item">中国铁路</div>
-        <div class="logo-item">中国电信</div>
-        <div class="logo-item">中国建筑</div>
-        <div class="logo-item">中海油</div>
-        <div class="logo-item">中国联通</div>
-        <div class="logo-item">农业银行</div>
-        <div class="logo-item">中国银行</div>
-        <div class="logo-item">中国中车</div>
-        <div class="logo-item">中船重工</div>
-        <div class="logo-item">中国兵器</div>
-        <div class="logo-item">中粮集团</div>
-        <div class="logo-item">中国中化</div>
-        <div class="logo-item">中国电子</div>
-        <div class="logo-item">国家能源</div>
-        <div class="logo-item">三峡集团</div>
-        <div class="logo-item">国家开发银行</div>
-        <div class="logo-item">南方电网</div>
-        <div class="logo-item">中国诚通</div>
-        <div class="logo-item">中国国新</div>
-        <div class="logo-item">中国保利</div>
-        <div class="logo-item">中国华润</div>
-        <div class="logo-item">招商局集团</div>
-        <div class="logo-item">中国中信</div>
-        <div class="logo-item">中国五矿</div>
-        <div class="logo-item">中国铝业</div>
-        <div class="logo-item">中国黄金</div>
-        <div class="logo-item">中国建材</div>
-        <div class="logo-item">中国有色</div>
-        <div class="logo-item">中国机械工业</div>
-        <div class="logo-item">中国东方电气</div>
-        <div class="logo-item">中国华能</div>
-        <div class="logo-item">中国大唐</div>
-        <div class="logo-item">中国华电</div>
-        <div class="logo-item">国家电投</div>
-        <div class="logo-item">中国南水北调</div>
-        <div class="logo-item">中国华侨城</div>
-        <div class="logo-item">中国光大</div>
-        <div class="logo-item">进出口银行</div>
-        <div class="logo-item">中国农发行</div>
+        <div class="logo-item"><span class="logo-dot dot-green"></span>国家电网</div>
+        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国石油</div>
+        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国石化</div>
+        <div class="logo-item"><span class="logo-dot dot-green"></span>中国烟草</div>
+        <div class="logo-item"><span class="logo-dot dot-blue"></span>中国移动</div>
+        <div class="logo-item"><span class="logo-dot dot-red"></span>工商银行</div>
+        <div class="logo-item"><span class="logo-dot dot-blue"></span>建设银行</div>
+        <div class="logo-item"><span class="logo-dot dot-purple"></span>航天科技</div>
+        <div class="logo-item"><span class="logo-dot dot-teal"></span>中国邮政</div>
+        <div class="logo-item"><span class="logo-dot dot-red"></span>中国铁路</div>
+        <div class="logo-item"><span class="logo-dot dot-blue"></span>中国电信</div>
+        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国建筑</div>
+        <div class="logo-item"><span class="logo-dot dot-orange"></span>中海油</div>
+        <div class="logo-item"><span class="logo-dot dot-blue"></span>中国联通</div>
+        <div class="logo-item"><span class="logo-dot dot-red"></span>农业银行</div>
+        <div class="logo-item"><span class="logo-dot dot-blue"></span>中国银行</div>
+        <div class="logo-item"><span class="logo-dot dot-green"></span>中国中车</div>
+        <div class="logo-item"><span class="logo-dot dot-purple"></span>中船重工</div>
+        <div class="logo-item"><span class="logo-dot dot-red"></span>中国兵器</div>
+        <div class="logo-item"><span class="logo-dot dot-orange"></span>中粮集团</div>
+        <div class="logo-item"><span class="logo-dot dot-teal"></span>中国中化</div>
+        <div class="logo-item"><span class="logo-dot dot-blue"></span>中国电子</div>
+        <div class="logo-item"><span class="logo-dot dot-green"></span>国家能源</div>
+        <div class="logo-item"><span class="logo-dot dot-red"></span>三峡集团</div>
+        <div class="logo-item"><span class="logo-dot dot-blue"></span>国家开发银行</div>
+        <div class="logo-item"><span class="logo-dot dot-green"></span>南方电网</div>
+        <div class="logo-item"><span class="logo-dot dot-purple"></span>中国诚通</div>
+        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国国新</div>
+        <div class="logo-item"><span class="logo-dot dot-teal"></span>中国保利</div>
+        <div class="logo-item"><span class="logo-dot dot-red"></span>中国华润</div>
+        <div class="logo-item"><span class="logo-dot dot-blue"></span>招商局集团</div>
+        <div class="logo-item"><span class="logo-dot dot-green"></span>中国中信</div>
+        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国五矿</div>
+        <div class="logo-item"><span class="logo-dot dot-purple"></span>中国铝业</div>
+        <div class="logo-item"><span class="logo-dot dot-teal"></span>中国黄金</div>
+        <div class="logo-item"><span class="logo-dot dot-red"></span>中国建材</div>
+        <div class="logo-item"><span class="logo-dot dot-blue"></span>中国有色</div>
+        <div class="logo-item"><span class="logo-dot dot-green"></span>中国机械工业</div>
+        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国东方电气</div>
+        <div class="logo-item"><span class="logo-dot dot-purple"></span>中国华能</div>
+        <div class="logo-item"><span class="logo-dot dot-teal"></span>中国大唐</div>
+        <div class="logo-item"><span class="logo-dot dot-red"></span>中国华电</div>
+        <div class="logo-item"><span class="logo-dot dot-blue"></span>国家电投</div>
+        <div class="logo-item"><span class="logo-dot dot-green"></span>中国南水北调</div>
+        <div class="logo-item"><span class="logo-dot dot-orange"></span>中国华侨城</div>
+        <div class="logo-item"><span class="logo-dot dot-purple"></span>中国光大</div>
+        <div class="logo-item"><span class="logo-dot dot-teal"></span>进出口银行</div>
+        <div class="logo-item"><span class="logo-dot dot-red"></span>中国农发行</div>
     </div>
 </section>
 
@@ -675,7 +539,7 @@
     <div class="product-card featured fade-in">
         <div class="product-top">
             <div>
-                <span class="product-tag tag-gold"> 品牌旗舰</span>
+                <span class="product-tag tag-coral">🏆 品牌旗舰</span>
                 <h3 class="product-name">央国企就业领航班</h3>
                 <p class="product-desc">适合明确以央国企就业为目标，有较强自我学习管理意识的应届大学生。<br>从入学到入职，7位专属老师全程陪跑，终身不断联。</p>
             </div>
@@ -697,7 +561,7 @@
                 </ul>
             </div>
             <div class="module-item">
-                <div class="module-icon">🔍</div>
+                <div class="module-icon"></div>
                 <h4>洞察己情</h4>
                 <div class="module-sub">学生需求调研，明确求职目标</div>
                 <ul>
@@ -707,7 +571,7 @@
                 </ul>
             </div>
             <div class="module-item">
-                <div class="module-icon">📊</div>
+                <div class="module-icon"></div>
                 <h4>专业测评</h4>
                 <div class="module-sub">职业测评，央国企HR认可</div>
                 <ul>
@@ -719,87 +583,88 @@
             <div class="module-item">
                 <div class="module-icon">📄</div>
                 <h4>简历优化</h4>
-                <div class="module-sub">打造学生专属简历，顺利通过机筛</div>
+                <div class="module-sub">央国企HR视角，打造高分简历</div>
                 <ul>
-                    <li>行业名师1V1个人经历和优势梳理</li>
-                    <li>提供1-2小时简历优化视频指导，帮助优化和重塑简历</li>
-                    <li>根据投递岗位定制专属简历，顺利通过机筛</li>
+                    <li>挖掘个人亮点，量身定制央国企风格简历</li>
+                    <li>针对目标岗位关键词优化，提升网申通过率</li>
+                    <li>一对一简历修改，直到满意为止</li>
                 </ul>
             </div>
             <div class="module-item">
-                <div class="module-icon"></div>
+                <div class="module-icon">🎯</div>
                 <h4>岗位匹配</h4>
-                <div class="module-sub">精准人岗匹配，不错过网申机会</div>
+                <div class="module-sub">200万+岗位库，精准推送</div>
                 <ul>
-                    <li>匹配次数最多，每周匹配2-3次，每次6-10家央国企岗位</li>
-                    <li>结合央国企的用人画像，进行精准的人岗匹配</li>
-                    <li>1V1不限次数网申复核检查，确保信息填写准确</li>
+                    <li>基于学生专业和条件，智能匹配最优岗位</li>
+                    <li>每周2-3次岗位推荐，不错过任何机会</li>
+                    <li>网申指导，提升投递成功率</li>
                 </ul>
             </div>
             <div class="module-item">
                 <div class="module-icon">📚</div>
                 <h4>系统备战</h4>
-                <div class="module-sub">笔试题库最全，央国企专项考情解析</div>
+                <div class="module-sub">笔试+面试全科目覆盖</div>
                 <ul>
-                    <li>根据行业大类，为学生提供丰富笔试题库</li>
-                    <li>央国企笔试理论视频课程 + 笔试真题双管齐下</li>
-                    <li>根据笔试情况，提供央国企考备考情解析</li>
+                    <li>行测/申论/专业知识系统课程</li>
+                    <li>专属学习计划和进度跟踪</li>
+                    <li>阶段性模考+薄弱项强化</li>
                 </ul>
             </div>
             <div class="module-item">
                 <div class="module-icon">🎤</div>
                 <h4>实战强化</h4>
-                <div class="module-sub">面试场景模拟，实战演练助力顺利通关</div>
+                <div class="module-sub">不限次数1V1面试辅导</div>
                 <ul>
-                    <li>央国企通用面试技巧课和半结构化理论课，夯实基础能力</li>
-                    <li>根据进面情况，提供不限次数1V1面试教练强化辅导</li>
-                    <li>组织无领导小组面试模拟，帮助适应群面环境和流程</li>
+                    <li>结构化/无领导/半结构化全覆盖</li>
+                    <li>模拟面试+复盘点评</li>
+                    <li>面试礼仪与表达训练</li>
                 </ul>
             </div>
             <div class="module-item">
                 <div class="module-icon">✅</div>
                 <h4>OFFER筛选</h4>
-                <div class="module-sub">OFFER分析与筛选，明智抉择未来</div>
+                <div class="module-sub">多Offer对比，选最优解</div>
                 <ul>
-                    <li>行业顾问专家对OFFER进行专业分析，规划职业发展前景</li>
-                    <li>提供行业前景分析指导，了解岗位行业发展前景和趋势</li>
-                    <li>根据学历背景和职业规划，优选优质岗位，提供决策支持</li>
+                    <li>OFFER横向对比分析（薪资/城市/发展/稳定性）</li>
+                    <li>签约前风险评估</li>
+                    <li>入职前心态辅导</li>
                 </ul>
             </div>
             <div class="module-item">
-                <div class="module-icon"></div>
+                <div class="module-icon">🚀</div>
                 <h4>职业进阶</h4>
-                <div class="module-sub">职场重塑与晋升，职业发展保驾护航</div>
+                <div class="module-sub">终身服务不断联</div>
                 <ul>
-                    <li>成功上岸者沙龙分享会，提前积累职场经验</li>
-                    <li>行业顾问分析职场生存和晋升秘籍，规划职业生涯路径</li>
-                    <li>一站式全流程求职辅导和职场晋升支持，终身不断联</li>
+                    <li>入职后持续提供职场发展建议</li>
+                    <li>7v1群服务终身有效</li>
+                    <li>定期行业资讯和内部推荐机会</li>
                 </ul>
             </div>
         </div>
 
         <div class="highlights">
-            <span class="highlight-tag">7v1服务团队</span>
-            <span class="highlight-tag">专属1V1督学</span>
-            <span class="highlight-tag">教务老师跟进</span>
-            <span class="highlight-tag">全阶段陪跑</span>
-            <span class="highlight-tag">终身服务不断联</span>
+            <span class="highlight-tag">7v1专属团队</span>
+            <span class="highlight-tag">专属督学老师</span>
+            <span class="highlight-tag">教务老师</span>
+            <span class="highlight-tag">每周2-3次岗位推送</span>
+            <span class="highlight-tag">不限次数面试辅导</span>
+            <span class="highlight-tag">终身不断联</span>
         </div>
 
-        <div style="margin-top:20px; padding:16px 20px; background:rgba(201,169,110,0.06); border-radius:12px; font-size:14px; color:var(--text-secondary);">
-            💬 <strong style="color:var(--gold-light);">家长说：</strong>"孩子普通本科，我们不求名校光环，就想让他稳稳定定进个央国企。15800块钱，7个老师围着孩子转，从简历到入职一路带着，这钱花得踏实。"
+        <div class="parent-quote">
+            💬 <strong style="color:#ffb09a;">家长说：</strong>"孩子普通二本，我们本来不抱希望。报了领航班后，7个老师围着孩子转，从简历到面试一步步带着走，最后拿了3个OFFER。这钱花得值。"
         </div>
 
-        <button class="card-cta" onclick="showModal('领航班 ¥15,800')">立即咨询 · 领航班方案 →</button>
+        <button class="card-cta" onclick="openModal()">立即咨询 · 领航班方案 →</button>
     </div>
 
     <!-- 强化班 -->
     <div class="product-card fade-in">
         <div class="product-top">
             <div>
-                <span class="product-tag tag-coral">🔥 最受欢迎</span>
-                <h3 class="product-name">央国企就业领航强化班</h3>
-                <p class="product-desc">在领航班全部服务基础上，增加暑期1个月笔试+面试线下集训。<br>集中面授，高能强化，更适合普通本、专科生知识技能薄弱体质。<br>即学即用，考什么学什么，过关率提升看得见。</p>
+                <span class="product-tag tag-blue">🔥 最受欢迎</span>
+                <h3 class="product-name">央国企就业强化班</h3>
+                <p class="product-desc">在领航班全部服务基础上，增加暑期1个月线下笔试+面试集训。<br>适合基础薄弱、需要老师盯着学的普通本科/专科生。</p>
             </div>
             <div class="product-price-box">
                 <div class="product-price"><span class="currency">¥</span>19,800<span class="unit">/人</span></div>
@@ -807,150 +672,56 @@
             </div>
         </div>
 
-        <div style="padding:20px 24px; background:rgba(255,138,101,0.06); border-left:3px solid var(--coral); border-radius:0 12px 12px 0; margin-bottom:20px;">
-            <h4 style="font-size:15px; color:var(--text-primary); margin-bottom:8px;">🔑 强化班专属升级（相比领航班）</h4>
-            <ul style="list-style:none; padding:0; font-size:14px; color:var(--text-secondary);">
-                <li style="padding:4px 0;">✓ 包含本科大三年级/专科大二年级暑期1个月的笔面试线下集训课程</li>
-                <li style="padding:4px 0;">✓ 集中面授课程，高能强化笔试知识面试技能</li>
-                <li style="padding:4px 0;">✓ 即学即用，考什么学什么，过关率提升看得见</li>
-                <li style="padding:4px 0;">✓ 备考央国企更自信，上岸成功率显著提升</li>
-            </ul>
-        </div>
-
         <div class="modules-grid">
             <div class="module-item">
-                <div class="module-icon">🎓</div>
-                <h4>焕新启动</h4>
-                <div class="module-sub">快学入学典礼 · 5-7位专属服务老师</div>
+                <div class="module-icon">🏆</div>
+                <h4>领航班全体系服务</h4>
+                <div class="module-sub">包含领航班全部9大服务模块</div>
                 <ul>
-                    <li>入学仪式坚定求职决心</li>
-                    <li>班主任全程管学确保教学质量</li>
-                    <li>专属服务团队明确职责</li>
+                    <li>焕新启动 · 洞察己情 · 专业测评</li>
+                    <li>简历优化 · 岗位匹配 · 系统备战</li>
+                    <li>实战强化 · OFFER筛选 · 职业进阶</li>
                 </ul>
             </div>
             <div class="module-item">
-                <div class="module-icon">🔍</div>
-                <h4>洞察己情</h4>
-                <div class="module-sub">需求调研 · 定制专属求职方案</div>
+                <div class="module-icon">🏕️</div>
+                <h4>暑期线下集训（1个月）</h4>
+                <div class="module-sub">集中面授，考什么学什么</div>
                 <ul>
-                    <li>专业标准化信息采集</li>
-                    <li>资质评估明确求职方向</li>
-                    <li>定制央国企求职方案</li>
+                    <li>暑期1个月笔试+面试线下集训</li>
+                    <li>5年以上经验教师团队授课</li>
+                    <li>小班教学，个性化指导</li>
+                    <li>集训结束即具备应考能力</li>
                 </ul>
             </div>
-            <div class="module-item">
-                <div class="module-icon">📊</div>
-                <h4>专业测评</h4>
-                <div class="module-sub">职业测评 · HR认可 · 1V1分析</div>
-                <ul>
-                    <li>专业渠道职业测评报告</li>
-                    <li>规划导师1V1结果分析</li>
-                    <li>明确求职方向和赛道</li>
-                </ul>
-            </div>
-            <div class="module-item">
-                <div class="module-icon">📄</div>
-                <h4>简历优化</h4>
-                <div class="module-sub">名师1V1 · 专属简历 · 通过机筛</div>
-                <ul>
-                    <li>1V1个人经历优势梳理</li>
-                    <li>1-2小时简历优化视频指导</li>
-                    <li>定制岗位专属简历</li>
-                </ul>
-            </div>
-            <div class="module-item">
-                <div class="module-icon">🎯</div>
-                <h4>岗位匹配</h4>
-                <div class="module-sub">每周2-3次 · 每次6-10家</div>
-                <ul>
-                    <li>匹配次数最多</li>
-                    <li>结合用人画像精准匹配</li>
-                    <li>不限次数网申复核</li>
-                </ul>
-            </div>
-            <div class="module-item">
-                <div class="module-icon">📚</div>
-                <h4>系统备战</h4>
-                <div class="module-sub">题库最全 · 视频课+真题双管齐下</div>
-                <ul>
-                    <li>行业大类笔试题库</li>
-                    <li>笔试理论视频课程</li>
-                    <li>考备考情解析</li>
-                </ul>
-            </div>
-            <div class="module-item">
-                <div class="module-icon">🎤</div>
-                <h4>实战强化</h4>
-                <div class="module-sub">不限次数1V1 · 群面模拟</div>
-                <ul>
-                    <li>面试技巧课+半结构化理论</li>
-                    <li>不限次数1V1面试教练</li>
-                    <li>无领导小组面试模拟</li>
-                </ul>
-            </div>
-            <div class="module-item">
-                <div class="module-icon">✅</div>
-                <h4>OFFER筛选</h4>
-                <div class="module-sub">行业顾问 · 前景分析 · 决策支持</div>
-                <ul>
-                    <li>OFFER专业分析</li>
-                    <li>行业前景指导</li>
-                    <li>优选岗位决策支持</li>
-                </ul>
-            </div>
-            <div class="module-item">
-                <div class="module-icon">🚀</div>
-                <h4>职业进阶</h4>
-                <div class="module-sub">职场重塑 · 终身不断联</div>
-                <ul>
-                    <li>上岸者沙龙分享会</li>
-                    <li>职场生存晋升秘籍</li>
-                    <li>终身服务不断联</li>
-                </ul>
-            </div>
-        </div>
-
-        <div style="margin-top:20px; padding:20px 24px; background:rgba(255,138,101,0.06); border:1px solid rgba(255,138,101,0.15); border-radius:12px;">
-            <h4 style="font-size:15px; color:var(--coral); margin-bottom:8px;">🏫 暑期线下集训（强化班独占）</h4>
-            <p style="font-size:14px; color:var(--text-secondary); line-height:1.7;">
-                针对本科大三年级/专科大二年级学生，暑期集中1个月线下集训。<br>
-                笔试+面试双轨强化，集中面授课程，高能强化知识技能。<br>
-                <strong style="color:var(--text-primary);">考什么学什么，即学即用，过关率提升看得见。</strong>
-            </p>
         </div>
 
         <div class="highlights">
             <span class="highlight-tag">领航班全部服务</span>
             <span class="highlight-tag">+暑期1个月线下集训</span>
-            <span class="highlight-tag">集中面授</span>
-            <span class="highlight-tag">适合普通本/专科生</span>
-            <span class="highlight-tag">考什么学什么</span>
+            <span class="highlight-tag">5年+经验教师</span>
+            <span class="highlight-tag">小班面授</span>
         </div>
 
-        <button class="card-cta" onclick="showModal('强化班 ¥19,800')">立即咨询 · 强化班方案 →</button>
+        <div class="parent-quote">
+            💬 <strong style="color:#66ccff;">学员说：</strong>"我专科毕业，自学根本学不进去。强化班的线下集训真的救命，老师把考点拆得特别细，考什么就练什么。集训完回去刷题，正确率直接翻倍。"
+        </div>
+
+        <button class="card-cta" onclick="openModal()">立即咨询 · 强化班方案 →</button>
     </div>
 
     <!-- 考编一体班 -->
-    <div class="product-card fade-in">
+    <div class="product-card gold-border fade-in">
         <div class="product-top">
             <div>
-                <span class="product-tag tag-blue">💎 双轨保障</span>
-                <h3 class="product-name">就业考编一体班</h3>
-                <p class="product-desc">应届生在有限时间里双轨化备考——以稳定就业作为考编的底气，以考编作为衔接央国企就业备考后的上升规划。<br>学习内容重合递进，多一重机会，更多选择。</p>
+                <span class="product-tag tag-gold"> 双轨保障</span>
+                <h3 class="product-name">考编一体班</h3>
+                <p class="product-desc">强化班全部服务 + 考公考编一年课程（国考+省考+事业单位）。<br>央国企和考编两条赛道同时跑，多一条路多一分安心。</p>
             </div>
             <div class="product-price-box">
                 <div class="product-price"><span class="currency">¥</span>23,800<span class="unit">/人</span></div>
-                <div class="product-price-note">指导销售价 · 价格天花板</div>
+                <div class="product-price-note">指导销售价</div>
             </div>
-        </div>
-
-        <div style="padding:20px 24px; background:rgba(0,163,255,0.06); border-left:3px solid var(--blue); border-radius:0 12px 12px 0; margin-bottom:20px;">
-            <h4 style="font-size:15px; color:var(--text-primary); margin-bottom:8px;">🔑 一体班核心逻辑</h4>
-            <p style="font-size:14px; color:var(--text-secondary); line-height:1.7;">
-                央国企就业 + 国省考/事业单位考编，双线并行。<br>
-                学习内容重合递进——行测、申论、公共基础既用于央国企笔试，也用于考公考编。<br>
-                <strong style="color:var(--text-primary);">一份投入，两条赛道，多一重上岸机会。</strong>
-            </p>
         </div>
 
         <div class="modules-grid">
@@ -1007,46 +778,94 @@
             <span class="highlight-tag">双赛道上岸</span>
         </div>
 
-        <div style="margin-top:20px; padding:16px 20px; background:rgba(0,163,255,0.06); border-radius:12px; font-size:14px; color:var(--text-secondary);">
-            💬 <strong style="color:#66ccff;">家长说：</strong>"我们不求孩子一定进央国企，但求多一条路。23800块钱，央国企和考编两条赛道一起跑，孩子毕业了不管走哪条路都不慌。"
+        <div class="parent-quote">
+            💬 <strong style="color:var(--gold-light);">家长说：</strong>"我们不求孩子一定进央国企，但求多一条路。23800块钱，央国企和考编两条赛道一起跑，孩子毕业了不管走哪条路都不慌。"
         </div>
 
-        <button class="card-cta" onclick="showModal('考编一体班 ¥23,800')">立即咨询 · 一体班方案 →</button>
+        <button class="card-cta" onclick="openModal()">立即咨询 · 一体班方案 →</button>
     </div>
 
     <!-- 就业安置 -->
-    <div class="product-card fade-in" style="border-color: rgba(201,169,110,0.08);">
+    <div class="product-card gold-border fade-in" style="border-color: rgba(201,169,110,0.2);">
         <div class="product-top">
             <div>
                 <span class="product-tag tag-gold">🌟 终极兜底</span>
-                <h3 class="product-name">就业安置产品</h3>
-                <p class="product-desc">非标准化定制方案，根据目标岗位、难度、资源一对一匹配。<br>结果导向客户的终极选择，利润天花板。</p>
+                <h3 class="product-name">央国企就业全能班（应往届生）</h3>
+                <p class="product-desc">一站式·上岸辅导。针对应往届生提供的多渠道高质量就业服务班型，通过在基础的央国企就业服务之上，再提供个人技能培训和产教融合体系，形成多种类个性化的就业落地服务。<br><strong style="color:var(--gold-light); font-size:18px;">不上岸全退费 · 超强保障</strong></p>
             </div>
             <div class="product-price-box">
-                <div class="product-price" style="font-size:28px;">一事一议</div>
-                <div class="product-price-note">根据岗位/难度/资源定价</div>
+                <div class="product-price"><span class="currency">¥</span>69,800<span class="unit">/人</span></div>
+                <div class="product-price-note">指导销售价</div>
             </div>
         </div>
 
-        <p style="font-size:14px; color:var(--text-secondary); line-height:1.8;">
-            适用于经过前期服务仍未成功上岸，或目标岗位特殊、需要深度资源匹配的同学。<br>
-            由资深就业顾问一对一评估，制定专属安置方案。<br>
-            <strong style="color:var(--text-primary);">不承诺结果，但承诺全力以赴。</strong>
-        </p>
+        <div class="modules-grid">
+            <div class="module-item">
+                <div class="module-icon">🏆</div>
+                <h4>就业领航服务</h4>
+                <div class="module-sub">全体系服务</div>
+                <ul>
+                    <li>全力以赴推动应届生央国企上岸</li>
+                    <li>全程精细化管理，确保学生权益和教学质量</li>
+                    <li>服务周期截止至学员应届生身份失效</li>
+                </ul>
+            </div>
+            <div class="module-item">
+                <div class="module-icon">🏫</div>
+                <h4>在校陪跑领航服务</h4>
+                <div class="module-sub">学生需求调研，明确求职方向的学习目标</div>
+                <ul>
+                    <li>专业标准化的学生信息收集，确保信息准确、完整</li>
+                    <li>根据学生的资质和求职需求制定校内个性化学习方案</li>
+                    <li>多角色专职导师群内专属服务，无限次数疑难解答辅导</li>
+                </ul>
+            </div>
+            <div class="module-item">
+                <div class="module-icon">📊</div>
+                <h4>专业测评</h4>
+                <div class="module-sub">职业·性格测评，央国企HR认可</div>
+                <ul>
+                    <li>参与职业测评，获得专业渠道职业测评报告</li>
+                    <li>规划导师进行1V1的职业测评结果分析、进行职业规划指导</li>
+                    <li>科学地帮助学生明确个人求职方向和职业发展赛道</li>
+                </ul>
+            </div>
+            <div class="module-item">
+                <div class="module-icon">💼</div>
+                <h4>职业技能技术培训</h4>
+                <div class="module-sub">打造学生职业竞争力，保薪保岗</div>
+                <ul>
+                    <li>根据专业技能不同培训周期3-6个月不等</li>
+                    <li>推荐对口带薪实习，渠道内转就业，薪酬保底6K+</li>
+                    <li>根据学生就业情况，提供就业推荐服务</li>
+                </ul>
+            </div>
+        </div>
 
-        <button class="card-cta" onclick="showModal('就业安置 一事一议')">预约评估 · 了解方案 →</button>
+        <div class="highlights">
+            <span class="highlight-tag">一站式上岸辅导</span>
+            <span class="highlight-tag">多渠道高质量就业</span>
+            <span class="highlight-tag">产教融合体系</span>
+            <span class="highlight-tag">个性化就业落地</span>
+            <span class="highlight-tag">不上岸全退费</span>
+            <span class="highlight-tag">应往届生均可</span>
+        </div>
+
+        <button class="card-cta" onclick="openModal()" style="background: var(--gradient-gold); color: #0a0e1a;">预约评估 · 了解方案 →</button>
     </div>
 </section>
 
+<div class="section-divider"></div>
+
 <!-- ===== 线下专项（过渡产品） ===== -->
-<section class="section" style="padding-top:0;">
+<section class="section" style="padding-top:60px;">
     <div class="section-header">
         <div class="label">OFFLINE PROGRAMS</div>
         <h2>线下专项集训</h2>
         <p>3天2晚沉浸式体验，口碑引擎 · 老学员转介绍首选</p>
     </div>
 
-    <div class="modules-grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));">
+    <div class="modules-grid offline-grid" style="grid-template-columns: repeat(2, minmax(340px, 500px)); justify-content: center; max-width: 1040px; margin: 0 auto;">
         <div class="product-card fade-in" style="margin-bottom:0;">
             <span class="product-tag tag-coral">🏕️ 口碑引擎</span>
             <h3 class="product-name" style="font-size:20px;">面试特训班</h3>
@@ -1057,7 +876,7 @@
                 <li style="padding:4px 0;">✓ 结构化/无领导/半结构化全覆盖</li>
                 <li style="padding:4px 0;">✓ 强感知体验 → 驱动转介绍</li>
             </ul>
-            <button class="card-cta" style="margin-top:16px; font-size:14px; padding:12px 24px;" onclick="showModal('面试特训班 ¥2,980')">了解详情 →</button>
+            <button class="card-cta" style="margin-top:16px; font-size:14px; padding:12px 24px;" onclick="openModal()">了解详情 →</button>
         </div>
 
         <div class="product-card fade-in" style="margin-bottom:0;">
@@ -1070,13 +889,15 @@
                 <li style="padding:4px 0;">✓ 高客单独立产品</li>
                 <li style="padding:4px 0;">✓ 线下体验驱动口碑转介绍</li>
             </ul>
-            <button class="card-cta" style="margin-top:16px; font-size:14px; padding:12px 24px;" onclick="showModal('暑期集训营 ¥5,980')">了解详情 →</button>
+            <button class="card-cta" style="margin-top:16px; font-size:14px; padding:12px 24px;" onclick="openModal()">了解详情 →</button>
         </div>
     </div>
 </section>
 
+<div class="section-divider"></div>
+
 <!-- ===== 方案对比 ===== -->
-<section class="section" style="padding-top:0;">
+<section class="section" id="compare" style="padding-top:60px;">
     <div class="section-header">
         <div class="label">COMPARISON</div>
         <h2>高端方案横向对比</h2>
@@ -1094,103 +915,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>服务团队</td>
-                    <td>7v1专属</td>
-                    <td>7v1专属</td>
-                    <td>7v1 + 考编教师团队</td>
-                </tr>
-                <tr>
-                    <td>专属督学</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                </tr>
-                <tr>
-                    <td>教务老师</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                </tr>
-                <tr>
-                    <td>职业测评</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                </tr>
-                <tr>
-                    <td>简历优化</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                </tr>
-                <tr>
-                    <td>岗位匹配（每周2-3次）</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                </tr>
-                <tr>
-                    <td>笔试题库+视频课</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                </tr>
-                <tr>
-                    <td>不限次数1V1面试辅导</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                </tr>
-                <tr>
-                    <td>无领导面试模拟</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                </tr>
-                <tr>
-                    <td>OFFER筛选分析</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                </tr>
-                <tr>
-                    <td>终身服务不断联</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                </tr>
-                <tr>
-                    <td><strong>暑期线下集训（1个月）</strong></td>
-                    <td class="cross">—</td>
-                    <td class="check">✓</td>
-                    <td class="check">✓</td>
-                </tr>
-                <tr>
-                    <td><strong>考公考编课程（国考+省考+事业单位）</strong></td>
-                    <td class="cross">—</td>
-                    <td class="cross">—</td>
-                    <td class="check">✓</td>
-                </tr>
-                <tr>
-                    <td><strong>5年+经验考编教师授课</strong></td>
-                    <td class="cross">—</td>
-                    <td class="cross">—</td>
-                    <td class="check">✓</td>
-                </tr>
-                <tr>
-                    <td>适合人群</td>
-                    <td>自主学习能力强的应届生</td>
-                    <td>需要线下强化、基础薄弱的普通本/专科生</td>
-                    <td>想双轨并行、多一条路的应届生</td>
-                </tr>
+                <tr><td>服务团队</td><td>7v1专属</td><td>7v1专属</td><td>7v1 + 考编教师团队</td></tr>
+                <tr><td>专属督学</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>教务老师</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>职业测评</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>简历优化</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>岗位匹配（每周2-3次）</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>笔试题库+视频课</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>不限次数1V1面试辅导</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>无领导面试模拟</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>OFFER筛选分析</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>终身服务不断联</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td><strong>暑期线下集训（1个月）</strong></td><td class="cross">—</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td><strong>考公考编课程（国考+省考+事业单位）</strong></td><td class="cross">—</td><td class="cross">—</td><td class="check">✓</td></tr>
+                <tr><td><strong>5年+经验考编教师授课</strong></td><td class="cross">—</td><td class="cross">—</td><td class="check">✓</td></tr>
+                <tr><td>适合人群</td><td>自主学习能力强的应届生</td><td>需要线下强化、基础薄弱的普通本/专科生</td><td>想双轨并行、多一条路的应届生</td></tr>
             </tbody>
         </table>
     </div>
 </section>
 
+<div class="section-divider"></div>
+
 <!-- ===== 对号入座 ===== -->
-<section class="section" style="padding-top:0;">
+<section class="section" style="padding-top:60px;">
     <div class="section-header">
         <div class="label">FIND YOUR PLAN</div>
         <h2>🧭 不知道选哪个？对号入座</h2>
@@ -1223,7 +971,7 @@
             <span class="scene-product">→ 强化班 / 一体班</span>
         </div>
         <div class="scene-card">
-            <div class="scene-icon">🎤</div>
+            <div class="scene-icon"></div>
             <h4>"想先体验线下再决定"</h4>
             <p>不确定要不要报高端班，先参加线下集训感受下</p>
             <span class="scene-product">→ 面试特训班 ¥2,980</span>
@@ -1237,8 +985,10 @@
     </div>
 </section>
 
+<div class="section-divider"></div>
+
 <!-- ===== 服务流程 ===== -->
-<section class="section" style="padding-top:0;">
+<section class="section" style="padding-top:60px;">
     <div class="section-header">
         <div class="label">SERVICE PROCESS</div>
         <h2>9步服务全流程</h2>
@@ -1247,46 +997,48 @@
 
     <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
         <div style="text-align:center; flex:1; min-width:100px;">
-            <div style="width:60px; height:60px; background:rgba(201,169,110,0.1); border:1px solid rgba(201,169,110,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">🎓</div>
+            <div style="width:60px; height:60px; background:rgba(0,163,255,0.1); border:1px solid rgba(0,163,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">🎓</div>
             <div style="font-size:13px; font-weight:600; color:var(--text-primary);">焕新启动</div>
         </div>
         <div style="text-align:center; flex:1; min-width:100px;">
-            <div style="width:60px; height:60px; background:rgba(201,169,110,0.1); border:1px solid rgba(201,169,110,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;"></div>
+            <div style="width:60px; height:60px; background:rgba(0,163,255,0.1); border:1px solid rgba(0,163,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;"></div>
             <div style="font-size:13px; font-weight:600; color:var(--text-primary);">洞察己情</div>
         </div>
         <div style="text-align:center; flex:1; min-width:100px;">
-            <div style="width:60px; height:60px; background:rgba(201,169,110,0.1); border:1px solid rgba(201,169,110,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">📊</div>
+            <div style="width:60px; height:60px; background:rgba(0,163,255,0.1); border:1px solid rgba(0,163,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;"></div>
             <div style="font-size:13px; font-weight:600; color:var(--text-primary);">专业测评</div>
         </div>
         <div style="text-align:center; flex:1; min-width:100px;">
-            <div style="width:60px; height:60px; background:rgba(201,169,110,0.1); border:1px solid rgba(201,169,110,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">📄</div>
+            <div style="width:60px; height:60px; background:rgba(0,163,255,0.1); border:1px solid rgba(0,163,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">📄</div>
             <div style="font-size:13px; font-weight:600; color:var(--text-primary);">简历优化</div>
         </div>
         <div style="text-align:center; flex:1; min-width:100px;">
-            <div style="width:60px; height:60px; background:rgba(201,169,110,0.1); border:1px solid rgba(201,169,110,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">🎯</div>
+            <div style="width:60px; height:60px; background:rgba(0,163,255,0.1); border:1px solid rgba(0,163,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">🎯</div>
             <div style="font-size:13px; font-weight:600; color:var(--text-primary);">岗位匹配</div>
         </div>
         <div style="text-align:center; flex:1; min-width:100px;">
-            <div style="width:60px; height:60px; background:rgba(201,169,110,0.1); border:1px solid rgba(201,169,110,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">📚</div>
+            <div style="width:60px; height:60px; background:rgba(0,163,255,0.1); border:1px solid rgba(0,163,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">📚</div>
             <div style="font-size:13px; font-weight:600; color:var(--text-primary);">系统备战</div>
         </div>
         <div style="text-align:center; flex:1; min-width:100px;">
-            <div style="width:60px; height:60px; background:rgba(201,169,110,0.1); border:1px solid rgba(201,169,110,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">🎤</div>
+            <div style="width:60px; height:60px; background:rgba(0,163,255,0.1); border:1px solid rgba(0,163,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">🎤</div>
             <div style="font-size:13px; font-weight:600; color:var(--text-primary);">实战强化</div>
         </div>
         <div style="text-align:center; flex:1; min-width:100px;">
-            <div style="width:60px; height:60px; background:rgba(201,169,110,0.1); border:1px solid rgba(201,169,110,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">✅</div>
+            <div style="width:60px; height:60px; background:rgba(0,163,255,0.1); border:1px solid rgba(0,163,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">✅</div>
             <div style="font-size:13px; font-weight:600; color:var(--text-primary);">OFFER筛选</div>
         </div>
         <div style="text-align:center; flex:1; min-width:100px;">
-            <div style="width:60px; height:60px; background:rgba(201,169,110,0.1); border:1px solid rgba(201,169,110,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">🚀</div>
+            <div style="width:60px; height:60px; background:rgba(0,163,255,0.1); border:1px solid rgba(0,163,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:24px;">🚀</div>
             <div style="font-size:13px; font-weight:600; color:var(--text-primary);">职业进阶</div>
         </div>
     </div>
 </section>
 
+<div class="section-divider"></div>
+
 <!-- ===== FAQ ===== -->
-<section class="section" style="padding-top:0;">
+<section class="section" id="faq" style="padding-top:60px;">
     <div class="section-header">
         <div class="label">FAQ</div>
         <h2>常见问题</h2>
@@ -1294,40 +1046,53 @@
     </div>
 
     <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-q">领航班和护航团（4,980）有什么区别？</div>
-        <div class="faq-a">护航团是6v1标准群服务，侧重线上全流程陪跑；领航班是7v1专属服务，增加了专属督学老师、教务老师，服务更精细化，且包含职业测评、OFFER筛选、职业进阶等高端模块，终身不断联。简单说：护航团帮你走完流程，领航班帮你走好每一步。</div>
+        <div class="faq-q">领航班和护航团（4,980）有什么区别？<span class="faq-toggle">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">护航团是6v1标准群服务，侧重线上全流程陪跑；领航班是7v1专属服务，增加了专属督学老师、教务老师，服务更精细化，且包含职业测评、OFFER筛选、职业进阶等高端模块，终身不断联。简单说：护航团帮你走完流程，领航班帮你走好每一步。</div></div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-q">强化班比领航班多出来的暑期集训是什么？</div>
-        <div class="faq-a">强化班在领航班全部服务基础上，增加暑期1个月线下笔试+面试集训。针对本科大三/专科大二学生，集中面授，考什么学什么。特别适合自学能力较弱、需要老师盯着学的同学。线下集训的过关率提升看得见。</div>
+        <div class="faq-q">强化班比领航班多出来的暑期集训是什么？<span class="faq-toggle">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">强化班在领航班全部服务基础上，增加暑期1个月线下笔试+面试集训。针对本科大三/专科大二学生，集中面授，考什么学什么。特别适合自学能力较弱、需要老师盯着学的同学。线下集训的过关率提升看得见。</div></div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-q">考编一体班的"双轨"具体怎么操作？</div>
-        <div class="faq-a">你在准备央国企求职的同时，同步学习考公考编课程。因为行测、申论、公共基础这些内容在央国企笔试和公务员考试中高度重合，所以两份备考可以互相促进。一体班提供国考+省考+事业单位的完整笔试+面试课程，由5年以上经验的教师团队授课。</div>
+        <div class="faq-q">考编一体班的"双轨"具体怎么操作？<span class="faq-toggle">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">你在准备央国企求职的同时，同步学习考公考编课程。因为行测、申论、公共基础这些内容在央国企笔试和公务员考试中高度重合，所以两份备考可以互相促进。一体班提供国考+省考+事业单位的完整笔试+面试课程，由5年以上经验的教师团队授课。</div></div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-q">服务周期是多长？毕业了还能继续用吗？</div>
-        <div class="faq-a">领航班和强化班的服务周期覆盖整个求职周期，从入学到入职。6v1/7v1群服务终身有效，即使毕业当年未上岸，也能持续获得支持。考编一体班服务至应届生身份失效。</div>
+        <div class="faq-q">服务周期是多长？毕业了还能继续用吗？<span class="faq-toggle">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">领航班和强化班的服务周期覆盖整个求职周期，从入学到入职。7v1群服务终身有效，即使毕业当年未上岸，也能持续获得支持。考编一体班服务至应届生身份失效。全能班（69,800）服务至学员应届生身份失效。</div></div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-q">买了可以退吗？</div>
-        <div class="faq-a">虚拟产品一经开通不退不换。但高端产品我们会在报名前安排专属顾问一对一深度沟通，确保产品内容完全匹配你的需求后再下单，避免选错方案。</div>
+        <div class="faq-q">全能班"不上岸全退费"具体怎么算？<span class="faq-toggle">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">全能班承诺：在服务周期内（至应届生身份失效），若学员未能获得任何央国企OFFER，可申请全额退费。具体退费条件和流程由专属顾问一对一说明，确保你清楚每一条保障条款。</div></div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-q">普通本科真的能进央国企吗？</div>
-        <div class="faq-a">能。央国企大量岗位不限院校层次，更看重专业匹配度和考试能力。我们的120万+岗位库覆盖99家央国企，智能选岗系统会根据你的专业和条件匹配最适合的方向。很多同学打开后才发现"原来我的专业也能进"。</div>
+        <div class="faq-q">买了可以退吗？<span class="faq-toggle">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">虚拟产品一经开通不退不换。但高端产品我们会在报名前安排专属顾问一对一深度沟通，确保产品内容完全匹配你的需求后再下单，避免选错方案。建议先添加顾问微信免费咨询，了解清楚再决定。</div></div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-q">19,800 / 23,800 这个价位，家长怎么想？</div>
-        <div class="faq-a">我们理解这个价位需要家长参与决策。但算一笔账：外面培训机构动辄3-5万，且只覆盖笔试或面试一个环节。我们是从选岗到入职全流程，7个老师围着孩子转，终身不断联。而且央国企入职后薪资稳定、福利好，这笔投资回报周期很短。</div>
+        <div class="faq-q">普通本科真的能进央国企吗？<span class="faq-toggle">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">能。央国企大量岗位不限院校层次，更看重专业匹配度和考试能力。我们的200万+岗位库覆盖103家央国企，智能选岗系统会根据你的专业和条件匹配最适合的方向。很多同学打开后才发现"原来我的专业也能进"。</div></div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">19,800 / 23,800 / 69,800 这个价位，家长怎么想？<span class="faq-toggle">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">我们理解这个价位需要家长参与决策。但算一笔账：外面培训机构动辄3-5万，且只覆盖笔试或面试一个环节。我们是从选岗到入职全流程，7个老师围着孩子转，终身不断联。而且央国企入职后薪资稳定、福利好，这笔投资回报周期很短。全能班更有"不上岸全退费"保障，零风险。</div></div>
     </div>
 </section>
 
 <!-- ===== 最终CTA ===== -->
 <section class="final-cta">
-    <h2>选对方案，普通本科也能上岸</h2>
-    <p>从9.9元体验到23,800元全程保障，丰俭由人<br>早做准备的人，永远比别人多3倍机会</p>
-    <button class="hero-cta" onclick="showModal('高端方案咨询')">免费咨询专属方案 →</button>
+    <h2>秋招不等人，<span style="color:var(--coral);">早一天准备就多一分胜算</span></h2>
+    <p>当你还在犹豫的时候，别人已经拿到了OFFER<br>专属顾问免费帮你分析求职方向，推荐最适合你的方案</p>
+    
+    <!-- 二维码展示 -->
+    <div class="cta-qr-wrap">
+        <div class="cta-qr-card">
+            <img src="kefu-qrcode.png" alt="客服二维码" class="cta-qr-img">
+            <p class="cta-qr-tip">微信扫码添加专属顾问</p>
+        </div>
+    </div>
+
+    <button class="hero-cta" onclick="openModal()">添加顾问 · 免费咨询 →</button>
 </section>
 
 <!-- ===== Footer ===== -->
@@ -1341,39 +1106,38 @@
     <div class="modal-box">
         <button class="modal-close" onclick="closeModal()">×</button>
         <h3 id="modal-title">咨询方案</h3>
-        <p>请在微信搜索"求职优伴"小程序，或点击下方链接打开</p>
-        <div class="modal-link" id="modal-link" onclick="copyLink()">
-            #小程序://求职优伴/wOmtXsR3VtQvZSC
+        <p class="modal-sub">顾问将根据你的专业、年级、目标，推荐最适合的方案</p>
+        <div class="modal-wechat">
+            <span>📱</span> 微信搜索"求职优伴"添加专属顾问
         </div>
-        <button class="modal-copy-btn" onclick="copyLink()">复制小程序链接</button>
-        <p style="font-size:12px; color:#666; margin-top:12px;">复制后打开微信 → 粘贴到对话框 → 点击链接即可打开</p>
+        <div class="modal-qr">
+            <img src="kefu-qrcode.png" alt="客服二维码" class="modal-qr-img">
+        </div>
+        <p style="font-size:12px; color:#666;">微信扫码添加顾问，免费获取求职方案</p>
     </div>
 </div>
 
 <script>
     // FAQ 折叠
-    document.querySelectorAll('.faq-item').forEach(item => {
+    document.querySelectorAll('.faq-item').forEach(function(item) {
         item.addEventListener('click', function() {
             this.classList.toggle('open');
         });
     });
 
     // 滚动动画
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
 
     // 弹窗
-    let currentProduct = '';
-    function showModal(product) {
-        currentProduct = product;
-        document.getElementById('modal-title').textContent = '咨询 · ' + product;
+    function openModal() {
         document.getElementById('modal').classList.add('active');
     }
     function closeModal() {
@@ -1383,40 +1147,11 @@
         if (e.target === this) closeModal();
     });
 
-    // 复制链接
-    function copyLink() {
-        const link = '#小程序://求职优伴/wOmtXsR3VtQvZSC';
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(link).then(() => {
-                alert('小程序链接已复制！\n\n打开微信 → 粘贴到对话框 → 点击链接即可打开\n\n咨询方案：' + currentProduct);
-            }).catch(() => {
-                fallbackCopy(link);
-            });
-        } else {
-            fallbackCopy(link);
-        }
-    }
-    function fallbackCopy(text) {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.position = 'fixed';
-        ta.style.left = '-9999px';
-        document.body.appendChild(ta);
-        ta.select();
-        try {
-            document.execCommand('copy');
-            alert('小程序链接已复制！\n\n打开微信 → 粘贴到对话框 → 点击链接即可打开\n\n咨询方案：' + currentProduct);
-        } catch(e) {
-            alert('请手动复制小程序链接：\n' + text);
-        }
-        document.body.removeChild(ta);
-    }
-
     // 平滑滚动
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            var target = document.querySelector(this.getAttribute('href'));
             if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
     });
