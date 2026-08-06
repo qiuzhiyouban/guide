@@ -15,6 +15,7 @@ import sys
 import urllib.request
 import urllib.parse
 import glob
+import subprocess
 from datetime import datetime
 
 # 配置
@@ -331,6 +332,32 @@ def main():
     print(f"::set-output name=total::{len(numbers)}")
     print(f"::set-output name=locked::{total_locked}")
     print(f"::set-output name=instant_locked::{instant_locked}")
+    
+    # 自动提交变更（numbers.json + lock_requests 清理）
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        print("\n正在提交变更到 GitHub...")
+        try:
+            subprocess.run(["git", "config", "user.name", "github-actions[bot]"], check=True)
+            subprocess.run(["git", "config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"], check=True)
+            
+            subprocess.run(["git", "add", OUTPUT_FILE], check=True)
+            subprocess.run(["git", "add", LOCK_REQUESTS_DIR], check=True)
+            
+            result = subprocess.run(
+                ["git", "diff", "--cached", "--quiet"],
+                capture_output=True
+            )
+            if result.returncode == 0:
+                print("  无变更，跳过提交")
+            else:
+                subprocess.run(
+                    ["git", "commit", "-m", f"sync: 更新号码列表 (锁定{total_locked}个)"],
+                    check=True
+                )
+                subprocess.run(["git", "push"], check=True)
+                print("  ✓ 已提交并推送")
+        except Exception as e:
+            print(f"  ✗ 提交失败: {e}")
 
 
 if __name__ == "__main__":
