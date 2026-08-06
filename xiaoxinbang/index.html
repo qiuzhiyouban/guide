@@ -289,7 +289,7 @@
     // ==================== 配置区 ====================
     const CONFIG = {
       // 飞书表单提交链接（替换为实际表单URL）
-      formUrl: 'https://sx7hj05n5mq.feishu.cn/share/base/form/shrcnxxxxxxxxxxxx',
+      formUrl: 'https://sx7hj05n5mq.feishu.cn/share/base/form/shrcnTh66T0iqRDqezIkPBdyO4f',
       // 号码数据文件地址
       dataUrl: './numbers.json'
     };
@@ -427,12 +427,12 @@
       btn.textContent = '跳转中...';
       
       // 跳转到飞书表单，带上号码参数
-      // 飞书表单支持通过URL参数预填，格式：?field_xxx=号码值
+      // 飞书多维表表单预填格式：field_字段ID=值
       const formUrl = CONFIG.formUrl + 
         (CONFIG.formUrl.includes('?') ? '&' : '?') + 
-        'number=' + encodeURIComponent(selectedNumber) +
-        '&name=' + encodeURIComponent(name) +
-        '&phone=' + encodeURIComponent(phone);
+        'field_fldw5fZXPg=' + encodeURIComponent(selectedNumber) +
+        '&field_fld5jkJhJ8=' + encodeURIComponent(name) +
+        '&field_fld9GnsYSD=' + encodeURIComponent(phone);
       
       // 先显示成功提示，再跳转
       closeModal();
