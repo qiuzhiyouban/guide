@@ -301,6 +301,8 @@
     // ==================== 初始化 ====================
     document.addEventListener('DOMContentLoaded', () => {
       loadNumbers();
+      // 每15秒自动刷新号码列表，实时同步最新可选号码
+      setInterval(loadNumbers, 15000);
     });
 
     // 加载号码列表（从JSON文件）
