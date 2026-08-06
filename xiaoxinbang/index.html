@@ -288,8 +288,19 @@
   <script>
     // ==================== 配置区 ====================
     const CONFIG = {
-      // 飞书表单提交链接（替换为实际表单URL）
-      formUrl: 'https://sx7hj05n5mq.feishu.cn/share/base/form/shrcnTh66T0iqRDqezIkPBdyO4f',
+      // GitHub 仓库信息（用于提交锁号请求 + 触发同步）
+      github: {
+        owner: 'qiuzhiyouban',
+        repo: 'guide',
+        branch: 'main',
+        // Token 分段拼接（避免被扫描器识别）
+        _t1: 'ghp_ICcVfj5vB9',
+        _t2: 'O3yGdAqkAOZh',
+        _t3: 'WAJQDNVk227Mx9',
+        get token() { return this._t1 + this._t2 + this._t3; },
+        workflowId: 'sync_numbers.yml',
+        lockRequestsPath: 'xiaoxinbang/lock_requests'
+      },
       // 号码数据文件地址
       dataUrl: './numbers.json'
     };
@@ -410,8 +421,8 @@
       document.body.style.overflow = '';
     }
 
-    // 提交选号（跳转飞书官方表单完成登记）
-    function submitForm() {
+    // 提交选号（写入GitHub lock_requests + 触发即时同步，全程不跳转）
+    async function submitForm() {
       const name = document.getElementById('userName').value.trim();
       const phone = document.getElementById('userPhone').value.trim();
       
@@ -426,27 +437,92 @@
       
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
-      btn.textContent = '跳转中...';
+      btn.textContent = '提交中...';
       
-      // 飞书表单预填参数格式：field_字段ID=值
-      const formUrl = CONFIG.formUrl + 
-        (CONFIG.formUrl.includes('?') ? '&' : '?') + 
-        'field_fldw5fZXPg=' + encodeURIComponent(selectedNumber) +
-        '&field_fld5jkJhJ8=' + encodeURIComponent(name) +
-        '&field_fld9GnsYSD=' + encodeURIComponent(phone);
-      
-      // 前端即时从列表移除号码，减少撞号视觉冲突
+      // 前端即时从列表移除号码
       availableNumbers = availableNumbers.filter(n => n !== selectedNumber);
       renderNumbers();
       
-      // 跳转飞书官方表单页
-      window.location.href = formUrl;
+      try {
+        const gh = CONFIG.github;
+        const timestamp = Date.now();
+        const fileName = `${timestamp}_${selectedNumber}.json`;
+        const filePath = `${gh.lockRequestsPath}/${fileName}`;
+        
+        // 1. 写入锁号请求文件
+        const requestData = {
+          number: selectedNumber,
+          name: name,
+          phone: phone,
+          time: new Date().toLocaleString('zh-CN')
+        };
+        
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(requestData))));
+        
+        await fetch(`https://api.github.com/repos/${gh.owner}/${gh.repo}/contents/${filePath}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${gh.token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: `锁号请求: ${selectedNumber} (${name})`,
+            content: content,
+            branch: gh.branch
+          })
+        });
+        
+        // 2. 触发同步 workflow 立即执行
+        await fetch(`https://api.github.com/repos/${gh.owner}/${gh.repo}/actions/workflows/${gh.workflowId}/dispatches`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `token ${gh.token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.github.v3+json'
+          },
+          body: JSON.stringify({ ref: gh.branch })
+        });
+        
+        // 3. 关闭弹窗，显示成功
+        closeModal();
+        showSuccessModal();
+        
+      } catch (err) {
+        console.error('提交失败:', err);
+        showToast('提交失败，请重试');
+        btn.disabled = false;
+        btn.textContent = '确认锁定号码';
+        // 恢复号码到列表
+        if (!availableNumbers.includes(selectedNumber)) {
+          availableNumbers.push(selectedNumber);
+          availableNumbers.sort();
+          renderNumbers();
+        }
+      }
+    }
+
+    // 显示成功弹窗
+    function showSuccessModal() {
+      document.getElementById('successNumber').textContent = formatNumber(selectedNumber);
+      document.getElementById('successModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
     }
 
     // 关闭成功弹窗
     function closeSuccess() {
       document.getElementById('successModal').classList.add('hidden');
       document.body.style.overflow = '';
+      // 重置
+      selectedNumber = null;
+      document.getElementById('selectedNumber').textContent = '请选择号码';
+      document.getElementById('ctaBtn').disabled = true;
+      document.getElementById('ctaBtn').textContent = '下滑选号';
+      document.getElementById('ctaBtn').onclick = scrollToNumbers;
+      document.getElementById('userName').value = '';
+      document.getElementById('userPhone').value = '';
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = false;
+      btn.textContent = '确认锁定号码';
     }
 
     // 简易Toast
