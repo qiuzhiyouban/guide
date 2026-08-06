@@ -410,7 +410,7 @@
       document.body.style.overflow = '';
     }
 
-    // 提交表单（跳转到飞书表单）
+    // 提交选号（跳转飞书官方表单完成登记）
     function submitForm() {
       const name = document.getElementById('userName').value.trim();
       const phone = document.getElementById('userPhone').value.trim();
@@ -428,23 +428,19 @@
       btn.disabled = true;
       btn.textContent = '跳转中...';
       
-      // 跳转到飞书表单，带上号码参数
-      // 飞书多维表表单预填格式：field_字段ID=值
+      // 飞书表单预填参数格式：field_字段ID=值
       const formUrl = CONFIG.formUrl + 
         (CONFIG.formUrl.includes('?') ? '&' : '?') + 
         'field_fldw5fZXPg=' + encodeURIComponent(selectedNumber) +
         '&field_fld5jkJhJ8=' + encodeURIComponent(name) +
         '&field_fld9GnsYSD=' + encodeURIComponent(phone);
       
-      // 先显示成功提示，再跳转
-      closeModal();
-      document.getElementById('successNumber').textContent = formatNumber(selectedNumber);
-      document.getElementById('successModal').classList.remove('hidden');
+      // 前端即时从列表移除号码，减少撞号视觉冲突
+      availableNumbers = availableNumbers.filter(n => n !== selectedNumber);
+      renderNumbers();
       
-      // 2秒后跳转飞书表单
-      setTimeout(() => {
-        window.location.href = formUrl;
-      }, 1500);
+      // 跳转飞书官方表单页
+      window.location.href = formUrl;
     }
 
     // 关闭成功弹窗
