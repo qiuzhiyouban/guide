@@ -1,0 +1,35 @@
+name: Sync Numbers from Feishu
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: Install dependencies
+        run: pip install requests
+      
+      - name: Run sync script
+        env:
+          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          BASE_TOKEN: ${{ secrets.BASE_TOKEN }}
+          TABLE_ID: ${{ secrets.TABLE_ID }}
+        run: python xiaoxinbang/scripts/sync_numbers.py
+      
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add xiaoxinbang/numbers.json
+          git diff --cached --quiet || (git commit -m "sync: update numbers.json" && git push)
