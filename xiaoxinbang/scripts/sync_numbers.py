@@ -2,17 +2,19 @@
 """
 校信邦选号系统 - 号码同步 & 自动锁定脚本
 功能：
-1. 扫描表中所有记录，发现新提交的表单记录（状态为空/未设置的）
-2. 将其信息合并到对应的可选号码记录上，标记为"已锁定"
-3. 删除重复的表单提交记录
-4. 导出所有"可选"号码到 numbers.json
-由 GitHub Actions 定时触发（每5分钟）
+1. 处理 lock_requests/ 目录下的即时锁号请求（前端提交的）
+2. 扫描表中所有记录，发现新提交的表单记录（状态为空/未设置的）
+3. 将其信息合并到对应的可选号码记录上，标记为"已锁定"
+4. 删除重复的表单提交记录
+5. 导出所有"可选"号码到 numbers.json
+由 GitHub Actions 定时触发（每1分钟）+ 前端提交时手动触发
 """
 import json
 import os
 import sys
 import urllib.request
 import urllib.parse
+import glob
 from datetime import datetime
 
 # 配置
@@ -31,7 +33,8 @@ F_TIME = "选号时间"
 STATUS_AVAILABLE = "可选"
 STATUS_LOCKED = "已锁定"
 
-OUTPUT_FILE = os.environ.get("OUTPUT_FILE", "numbers.json")
+OUTPUT_FILE = os.environ.get("OUTPUT_FILE", "xiaoxinbang/numbers.json")
+LOCK_REQUESTS_DIR = os.environ.get("LOCK_REQUESTS_DIR", "xiaoxinbang/lock_requests")
 
 
 def get_tenant_access_token():
@@ -85,7 +88,7 @@ def get_all_records(token):
 
 
 def get_field_text(value):
-    """解析飞书字段的文本值（可能是数组 [{'text':'xxx'}] 或纯文本）"""
+    """解析飞书字段的文本值"""
     if value is None:
         return ""
     if isinstance(value, list) and len(value) > 0:
@@ -128,7 +131,6 @@ def process_new_submissions(token, records):
     - 把信息合并过去，标记已锁定
     - 删除表单提交的重复记录
     """
-    # 按号码分组
     by_number = {}
     for r in records:
         fields = r.get("fields", {})
@@ -141,9 +143,7 @@ def process_new_submissions(token, records):
     locked_count = 0
     
     for num, entries in by_number.items():
-        # 找可选的那条（原始号码记录）
         available_record = None
-        # 找新提交的记录（状态为空）
         new_records = []
         
         for e in entries:
@@ -152,16 +152,13 @@ def process_new_submissions(token, records):
             elif not e["status"] or e["status"] == "":
                 new_records.append(e["record"])
         
-        # 如果有新提交 + 有可选记录 → 合并锁定
         if available_record and new_records:
-            # 取第一条新提交的信息
             new_record = new_records[0]
             new_fields = new_record.get("fields", {})
             
             name = get_field_text(new_fields.get(F_NAME))
             phone = get_field_text(new_fields.get(F_PHONE))
             
-            # 更新可选记录
             update_fields = {
                 F_STATUS: STATUS_LOCKED,
                 F_TIME: datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -174,7 +171,6 @@ def process_new_submissions(token, records):
             update_record(token, available_record["record_id"], update_fields)
             print(f"  ✓ 锁定号码 {num}，客户：{name} ({phone})")
             
-            # 删除所有重复的新提交记录
             for nr in new_records:
                 delete_record(token, nr["record_id"])
                 print(f"  ✓ 删除重复记录 {nr['record_id']}")
@@ -182,6 +178,82 @@ def process_new_submissions(token, records):
             locked_count += 1
     
     return locked_count
+
+
+def process_lock_requests(token, records):
+    """
+    处理 lock_requests/ 目录下的即时锁号请求
+    返回 (锁定数量, 处理的请求文件列表)
+    """
+    if not os.path.isdir(LOCK_REQUESTS_DIR):
+        return 0, []
+    
+    request_files = sorted(glob.glob(os.path.join(LOCK_REQUESTS_DIR, "*.json")))
+    if not request_files:
+        return 0, []
+    
+    print(f"发现 {len(request_files)} 个即时锁号请求")
+    
+    # 建立号码 -> 可选记录的映射
+    available_map = {}
+    for r in records:
+        fields = r.get("fields", {})
+        num = get_field_text(fields.get(F_NUMBER))
+        status = get_field_text(fields.get(F_STATUS))
+        if status == STATUS_AVAILABLE and num:
+            available_map[num] = r
+    
+    locked_count = 0
+    processed_files = []
+    
+    for req_file in request_files:
+        try:
+            with open(req_file, "r", encoding="utf-8") as f:
+                req_data = json.load(f)
+            
+            number = req_data.get("number", "").strip()
+            name = req_data.get("name", "").strip()
+            phone = req_data.get("phone", "").strip()
+            
+            if not number:
+                print(f"  ✗ 跳过无效请求: {os.path.basename(req_file)} (无号码)")
+                processed_files.append(req_file)
+                continue
+            
+            if number in available_map:
+                record = available_map[number]
+                update_fields = {
+                    F_STATUS: STATUS_LOCKED,
+                    F_TIME: datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                }
+                if name:
+                    update_fields[F_NAME] = name
+                if phone:
+                    update_fields[F_PHONE] = phone
+                
+                update_record(token, record["record_id"], update_fields)
+                print(f"  ✓ [即时锁定] {number} - {name} ({phone})")
+                
+                # 从可选映射中移除，防止同一批次重复锁定
+                del available_map[number]
+                locked_count += 1
+            else:
+                print(f"  ✗ [撞号/不存在] {number} 已被锁定或不存在")
+            
+            processed_files.append(req_file)
+            
+        except Exception as e:
+            print(f"  ✗ 处理请求失败 {os.path.basename(req_file)}: {e}")
+    
+    # 删除处理过的请求文件
+    for f in processed_files:
+        try:
+            os.remove(f)
+            print(f"  ✓ 已清理请求文件 {os.path.basename(f)}")
+        except:
+            pass
+    
+    return locked_count, processed_files
 
 
 def export_available_numbers(token):
@@ -211,6 +283,8 @@ def main():
         sys.exit(1)
     
     print(f"开始处理... base={BASE_TOKEN}, table={TABLE_ID}")
+    print(f"锁号请求目录: {LOCK_REQUESTS_DIR}")
+    print(f"输出文件: {OUTPUT_FILE}")
     
     # 获取token
     token = get_tenant_access_token()
@@ -220,13 +294,23 @@ def main():
     all_records = get_all_records(token)
     print(f"✓ 共 {len(all_records)} 条记录")
     
-    # 处理新提交
-    print("正在处理新提交的选号申请...")
-    locked = process_new_submissions(token, all_records)
-    if locked > 0:
-        print(f"✓ 本次新锁定 {locked} 个号码")
+    # 优先处理即时锁号请求（前端提交的）
+    print("正在处理即时锁号请求...")
+    instant_locked, _ = process_lock_requests(token, all_records)
+    if instant_locked > 0:
+        print(f"✓ 即时锁定 {instant_locked} 个号码")
     else:
-        print("  无新提交")
+        print("  无即时锁号请求")
+    
+    # 处理表单新提交（飞书表单提交的，走兜底逻辑）
+    print("正在处理表单新提交...")
+    form_locked = process_new_submissions(token, all_records)
+    if form_locked > 0:
+        print(f"✓ 表单提交锁定 {form_locked} 个号码")
+    else:
+        print("  无表单新提交")
+    
+    total_locked = instant_locked + form_locked
     
     # 导出可选号码
     print("正在导出可选号码...")
@@ -245,7 +329,8 @@ def main():
     
     print(f"✓ 已写入 {OUTPUT_FILE}")
     print(f"::set-output name=total::{len(numbers)}")
-    print(f"::set-output name=locked::{locked}")
+    print(f"::set-output name=locked::{total_locked}")
+    print(f"::set-output name=instant_locked::{instant_locked}")
 
 
 if __name__ == "__main__":
